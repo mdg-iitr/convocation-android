@@ -1,4 +1,4 @@
-package com.mdg.convocation2018.convocation18;
+package ac.in.iitr.mdg.convocation;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
