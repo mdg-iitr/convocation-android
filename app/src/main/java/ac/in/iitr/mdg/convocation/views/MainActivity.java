@@ -1,7 +1,11 @@
 package ac.in.iitr.mdg.convocation.views;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -17,7 +21,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import ac.in.iitr.mdg.convocation.views.home.GuestAdapter;
+import ac.in.iitr.mdg.convocation.views.home.GuestDesc;
+import ac.in.iitr.mdg.convocation.views.home.MiscDesc;
+import ac.in.iitr.mdg.convocation.views.home.chiefGuestsProfile;
+import ac.in.iitr.mdg.convocation.views.home.miscellaneousAdapter;
+import ac.in.iitr.mdg.convocation.views.home.miscellaneousClass;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -93,6 +108,13 @@ public class MainActivity extends AppCompatActivity {
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
+
+        List<chiefGuestsProfile> guestList = new ArrayList<>();
+        List<miscellaneousClass> miscellaneousList = new ArrayList<>();
+        RecyclerView recyclerViewGuest,recyclerViewMisc;
+        GuestAdapter mAdapterGuest;
+        miscellaneousAdapter mAdapterMisc;
+        
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -119,6 +141,10 @@ public class MainActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             switch (getArguments().getInt(ARG_SECTION_NUMBER)){
 
+                case 1:
+                    View rootView6 = inflater.inflate(R.layout.activity_home, container, false);
+                    return setUpHome(rootView6);
+
                 case 7:
                     View rootView7 = inflater.inflate(R.layout.fragment_livecast, container, false);
                     return rootView7;
@@ -131,6 +157,82 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+        }
+
+        private View setUpHome(View view) {
+            
+            ImageButton fblink = (ImageButton) view.findViewById(R.id.fblink);
+            ImageButton twlink = (ImageButton) view.findViewById(R.id.twlink);
+            ImageButton ytlink = (ImageButton) view.findViewById(R.id.ytlink);
+            ImageButton inlink = (ImageButton) view.findViewById(R.id.inlink);
+            View rootView = View.inflate(getContext(), R.layout.chiefguestcard, null);
+            ImageButton cg_next = (ImageButton) rootView.findViewById(R.id.cg_next_button);
+            fblink.setImageResource(R.drawable.facebook);
+            twlink.setImageResource(R.drawable.twitter);
+            ytlink.setImageResource(R.drawable.youtube);
+            inlink.setImageResource(R.drawable.linkedin);
+            cg_next.setImageResource(R.drawable.baseline_keyboard_arrow_right_24);
+
+            recyclerViewGuest = (RecyclerView) view.findViewById(R.id.chiefguestListView);
+
+            mAdapterGuest = new GuestAdapter(guestList, new GuestAdapter.OnItemClickListener(){
+                @Override
+                public void onItemClick(chiefGuestsProfile guest) {
+                    Intent intent = new Intent(getActivity(), GuestDesc.class);
+                    intent.putExtra("headingName", guest.getName());
+                    intent.putExtra("headingDesig", guest.getDesignation());
+                    intent.putExtra("data", guest.getData());
+                    startActivity(intent);
+                }
+            });
+            RecyclerView.LayoutManager mLayoutManagerGuest = new LinearLayoutManager(getActivity().getApplicationContext());
+            recyclerViewGuest.setLayoutManager(mLayoutManagerGuest);
+            recyclerViewGuest.setItemAnimator(new DefaultItemAnimator());
+            recyclerViewGuest.setAdapter(mAdapterGuest);
+
+            recyclerViewMisc = (RecyclerView) view.findViewById(R.id.miscellaneousListView);
+
+            mAdapterMisc = new miscellaneousAdapter(miscellaneousList, new miscellaneousAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(miscellaneousClass miscellaneous) {
+                    Intent intent = new Intent(getActivity(), MiscDesc.class);
+                    intent.putExtra("headingName", miscellaneous.getMainHead());
+                    intent.putExtra("data", miscellaneous.getData());
+                    startActivity(intent);
+                }
+            });
+            RecyclerView.LayoutManager mLayoutManagerMisc = new LinearLayoutManager(getActivity().getApplicationContext());
+            recyclerViewMisc.setLayoutManager(mLayoutManagerMisc);
+            recyclerViewMisc.setItemAnimator(new DefaultItemAnimator());
+            recyclerViewMisc.setAdapter(mAdapterMisc);
+
+            recyclerViewMisc.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,true));
+
+            prepareGuestData();
+            prepareMiscData();
+
+            return view;
+
+        }
+
+        private void prepareMiscData() {
+            chiefGuestsProfile guest = new chiefGuestsProfile(1,"Shri Ram Nath Kovind","Hon'ble President of India",null,null,null);
+            guestList.add(guest);
+
+            guest = new chiefGuestsProfile(2,"Shri Ram Naik","Hon'ble Governer of U.P.",null,null,null);
+            guestList.add(guest);
+
+            mAdapterGuest.notifyDataSetChanged();
+        }
+
+        private void prepareGuestData() {
+            miscellaneousClass miscellaneous = new miscellaneousClass("About IIT Roorkee",null,null,null,null);
+            miscellaneousList.add(miscellaneous);
+
+            miscellaneous = new miscellaneousClass("IITR Guru Wandana",null,null,null,null);
+            miscellaneousList.add(miscellaneous);
+
+            mAdapterMisc.notifyDataSetChanged();
         }
     }
 
@@ -153,7 +255,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
             return 7;
         }
     }
