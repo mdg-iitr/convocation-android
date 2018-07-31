@@ -12,4 +12,5 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="action_maps">Maps</string>
     <string name="action_feedback">Feedback</string>
+    <string name="acco_intro">Name and location of all the nearby hotels and guest houses are there in the pdf which can be downloaded from the link below.</string>
 </resources>

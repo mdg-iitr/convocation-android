@@ -27,6 +27,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ac.in.iitr.mdg.convocation.views.Accomodation.hotelAdapter;
+import ac.in.iitr.mdg.convocation.views.Accomodation.hotelProfile;
 import ac.in.iitr.mdg.convocation.views.home.GuestAdapter;
 import ac.in.iitr.mdg.convocation.views.home.GuestDesc;
 import ac.in.iitr.mdg.convocation.views.home.MiscDesc;
@@ -111,9 +113,11 @@ public class MainActivity extends AppCompatActivity {
 
         List<chiefGuestsProfile> guestList = new ArrayList<>();
         List<miscellaneousClass> miscellaneousList = new ArrayList<>();
-        RecyclerView recyclerViewGuest,recyclerViewMisc;
+        List<hotelProfile> hotelList = new ArrayList<>();
+        RecyclerView recyclerViewGuest,recyclerViewMisc,recyclerViewHotel;
         GuestAdapter mAdapterGuest;
         miscellaneousAdapter mAdapterMisc;
+        hotelAdapter mAdapterHotel;
         
         /**
          * The fragment argument representing the section number for this
@@ -142,8 +146,12 @@ public class MainActivity extends AppCompatActivity {
             switch (getArguments().getInt(ARG_SECTION_NUMBER)){
 
                 case 1:
-                    View rootView6 = inflater.inflate(R.layout.activity_home, container, false);
-                    return setUpHome(rootView6);
+                    View rootView1 = inflater.inflate(R.layout.activity_home, container, false);
+                    return setUpHome(rootView1);
+
+                case 2:
+                    View rootView2 = inflater.inflate(R.layout.activity_acco, container, false);
+                    return setUpAcco(rootView2);
 
                 case 7:
                     View rootView7 = inflater.inflate(R.layout.fragment_livecast, container, false);
@@ -157,6 +165,41 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+        }
+
+        private View setUpAcco(View view) {
+
+            View rootView = View.inflate(getContext(), R.layout.hotelcard, null);
+            ImageButton cg_next = (ImageButton) rootView.findViewById(R.id.cg_next_button_hotel);
+            cg_next.setImageResource(R.drawable.baseline_keyboard_arrow_right_24);
+
+            recyclerViewHotel = (RecyclerView) view.findViewById(R.id.hotelListView);
+
+            mAdapterHotel = new hotelAdapter(hotelList, new hotelAdapter.OnItemClickListener(){
+                @Override
+                public void onItemClick(hotelProfile hotel) {
+
+                }
+            });
+            RecyclerView.LayoutManager mLayoutManagerHotel = new LinearLayoutManager(getActivity().getApplicationContext());
+            recyclerViewHotel.setLayoutManager(mLayoutManagerHotel);
+            recyclerViewHotel.setItemAnimator(new DefaultItemAnimator());
+            recyclerViewHotel.setAdapter(mAdapterHotel);
+
+            prepareHotelData();
+
+            return view;
+        }
+
+        private void prepareHotelData() {
+
+            hotelProfile hotel = new hotelProfile(1,"Hotel Prakash","21,Civil Lines,Roorkee",null,null,null);
+            hotelList.add(hotel);
+
+            hotel = new hotelProfile(2,"Hotel Sungrace","142,Civil Lines,Roorkee",null,null,null);
+            hotelList.add(hotel);
+
+            mAdapterHotel.notifyDataSetChanged();
         }
 
         private View setUpHome(View view) {
