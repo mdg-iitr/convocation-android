@@ -1,6 +1,8 @@
 package ac.in.iitr.mdg.convocation.views;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -171,7 +173,6 @@ public class MainActivity extends AppCompatActivity {
 
             View rootView = View.inflate(getContext(), R.layout.hotelcard, null);
             ImageButton cg_next = (ImageButton) rootView.findViewById(R.id.cg_next_button_hotel);
-            cg_next.setImageResource(R.drawable.baseline_keyboard_arrow_right_24);
 
             recyclerViewHotel = (RecyclerView) view.findViewById(R.id.hotelListView);
 
@@ -210,11 +211,6 @@ public class MainActivity extends AppCompatActivity {
             ImageButton inlink = (ImageButton) view.findViewById(R.id.inlink);
             View rootView = View.inflate(getContext(), R.layout.chiefguestcard, null);
             ImageButton cg_next = (ImageButton) rootView.findViewById(R.id.cg_next_button);
-            fblink.setImageResource(R.drawable.facebook);
-            twlink.setImageResource(R.drawable.twitter);
-            ytlink.setImageResource(R.drawable.youtube);
-            inlink.setImageResource(R.drawable.linkedin);
-            cg_next.setImageResource(R.drawable.baseline_keyboard_arrow_right_24);
 
             recyclerViewGuest = (RecyclerView) view.findViewById(R.id.chiefguestListView);
 
