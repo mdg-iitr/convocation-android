@@ -1,7 +1,16 @@
 package ac.in.iitr.mdg.convocation.views;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -10,6 +19,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +28,12 @@ import android.view.ViewGroup;
 
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -46,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         String registerText = "<big><font color='#000000'>"+"REGISTER NOW"+"</font></big>"+"<br/>"+"<small><font color='#000000'>"+"(To get early bird facilities)"+"</font></small>";
         registerButton.setText((Html.fromHtml(registerText)));
 
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -62,6 +80,25 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
 
+    }
+
+    public static Bitmap getCroppedBitmap(Bitmap bitmap) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2,
+                (min(bitmap.getHeight(),bitmap.getWidth()) / 2), paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        return output;
     }
 
 
@@ -118,6 +155,74 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             switch (getArguments().getInt(ARG_SECTION_NUMBER)){
+
+                case 3:
+
+                    View rootView3 = inflater.inflate(R.layout.fragment_schedule,container,false);
+
+                     /*-----------------------------------------------------*/
+                    // Schedule Recycler view
+
+                    RecyclerView recyclerView1 = (RecyclerView)rootView3.findViewById(R.id.schedule_date1_recyclerView);
+                    final List<Schedule> list = new ArrayList<>();
+                    final ScheduleAdapter textAdapter = new ScheduleAdapter(getContext(),list);
+                    final Schedule schedule1 = new Schedule();
+
+
+//                    Bitmap icon = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.test);
+//             /*OR*/
+//                    String name = c.getString(str_url);
+//                    URL url_value = new URL(name);
+//                    Bitmap icon = BitmapFactory.decodeStream(url_value.openConnection().getInputStream());
+
+//                    schedule1.setSchedule_image(getCroppedBitmap(icon));
+
+                    schedule1.setSchedule_event("Official Lunch");
+                    schedule1.setSchedule_venue("LBS Ground");
+                    schedule1.setSchedule_time("2:00 pm - 3:00 pm");
+                    list.add(schedule1);
+                    textAdapter.notifyDataSetChanged();
+
+                    final Schedule schedule2 = new Schedule();
+                    schedule2.setSchedule_event("Official Dinner");
+                    schedule2.setSchedule_venue("LBS Ground");
+                    schedule2.setSchedule_time("2:00 pm - 3:00 pm");
+                    list.add(schedule2);
+                    textAdapter.notifyDataSetChanged();
+
+                    RecyclerView.LayoutManager recycler = new LinearLayoutManager(getContext());
+                    recyclerView1.setLayoutManager(recycler);
+                    recyclerView1.setAdapter(textAdapter);
+
+
+                    RecyclerView recyclerView2 = (RecyclerView)rootView3.findViewById(R.id.schedule_date2_recyclerView);
+                    final List<Schedule> list2 = new ArrayList<>();
+                    final ScheduleAdapter textAdapter2 = new ScheduleAdapter(getContext(),list);
+                    final Schedule schedule3 = new Schedule();
+                    schedule3.setSchedule_event("Official Lunch");
+                    schedule3.setSchedule_venue("LBS Ground");
+                    schedule3.setSchedule_time("2:00 pm - 3:00 pm");
+                    list2.add(schedule3);
+                    textAdapter.notifyDataSetChanged();
+
+                    final Schedule schedule4 = new Schedule();
+                    schedule4.setSchedule_event("Official Dinner");
+                    schedule4.setSchedule_venue("LBS Ground");
+                    schedule4.setSchedule_time("2:00 pm - 3:00 pm");
+                    list2.add(schedule4);
+                    textAdapter.notifyDataSetChanged();
+
+                    RecyclerView.LayoutManager recycler2 = new LinearLayoutManager(getContext());
+                    recyclerView2.setLayoutManager(recycler2);
+                    recyclerView2.setAdapter(textAdapter2);
+
+                     /*------------------------------------------------------*/
+
+                    return rootView3;
+
+                case 4:
+                    View rootView4 = inflater.inflate(R.layout.fragment_degrees,container,false);
+                    return rootView4;
 
                 case 7:
                     View rootView7 = inflater.inflate(R.layout.fragment_livecast, container, false);

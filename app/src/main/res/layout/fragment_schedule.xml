@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity$PlaceholderFragment">
+    
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/schedule_date1"
+        android:text="21 September 2018"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="#111111"
+        android:textStyle="bold"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/schedule_date1_recyclerView"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/schedule_date2"
+        android:text="22 September 2018"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="#111111"
+        android:textStyle="bold"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/schedule_date2_recyclerView">
+
+    </android.support.v7.widget.RecyclerView>
+
+    
+
+</LinearLayout>
