@@ -35,13 +35,15 @@ public class DegreeAdapter extends RecyclerView.Adapter<DegreeAdapter.Branchhold
 
     @Override
     public void onBindViewHolder(@NonNull Branchholder holder, int position) {
-        DegreeCard mylist =list.get(position);
+        final DegreeCard mylist =list.get(position);
         holder.branch.setText(mylist.getBranchName());
         holder.no_of_students.setText(mylist.getNumberOfStudents());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.getContext().startActivity(new Intent(v.getContext(),BranchStudents.class));
+                Intent intent = new Intent(v.getContext(),BranchStudents.class);
+                intent.putExtra("branch",mylist.getBranchName());
+                v.getContext().startActivity(intent);
             }
         });
     }
