@@ -12,4 +12,9 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="action_maps">Maps</string>
     <string name="action_feedback">Feedback</string>
+
+    <string name="B.Tech">B.Tech &amp; IDD</string>
+    <string name="mTech">M.Tech</string>
+    <string name="phd">PhD</string>
+    <string name="management">Management</string>
 </resources>

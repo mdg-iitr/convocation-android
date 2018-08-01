@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity$PlaceholderFragment">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/Degrees_button_bTech"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/B.Tech"
+            android:textSize="10sp"
+            android:textAppearance="@style/AllCapsFalse"/>
+
+        <Button
+            android:id="@+id/Degrees_button_mTech"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/mTech"
+            android:textSize="10sp"
+            android:textAppearance="@style/AllCapsFalse"/>
+
+        <Button
+            android:id="@+id/Degrees_button_phD"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/phd"
+            android:textSize="10sp"
+            android:textAppearance="@style/AllCapsFalse"/>
+
+        <Button
+            android:id="@+id/Degrees_button_Management"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/management"
+            android:textSize="10sp"
+            android:textAppearance="@style/AllCapsFalse"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/degree_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

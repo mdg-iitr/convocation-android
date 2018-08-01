@@ -1,54 +1,36 @@
 package ac.in.iitr.mdg.convocation.views;
 
-import android.graphics.Bitmap;
-
 /**
- * Created by suyash on 7/31/18.
+ * Created by suyash on 8/2/18.
  */
 
 public class Schedule {
-    public Bitmap schedule_image;
-    public String schedule_event,schedule_venue,schedule_time;
+    public String schedule_date;
+    public ScheduleCard scheduleCard;
+    public static final int TYPE_DATE = 0;
+    public static final int TYPE_SCHEDULE = 1;
+    private int type;
 
-    public Schedule() {
+    public Schedule(int type, String schedule_date) {
+        this.schedule_date = schedule_date;
+        this.type = type;
     }
 
-    public Schedule(Bitmap schedule_image, String schedule_event, String schedule_venue, String schedule_time) {
-        this.schedule_image = schedule_image;
-        this.schedule_event = schedule_event;
-        this.schedule_venue = schedule_venue;
-        this.schedule_time = schedule_time;
+    public Schedule(int type, ScheduleCard scheduleCard) {
+        this.scheduleCard = scheduleCard;
+        this.type = type;
     }
 
-    public Bitmap getSchedule_image() {
-        return schedule_image;
+    public ScheduleCard getScheduleCard() {
+        return scheduleCard;
     }
 
-    public void setSchedule_image(Bitmap schedule_image) {
-        this.schedule_image = schedule_image;
+    public String getSchedule_date() {
+        return schedule_date;
     }
 
-    public String getSchedule_event() {
-        return schedule_event;
-    }
 
-    public void setSchedule_event(String schedule_event) {
-        this.schedule_event = schedule_event;
-    }
-
-    public String getSchedule_venue() {
-        return schedule_venue;
-    }
-
-    public void setSchedule_venue(String schedule_venue) {
-        this.schedule_venue = schedule_venue;
-    }
-
-    public String getSchedule_time() {
-        return schedule_time;
-    }
-
-    public void setSchedule_time(String schedule_time) {
-        this.schedule_time = schedule_time;
+    public int getType() {
+        return type;
     }
 }

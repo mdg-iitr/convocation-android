@@ -1,7 +1,6 @@
 package ac.in.iitr.mdg.convocation.views;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -19,7 +18,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -129,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment{
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -161,68 +159,136 @@ public class MainActivity extends AppCompatActivity {
                     View rootView3 = inflater.inflate(R.layout.fragment_schedule,container,false);
 
                      /*-----------------------------------------------------*/
-                    // Schedule Recycler view
+                    // ScheduleCard Recycler view
 
-                    RecyclerView recyclerView1 = (RecyclerView)rootView3.findViewById(R.id.schedule_date1_recyclerView);
+                    RecyclerView recyclerView = (RecyclerView)rootView3.findViewById(R.id.schedule_recyclerView);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     final List<Schedule> list = new ArrayList<>();
                     final ScheduleAdapter textAdapter = new ScheduleAdapter(getContext(),list);
-                    final Schedule schedule1 = new Schedule();
 
-
-//                    Bitmap icon = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.test);
+//                    Bitmap icon = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.schedule_image_default);
 //             /*OR*/
 //                    String name = c.getString(str_url);
 //                    URL url_value = new URL(name);
 //                    Bitmap icon = BitmapFactory.decodeStream(url_value.openConnection().getInputStream());
 
-//                    schedule1.setSchedule_image(getCroppedBitmap(icon));
+//                    scheduleCard1.setSchedule_image(getCroppedBitmap(icon));
 
-                    schedule1.setSchedule_event("Official Lunch");
-                    schedule1.setSchedule_venue("LBS Ground");
-                    schedule1.setSchedule_time("2:00 pm - 3:00 pm");
+                    final Schedule schedule_date1 = new Schedule(Schedule.TYPE_DATE, "21 September 2018");
+                    list.add(schedule_date1);
+                    textAdapter.notifyDataSetChanged();
+
+                    final Schedule schedule1 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Breakfast1","LBS Ground","2:00 pm - 3:00 pm"));
                     list.add(schedule1);
                     textAdapter.notifyDataSetChanged();
 
-                    final Schedule schedule2 = new Schedule();
-                    schedule2.setSchedule_event("Official Dinner");
-                    schedule2.setSchedule_venue("LBS Ground");
-                    schedule2.setSchedule_time("2:00 pm - 3:00 pm");
+                    final Schedule schedule2 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Lunch1","LBS Ground","2:00 pm - 3:00 pm"));
                     list.add(schedule2);
                     textAdapter.notifyDataSetChanged();
 
-                    RecyclerView.LayoutManager recycler = new LinearLayoutManager(getContext());
-                    recyclerView1.setLayoutManager(recycler);
-                    recyclerView1.setAdapter(textAdapter);
-
-
-                    RecyclerView recyclerView2 = (RecyclerView)rootView3.findViewById(R.id.schedule_date2_recyclerView);
-                    final List<Schedule> list2 = new ArrayList<>();
-                    final ScheduleAdapter textAdapter2 = new ScheduleAdapter(getContext(),list);
-                    final Schedule schedule3 = new Schedule();
-                    schedule3.setSchedule_event("Official Lunch");
-                    schedule3.setSchedule_venue("LBS Ground");
-                    schedule3.setSchedule_time("2:00 pm - 3:00 pm");
-                    list2.add(schedule3);
+                    final Schedule schedule3 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Dinner1","LBS Ground","2:00 pm - 3:00 pm"));
+                    list.add(schedule3);
                     textAdapter.notifyDataSetChanged();
 
-                    final Schedule schedule4 = new Schedule();
-                    schedule4.setSchedule_event("Official Dinner");
-                    schedule4.setSchedule_venue("LBS Ground");
-                    schedule4.setSchedule_time("2:00 pm - 3:00 pm");
-                    list2.add(schedule4);
+                    final Schedule schedule_date2 = new Schedule(Schedule.TYPE_DATE, "22 September 2018");
+                    list.add(schedule_date2);
                     textAdapter.notifyDataSetChanged();
 
-                    RecyclerView.LayoutManager recycler2 = new LinearLayoutManager(getContext());
-                    recyclerView2.setLayoutManager(recycler2);
-                    recyclerView2.setAdapter(textAdapter2);
+                    final Schedule schedule4 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Breakfast2","LBS Ground","2:00 pm - 3:00 pm"));
+                    list.add(schedule4);
+                    textAdapter.notifyDataSetChanged();
 
-                     /*------------------------------------------------------*/
+                    final Schedule schedule5 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Lunch2","LBS Ground","2:00 pm - 3:00 pm"));
+                    list.add(schedule5);
+                    textAdapter.notifyDataSetChanged();
+
+                    final Schedule schedule6 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Dinner2","LBS Ground","2:00 pm - 3:00 pm"));
+                    list.add(schedule6);
+                    textAdapter.notifyDataSetChanged();
+
+                    recyclerView.setAdapter(textAdapter);
+
+
+                    /*------------------------------------------------------*/
 
                     return rootView3;
 
+
                 case 4:
-                    View rootView4 = inflater.inflate(R.layout.fragment_degrees,container,false);
+                    final View rootView4 = inflater.inflate(R.layout.fragment_degrees,container,false);
+                    Button bTech = (Button)rootView4.findViewById(R.id.Degrees_button_bTech);
+                    Button mTech = (Button)rootView4.findViewById(R.id.Degrees_button_mTech);
+                    Button phD = (Button)rootView4.findViewById(R.id.Degrees_button_phD);
+                    Button management = (Button)rootView4.findViewById(R.id.Degrees_button_Management);
+
+                    bTech.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
+                            final List<DegreeCard> list = new ArrayList<>();
+                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
+
+                            for (int i=0;i<10;i++){
+                                list.add(new DegreeCard("Chemical Engineering","Total Students : 120"));
+                                textAdapter.notifyDataSetChanged();
+                            }
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            recyclerView.setAdapter(textAdapter);
+                        }
+                    });
+
+                    bTech.performClick();
+
+                    mTech.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
+                            final List<DegreeCard> list = new ArrayList<>();
+                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
+
+                            for (int i=0;i<10;i++){
+                                list.add(new DegreeCard("Electrical Engineering","Total Students : 120"));
+                                textAdapter.notifyDataSetChanged();
+                            }
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            recyclerView.setAdapter(textAdapter);
+                        }
+                    });
+
+                    phD.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
+                            final List<DegreeCard> list = new ArrayList<>();
+                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
+
+                            for (int i=0;i<10;i++){
+                                list.add(new DegreeCard("Civil Engineering","Total Students : 120"));
+                                textAdapter.notifyDataSetChanged();
+                            }
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            recyclerView.setAdapter(textAdapter);
+                        }
+                    });
+
+                    management.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
+                            final List<DegreeCard> list = new ArrayList<>();
+                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
+
+                            for (int i=0;i<10;i++){
+                                list.add(new DegreeCard("CSE Engineering","Total Students : 120"));
+                                textAdapter.notifyDataSetChanged();
+                            }
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            recyclerView.setAdapter(textAdapter);
+                        }
+                    });
+
                     return rootView4;
+
 
                 case 7:
                     View rootView7 = inflater.inflate(R.layout.fragment_livecast, container, false);

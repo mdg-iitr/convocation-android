@@ -10,37 +10,37 @@
     tools:context=".MainActivity$PlaceholderFragment">
     
     
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/schedule_date1"
-        android:text="21 September 2018"
-        android:padding="10dp"
-        android:textSize="20sp"
-        android:textColor="#111111"
-        android:textStyle="bold"/>
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/schedule_date1"-->
+        <!--android:text="21 September 2018"-->
+        <!--android:padding="10dp"-->
+        <!--android:textSize="20sp"-->
+        <!--android:textColor="#111111"-->
+        <!--android:textStyle="bold"/>-->
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/schedule_date1_recyclerView"/>
+        android:id="@+id/schedule_recyclerView"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/schedule_date2"
-        android:text="22 September 2018"
-        android:padding="10dp"
-        android:textSize="20sp"
-        android:textColor="#111111"
-        android:textStyle="bold"/>
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/schedule_date2"-->
+        <!--android:text="22 September 2018"-->
+        <!--android:padding="10dp"-->
+        <!--android:textSize="20sp"-->
+        <!--android:textColor="#111111"-->
+        <!--android:textStyle="bold"/>-->
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/schedule_date2_recyclerView">
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/schedule_date2_recyclerView">-->
 
-    </android.support.v7.widget.RecyclerView>
+    <!--</android.support.v7.widget.RecyclerView>-->
 
     
 
