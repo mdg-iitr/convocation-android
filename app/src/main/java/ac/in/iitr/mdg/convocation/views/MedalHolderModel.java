@@ -27,8 +27,9 @@ public class MedalHolderModel {
     public Bitmap getMedalHolderImage(){
         return medalHolderImage;
     }
-    MedalHolderModel(String medalHolderName,String medalHolderBranch,String medalHolderEnNo){
+    MedalHolderModel(Bitmap medalHolderImage, String medalHolderName,String medalHolderBranch,String medalHolderEnNo){
 
+        this.medalHolderImage = medalHolderImage;
         this.medalHolderBranch = medalHolderBranch;
         this.medalHolderEnNo = medalHolderEnNo;
         this.medalHolderName = medalHolderName;

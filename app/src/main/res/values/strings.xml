@@ -13,5 +13,5 @@
     <string name="action_maps">Maps</string>
     <string name="action_feedback">Feedback</string>
     <string name="inst_medals">Institute Level</string>
-    <string name="dept_medals">Institute Level</string>
+    <string name="dept_medals">Department Level</string>
 </resources>

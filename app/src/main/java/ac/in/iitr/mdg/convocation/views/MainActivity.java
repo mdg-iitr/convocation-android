@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -25,6 +26,8 @@ import android.view.ViewGroup;
 
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -50,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button registerButton = findViewById(R.id.registerButton);
-        String registerText = "<big><font color='#000000'>"+"REGISTER NOW"+"</font></big>"+"<br/>"+"<small><font color='#000000'>"+"(To get early bird facilities)"+"</font></small>";
+        String registerText = "<b><big><font color='#000000'>"+"REGISTER NOW"+"</font></big>"+"<br/>"+"<small><font color='#000000'>"+"(To get early bird facilities)"+"</font></small></b>";
         registerButton.setText((Html.fromHtml(registerText)));
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -130,6 +133,24 @@ public class MainActivity extends AppCompatActivity {
                     View rootView5 = inflater.inflate(R.layout.fragment_medals,container,false);
 
                     RecyclerView medalView = rootView5.findViewById(R.id.medals_recycler_view);
+                    medalView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    ArrayList<MedalModel> medalArray = new ArrayList<>();
+                    medalArray.add(new MedalModel(MedalModel.TYPE_CATEGORY,"President's Gold Medal"));
+                    Bitmap bitmap2 = Bitmap.createBitmap(120,120, Bitmap.Config.ARGB_8888);
+                    Canvas c = new Canvas(bitmap2);
+                    c.drawColor(Color.LTGRAY);
+                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER,new MedalHolderModel(bitmap2,"Karthik Iyer","Chemical Engineering", "17112036")));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER,new MedalHolderModel(bitmap2,"Karthik Iyer","Chemical Engineering", "17112036")));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_CATEGORY,"Director's Gold Medal"));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER,new MedalHolderModel(bitmap2,"Karthik Iyer","Chemical Engineering", "17112036")));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER,new MedalHolderModel(bitmap2,"Karthik Iyer","Chemical Engineering", "17112036")));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_CATEGORY,"Institute Gold Medal"));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER,new MedalHolderModel(bitmap2,"Karthik Iyer","Chemical Engineering", "17112036")));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER,new MedalHolderModel(bitmap2,"Karthik Iyer","Chemical Engineering", "17112036")));
+                    MedalAdapter medalAdapter = new MedalAdapter(medalArray);
+                    medalView.setAdapter(medalAdapter);
+
+                    return rootView5;
 
                 case 6:
                     View rootView6 = inflater.inflate(R.layout.fragment_gallery,container,false);
@@ -146,8 +167,8 @@ public class MainActivity extends AppCompatActivity {
                     bitmap[6] = Bitmap.createBitmap(200,250, Bitmap.Config.ARGB_8888);
 
                     for (int i = 0; i<7;i++){
-                        Canvas c = new Canvas(bitmap[i]);
-                        c.drawColor(Color.LTGRAY);
+                        Canvas c2 = new Canvas(bitmap[i]);
+                        c2.drawColor(Color.LTGRAY);
                     }
                     GalleryAdapter galleryAdapter = new GalleryAdapter(bitmap);
                     galleryView.setAdapter(galleryAdapter);
