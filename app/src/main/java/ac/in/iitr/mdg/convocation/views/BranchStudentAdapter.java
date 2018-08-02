@@ -8,8 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.List;
-import java.util.zip.Inflater;
+import java.util.ArrayList;
+import java.util.Locale;
+
 
 /**
  * Created by suyash on 8/1/18.
@@ -17,11 +18,14 @@ import java.util.zip.Inflater;
 
 public class BranchStudentAdapter extends RecyclerView.Adapter<BranchStudentAdapter.BranchStudentHolder>{
     Context context;
-    List<BranchStudentCard> list;
+    ArrayList<BranchStudentCard> list;
+    ArrayList<BranchStudentCard> searchList;
+    int FLAG = 0;
 
-    public BranchStudentAdapter(Context context, List<BranchStudentCard> list) {
+    public BranchStudentAdapter(Context context, ArrayList<BranchStudentCard> list) {
         this.context = context;
         this.list = list;
+
     }
 
     @NonNull
@@ -30,6 +34,7 @@ public class BranchStudentAdapter extends RecyclerView.Adapter<BranchStudentAdap
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_branchstudents,parent,false);
         BranchStudentHolder textHolder = new BranchStudentHolder(view);
         return textHolder;
+
     }
 
     @Override
@@ -53,6 +58,31 @@ public class BranchStudentAdapter extends RecyclerView.Adapter<BranchStudentAdap
 
         }
         return arr;
+
+    }
+
+
+    // Filter method
+    public void filter(String charText) {
+        if (FLAG==0){
+            searchList = new ArrayList<>(list);
+            FLAG++;
+        }
+        list.clear();
+        charText = charText.toLowerCase(Locale.getDefault());
+        if (charText.length() == 0) {
+            list.addAll(searchList);
+        } else {
+            for (BranchStudentCard branchStudentCard: searchList) {
+                if (branchStudentCard.getStudent_name().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    list.add(branchStudentCard);
+                }
+                else if(branchStudentCard.getStudent_enrollment().toLowerCase(Locale.getDefault()).contains(charText)){
+                    list.add(branchStudentCard);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
     class BranchStudentHolder extends RecyclerView.ViewHolder{
