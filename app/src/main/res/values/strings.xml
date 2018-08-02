@@ -16,12 +16,9 @@
     <string name="mTech">M.Tech</string>
     <string name="phd">PhD</string>
     <string name="management">Management</string>
-<<<<<<< HEAD
     <string name="name">Name</string>
     <string name="enrollment">Enrollment No.</string>
     <string name="time">Time</string>
-=======
     <string name="inst_medals">Institute Level</string>
     <string name="dept_medals">Department Level</string>
->>>>>>> 3345c97699cf8a37f9881020516cce136108affa
 </resources>
