@@ -1,8 +1,12 @@
 package ac.in.iitr.mdg.convocation.views;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +32,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -56,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         String registerText = "<b><big><font color='#000000'>"+"REGISTER NOW"+"</font></big>"+"<br/>"+"<small><font color='#000000'>"+"(To get early bird facilities)"+"</font></small></b>";
         registerButton.setText((Html.fromHtml(registerText)));
 
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -72,6 +83,25 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
 
+    }
+
+    public static Bitmap getCroppedBitmap(Bitmap bitmap) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2,
+                (min(bitmap.getHeight(),bitmap.getWidth()) / 2), paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        return output;
     }
 
 
@@ -102,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment{
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -128,6 +158,142 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             switch (getArguments().getInt(ARG_SECTION_NUMBER)){
+
+
+                case 3:
+
+                    View rootView3 = inflater.inflate(R.layout.fragment_schedule,container,false);
+
+                     /*-----------------------------------------------------*/
+                    // ScheduleCard Recycler view
+
+                    RecyclerView recyclerView = (RecyclerView)rootView3.findViewById(R.id.schedule_recyclerView);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    final List<Schedule> list = new ArrayList<>();
+                    final ScheduleAdapter textAdapter = new ScheduleAdapter(getContext(),list);
+
+//                    Bitmap icon = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.schedule_image_default);
+//             /*OR*/
+//                    String name = c.getString(str_url);
+//                    URL url_value = new URL(name);
+//                    Bitmap icon = BitmapFactory.decodeStream(url_value.openConnection().getInputStream());
+
+//                    scheduleCard1.setSchedule_image(getCroppedBitmap(icon));
+
+                    final Schedule schedule_date1 = new Schedule(Schedule.TYPE_DATE, "21 September 2018");
+                    list.add(schedule_date1);
+                    textAdapter.notifyDataSetChanged();
+
+                    final Schedule schedule1 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Breakfast1","LBS Ground","2:00 pm - 3:00 pm"));
+                    list.add(schedule1);
+                    textAdapter.notifyDataSetChanged();
+
+                    final Schedule schedule2 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Lunch1","LBS Ground","2:00 pm - 3:00 pm"));
+                    list.add(schedule2);
+                    textAdapter.notifyDataSetChanged();
+
+                    final Schedule schedule3 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Dinner1","LBS Ground","2:00 pm - 3:00 pm"));
+                    list.add(schedule3);
+                    textAdapter.notifyDataSetChanged();
+
+                    final Schedule schedule_date2 = new Schedule(Schedule.TYPE_DATE, "22 September 2018");
+                    list.add(schedule_date2);
+                    textAdapter.notifyDataSetChanged();
+
+                    final Schedule schedule4 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Breakfast2","LBS Ground","2:00 pm - 3:00 pm"));
+                    list.add(schedule4);
+                    textAdapter.notifyDataSetChanged();
+
+                    final Schedule schedule5 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Lunch2","LBS Ground","2:00 pm - 3:00 pm"));
+                    list.add(schedule5);
+                    textAdapter.notifyDataSetChanged();
+
+                    final Schedule schedule6 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Dinner2","LBS Ground","2:00 pm - 3:00 pm"));
+                    list.add(schedule6);
+                    textAdapter.notifyDataSetChanged();
+
+                    recyclerView.setAdapter(textAdapter);
+
+
+                    /*------------------------------------------------------*/
+
+                    return rootView3;
+
+
+                case 4:
+                    final View rootView4 = inflater.inflate(R.layout.fragment_degrees,container,false);
+                    Button bTech = (Button)rootView4.findViewById(R.id.Degrees_button_bTech);
+                    Button mTech = (Button)rootView4.findViewById(R.id.Degrees_button_mTech);
+                    Button phD = (Button)rootView4.findViewById(R.id.Degrees_button_phD);
+                    Button management = (Button)rootView4.findViewById(R.id.Degrees_button_Management);
+
+                    bTech.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
+                            final List<DegreeCard> list = new ArrayList<>();
+                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
+
+                            for (int i=0;i<10;i++){
+                                list.add(new DegreeCard("Chemical Engineering","Total Students : 120"));
+                                textAdapter.notifyDataSetChanged();
+                            }
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            recyclerView.setAdapter(textAdapter);
+                        }
+                    });
+
+                    bTech.performClick();
+
+                    mTech.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
+                            final List<DegreeCard> list = new ArrayList<>();
+                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
+
+                            for (int i=0;i<10;i++){
+                                list.add(new DegreeCard("Electrical Engineering","Total Students : 120"));
+                                textAdapter.notifyDataSetChanged();
+                            }
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            recyclerView.setAdapter(textAdapter);
+                        }
+                    });
+
+                    phD.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
+                            final List<DegreeCard> list = new ArrayList<>();
+                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
+
+                            for (int i=0;i<10;i++){
+                                list.add(new DegreeCard("Civil Engineering","Total Students : 120"));
+                                textAdapter.notifyDataSetChanged();
+                            }
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            recyclerView.setAdapter(textAdapter);
+                        }
+                    });
+
+                    management.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
+                            final List<DegreeCard> list = new ArrayList<>();
+                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
+
+                            for (int i=0;i<10;i++){
+                                list.add(new DegreeCard("CSE Engineering","Total Students : 120"));
+                                textAdapter.notifyDataSetChanged();
+                            }
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            recyclerView.setAdapter(textAdapter);
+                        }
+                    });
+
+                    return rootView4;
 
                 case 5:
                     View rootView5 = inflater.inflate(R.layout.fragment_medals,container,false);
