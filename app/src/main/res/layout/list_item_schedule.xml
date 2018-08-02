@@ -22,7 +22,6 @@
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
                 android:layout_margin="5dp"/>
-                <!--android:src=""-->
 
             <TextView
                 android:id="@+id/scheduleCard_event"
@@ -58,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:gravity="right"
-                    android:text="Time"
+                    android:text="@string/time"
                     android:textColor="#111111"
                     android:textSize="10sp" />
 

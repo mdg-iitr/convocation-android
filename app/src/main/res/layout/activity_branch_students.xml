@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_margin="15dp"
-            android:text="Name"
+            android:text="@string/name"
             android:textColor="#111111"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_margin="15dp"
-            android:text="Enrollment No."
+            android:text="@string/enrollment"
             android:textColor="#111111"
             android:textSize="15sp"
             android:textStyle="bold" />
