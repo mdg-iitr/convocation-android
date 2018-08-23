@@ -1,5 +1,6 @@
 package ac.in.iitr.mdg.convocation.views;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -222,14 +223,23 @@ public class MainActivity extends AppCompatActivity {
 
                 case 4:
                     final View rootView4 = inflater.inflate(R.layout.fragment_degrees,container,false);
-                    Button bTech = (Button)rootView4.findViewById(R.id.Degrees_button_bTech);
-                    Button mTech = (Button)rootView4.findViewById(R.id.Degrees_button_mTech);
-                    Button phD = (Button)rootView4.findViewById(R.id.Degrees_button_phD);
-                    Button management = (Button)rootView4.findViewById(R.id.Degrees_button_Management);
+                    final Button bTech = (Button)rootView4.findViewById(R.id.Degrees_button_bTech);
+                    final Button mTech = (Button)rootView4.findViewById(R.id.Degrees_button_mTech);
+                    final Button phD = (Button)rootView4.findViewById(R.id.Degrees_button_phD);
+                    final Button management = (Button)rootView4.findViewById(R.id.Degrees_button_Management);
 
                     bTech.setOnClickListener(new View.OnClickListener() {
+                        @SuppressLint("NewApi")
                         @Override
                         public void onClick(View v) {
+                            bTech.setBackground(getResources().getDrawable(R.drawable.gradient));
+                            bTech.setTextColor(getResources().getColor(R.color.white));
+                            mTech.setBackgroundColor(getResources().getColor(R.color.white));
+                            mTech.setTextColor(getResources().getColor(R.color.textColor));
+                            phD.setBackgroundColor(getResources().getColor(R.color.white));
+                            phD.setTextColor(getResources().getColor(R.color.textColor));
+                            management.setBackgroundColor(getResources().getColor(R.color.white));
+                            management.setTextColor(getResources().getColor(R.color.textColor));
                             RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
                             final List<DegreeCard> list = new ArrayList<>();
                             final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
@@ -246,8 +256,17 @@ public class MainActivity extends AppCompatActivity {
                     bTech.performClick();
 
                     mTech.setOnClickListener(new View.OnClickListener() {
+                        @SuppressLint("NewApi")
                         @Override
                         public void onClick(View v) {
+                            mTech.setBackground(getResources().getDrawable(R.drawable.gradient));
+                            mTech.setTextColor(getResources().getColor(R.color.white));
+                            bTech.setBackgroundColor(getResources().getColor(R.color.white));
+                            bTech.setTextColor(getResources().getColor(R.color.textColor));
+                            phD.setBackgroundColor(getResources().getColor(R.color.white));
+                            phD.setTextColor(getResources().getColor(R.color.textColor));
+                            management.setBackgroundColor(getResources().getColor(R.color.white));
+                            management.setTextColor(getResources().getColor(R.color.textColor));
                             RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
                             final List<DegreeCard> list = new ArrayList<>();
                             final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
@@ -262,8 +281,17 @@ public class MainActivity extends AppCompatActivity {
                     });
 
                     phD.setOnClickListener(new View.OnClickListener() {
+                        @SuppressLint("NewApi")
                         @Override
                         public void onClick(View v) {
+                            phD.setBackground(getResources().getDrawable(R.drawable.gradient));
+                            phD.setTextColor(getResources().getColor(R.color.white));
+                            mTech.setBackgroundColor(getResources().getColor(R.color.white));
+                            mTech.setTextColor(getResources().getColor(R.color.textColor));
+                            bTech.setBackgroundColor(getResources().getColor(R.color.white));
+                            bTech.setTextColor(getResources().getColor(R.color.textColor));
+                            management.setBackgroundColor(getResources().getColor(R.color.white));
+                            management.setTextColor(getResources().getColor(R.color.textColor));
                             RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
                             final List<DegreeCard> list = new ArrayList<>();
                             final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
@@ -278,8 +306,17 @@ public class MainActivity extends AppCompatActivity {
                     });
 
                     management.setOnClickListener(new View.OnClickListener() {
+                        @SuppressLint("NewApi")
                         @Override
                         public void onClick(View v) {
+                            management.setBackground(getResources().getDrawable(R.drawable.gradient));
+                            management.setTextColor(getResources().getColor(R.color.white));
+                            mTech.setBackgroundColor(getResources().getColor(R.color.white));
+                            mTech.setTextColor(getResources().getColor(R.color.textColor));
+                            phD.setBackgroundColor(getResources().getColor(R.color.white));
+                            phD.setTextColor(getResources().getColor(R.color.textColor));
+                            bTech.setBackgroundColor(getResources().getColor(R.color.white));
+                            bTech.setTextColor(getResources().getColor(R.color.textColor));
                             RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
                             final List<DegreeCard> list = new ArrayList<>();
                             final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
@@ -294,6 +331,8 @@ public class MainActivity extends AppCompatActivity {
                     });
 
                     return rootView4;
+
+
 
                 case 5:
                     View rootView5 = inflater.inflate(R.layout.fragment_medals,container,false);
@@ -356,6 +395,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+
     }
 
     /**

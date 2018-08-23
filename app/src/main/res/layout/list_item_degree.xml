@@ -11,9 +11,12 @@
         android:id="@+id/degreeCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginTop="10dp"
         app:cardCornerRadius="@dimen/card_corner_radius"
-        card_view:cardBackgroundColor="#D3D3D3">
+        card_view:cardBackgroundColor="#ffffff"
+        app:ignore="RtlCompat">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,28 +27,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="13dp"
                 android:gravity="top"
-                android:textColor="#111111"
-                android:textSize="15sp"
+                android:textColor="#444444"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/degree_number_of_students"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
-                android:textColor="#111111"
+                android:layout_marginBottom="13dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="35dp"
+                android:textColor="#737373"
                 android:textSize="10sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_margin="10dp"
-                android:padding="5dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginTop="15dp"
                 android:src="@drawable/ic_navigate_next_black_24dp" />
 
         </RelativeLayout>

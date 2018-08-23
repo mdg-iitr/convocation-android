@@ -5,8 +5,10 @@
     android:id="@+id/schedule_date"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:textColor="#111111"
-    android:textSize="20sp"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="25dp"
+    android:padding="5dp"
+    android:textColor="#262626"
+    android:textSize="16sp"
     android:textStyle="bold" />
 
