@@ -17,6 +17,7 @@
             android:text="@string/inst_medals"
             android:textAppearance="@style/AllCapsFalse"
             android:textSize="12sp"
+            android:fontFamily="@font/metropolis_regular"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="13dp"
             android:id="@+id/instiLevel"
@@ -28,6 +29,7 @@
             android:text="@string/dept_medals"
             android:textAppearance="@style/AllCapsFalse"
             android:textSize="12sp"
+            android:fontFamily="@font/metropolis_regular"
             android:layout_marginEnd="13dp"
             android:id="@+id/deptLevel"
             android:layout_weight="1"/>

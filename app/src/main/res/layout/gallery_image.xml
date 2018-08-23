@@ -23,7 +23,8 @@
         android:textSize="14sp"
         android:textColor="#737373"
         android:textAlignment="center"
-        android:id="@+id/gallery_photo_text"/>
+        android:id="@+id/gallery_photo_text"
+        android:fontFamily="@font/metropolis_regular"/>
 
 </RelativeLayout>
 </android.support.v7.widget.CardView>

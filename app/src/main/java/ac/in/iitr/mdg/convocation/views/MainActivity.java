@@ -350,7 +350,7 @@ public class MainActivity extends AppCompatActivity {
                     String[] s = new String[5];
                     s[0] = "Old Convocation";
                     s[1] = "Medal Distribution";
-                    s[2] = "Cheif Guests";
+                    s[2] = "Chief Guests";
                     s[3] = "Degree Distribution";
                     s[4] = "Old Convocation";
 
