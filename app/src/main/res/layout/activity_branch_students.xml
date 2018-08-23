@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_weight="1"
+            app:collapseIcon="@drawable/ic_navigate_before_black_24dp"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/LightTheme"
             app:titleTextAppearance="@style/BoldText">
@@ -28,15 +29,13 @@
                 android:id="@+id/back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_navigate_before_black_24dp" />
+                android:background="@android:color/transparent" />
 
             <TextView
                 android:id="@+id/title_branch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
+                android:layout_marginLeft="20dp"
                 android:textColor="#ffffff"
                 android:textSize="18sp"
                 android:textStyle="bold" />
