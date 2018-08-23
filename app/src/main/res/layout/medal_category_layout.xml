@@ -4,6 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/general_margin"
-    android:textAppearance="@style/BoldText"
+    android:textAppearance="@style/AllCapsFalse"
+    android:fontFamily="@font/metropolis_semibold"
+    android:textSize="16sp"
+    android:textColor="#262626"
     android:id="@+id/category_display">
 </TextView>

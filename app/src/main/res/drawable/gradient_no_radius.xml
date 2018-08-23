@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >
 
@@ -7,5 +6,6 @@
         android:startColor="#7585dc"
         android:type="linear"
         android:angle="90"/>
-    <corners
-        android:radius="@dimen/button_radius"/>
+
+
+</shape>
