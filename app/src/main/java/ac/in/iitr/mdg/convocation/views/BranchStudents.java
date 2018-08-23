@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.widget.SearchView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -92,6 +93,8 @@ public class BranchStudents extends AppCompatActivity {
         searchView.setIconified(false);
         searchView.setIconifiedByDefault(false);
         searchView.setQueryHint("Search Name");
+        ((EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text)).setHintTextColor(getResources().getColor(R.color.hintColor));
+        ((EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text)).setTextColor(getResources().getColor(R.color.searchTextColor));
         searchView.setBackgroundColor(getResources().getColor(R.color.white));
 
 

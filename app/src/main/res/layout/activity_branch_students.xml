@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/gradient"
         android:padding="@dimen/appbar_padding_top"
-        android:theme="@style/LightTheme">
+        android:theme="@style/ToolbarStyle">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_branchStudent"
@@ -22,7 +22,7 @@
             android:layout_weight="1"
             app:collapseIcon="@drawable/ic_navigate_before_black_24dp"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/LightTheme"
+            app:popupTheme="@style/ToolbarStyle"
             app:titleTextAppearance="@style/BoldText">
 
             <ImageButton
