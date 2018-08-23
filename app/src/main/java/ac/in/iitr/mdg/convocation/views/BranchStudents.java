@@ -1,5 +1,8 @@
 package ac.in.iitr.mdg.convocation.views;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,7 +18,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 
-
 public class BranchStudents extends AppCompatActivity {
     public BranchStudentAdapter textAdapter;
     public RecyclerView recyclerView;
@@ -25,7 +27,9 @@ public class BranchStudents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_branch_students);
 
+        Drawable drawable = getResources().getDrawable(R.drawable.ic_navigate_before_black_24dp);
         ImageButton imageButton = (ImageButton) findViewById(R.id.back_button);
+        imageButton.setImageDrawable(drawable);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +88,13 @@ public class BranchStudents extends AppCompatActivity {
 
         final MenuItem myActionMenuItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) myActionMenuItem.getActionView();
+
+        searchView.setIconified(false);
+        searchView.setIconifiedByDefault(false);
+        searchView.setQueryHint("Search Name");
+        searchView.setBackgroundColor(getResources().getColor(R.color.white));
+
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -109,7 +120,6 @@ public class BranchStudents extends AppCompatActivity {
                     RecyclerView.LayoutManager recycler = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(recycler);
                     recyclerView.setAdapter(textAdapter);
-
                 }
                 return true;
             }
@@ -118,18 +128,4 @@ public class BranchStudents extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.help) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
