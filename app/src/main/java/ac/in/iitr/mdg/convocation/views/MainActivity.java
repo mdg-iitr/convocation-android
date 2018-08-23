@@ -409,6 +409,10 @@ public class MainActivity extends AppCompatActivity {
                     View rootView7 = inflater.inflate(R.layout.fragment_livecast, container, false);
                     return rootView7;
 
+                case 8:
+                    View rootView8 = inflater.inflate(R.layout.fragment_instructions,container,false);
+                    return rootView8;
+
                     default:
                         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
                         TextView textView = (TextView) rootView.findViewById(R.id.section_label);
@@ -441,7 +445,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 7;
+            return 9;
         }
     }
 }
