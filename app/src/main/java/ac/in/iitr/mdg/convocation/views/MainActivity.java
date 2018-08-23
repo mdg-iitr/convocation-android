@@ -316,6 +316,33 @@ public class MainActivity extends AppCompatActivity {
                     MedalAdapter medalAdapter = new MedalAdapter(medalArray);
                     medalView.setAdapter(medalAdapter);
 
+
+                    final Button instiLevelButton = rootView5.findViewById(R.id.instiLevel);
+                    final Button deptLevelButton = rootView5.findViewById(R.id.deptLevel);
+                    instiLevelButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                                instiLevelButton.setBackground(getResources().getDrawable(R.drawable.blue_gradient));
+                                deptLevelButton.setBackground(getResources().getDrawable(R.drawable.white_card));
+                                instiLevelButton.setTextColor(Color.parseColor("#ffffff"));
+                                deptLevelButton.setTextColor(Color.parseColor("#444444"));
+
+                        }
+                    });
+                    deptLevelButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                                instiLevelButton.setBackground(getResources().getDrawable(R.drawable.white_card));
+                                deptLevelButton.setBackground(getResources().getDrawable(R.drawable.blue_gradient));
+                                deptLevelButton.setTextColor(Color.parseColor("#ffffff"));
+                                instiLevelButton.setTextColor(Color.parseColor("#444444"));
+
+                        }
+                    });
+                    instiLevelButton.performClick();
+
                     return rootView5;
 
                 case 6:

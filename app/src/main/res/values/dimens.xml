@@ -7,4 +7,5 @@
     <dimen name="general_margin">4dp</dimen>
     <dimen name="bigger_margin">8dp</dimen>
     <dimen name="card_corner_radius">5dp</dimen>
+    <dimen name="button_radius">2.8dp</dimen>
 </resources>
