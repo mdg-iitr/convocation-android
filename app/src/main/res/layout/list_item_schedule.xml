@@ -5,9 +5,9 @@
     android:id="@+id/scheduleCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginEnd="10dp"
     android:layout_marginStart="10dp"
     android:layout_marginTop="6dp"
-    android:layout_marginEnd="10dp"
     app:cardCornerRadius="@dimen/card_corner_radius"
     app:ignore="NamespaceTypo"
     card_view:cardBackgroundColor="#ffffff">
@@ -34,21 +34,22 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="12dp"
             android:layout_toRightOf="@id/scheduleCard_image"
+            android:fontFamily="@font/metropolis_medium"
             android:gravity="top"
             android:padding="5dp"
             android:textColor="#444444"
             android:textSize="14sp"
-            android:textStyle="bold"
             app:ignore="RtlCompat" />
 
         <TextView
             android:id="@+id/scheduleCard_venue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="35dp"
-            android:layout_marginBottom="25dp"
             android:layout_toRightOf="@id/scheduleCard_image"
+            android:fontFamily="@font/metropolis_extralight"
             android:gravity="bottom"
             android:padding="5dp"
             android:textColor="#737373"
@@ -67,11 +68,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginEnd="33dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/metropolis_regular"
                 android:gravity="right"
                 android:text="@string/time"
                 android:textColor="#444444"
                 android:textSize="12sp"
-                android:layout_marginTop="12dp"
                 app:ignore="RtlCompat" />
 
             <TextView
@@ -79,11 +81,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+                android:layout_marginBottom="25dp"
                 android:layout_marginEnd="33dp"
                 android:layout_marginTop="6dp"
+                android:fontFamily="@font/metropolis_extralight"
                 android:gravity="right"
                 android:textColor="#737373"
-                android:layout_marginBottom="25dp"
                 android:textSize="12sp"
                 app:ignore="RtlCompat" />
 

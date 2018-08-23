@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/metropolis_regular"
         android:textColor="@color/textColor"
         android:textSize="@dimen/text_size"
         app:ignore="RtlCompat" />
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/metropolis_regular"
         android:textColor="@color/textColor"
         android:textSize="@dimen/text_size"
         app:ignore="RtlCompat" />
