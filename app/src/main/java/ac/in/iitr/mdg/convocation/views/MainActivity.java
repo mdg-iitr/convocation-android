@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
             switch (getArguments().getInt(ARG_SECTION_NUMBER)){
 
 
-                case 3:
+                case 4:
 
                     View rootView3 = inflater.inflate(R.layout.fragment_schedule,container,false);
 
@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
                     return rootView3;
 
 
-                case 4:
+                case 5:
                     final View rootView4 = inflater.inflate(R.layout.fragment_degrees,container,false);
                     final Button bTech = (Button)rootView4.findViewById(R.id.Degrees_button_bTech);
                     final Button mTech = (Button)rootView4.findViewById(R.id.Degrees_button_mTech);
@@ -326,7 +326,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                case 5:
+                case 6:
                     View rootView5 = inflater.inflate(R.layout.fragment_medals,container,false);
 
                     RecyclerView medalView = rootView5.findViewById(R.id.medals_recycler_view);
@@ -376,7 +376,7 @@ public class MainActivity extends AppCompatActivity {
 
                     return rootView5;
 
-                case 6:
+                case 7:
                     View rootView6 = inflater.inflate(R.layout.fragment_gallery,container,false);
                     RecyclerView galleryView = rootView6.findViewById(R.id.gallery_recycler_view);
                     galleryView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
@@ -405,11 +405,11 @@ public class MainActivity extends AppCompatActivity {
 
                     return rootView6;
 
-                case 7:
+                case 8:
                     View rootView7 = inflater.inflate(R.layout.fragment_livecast, container, false);
                     return rootView7;
 
-                case 8:
+                case 9:
                     View rootView8 = inflater.inflate(R.layout.fragment_instructions,container,false);
                     return rootView8;
 
@@ -445,7 +445,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 9;
+            return 10;
         }
     }
 }

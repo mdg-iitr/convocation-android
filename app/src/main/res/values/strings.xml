@@ -2,6 +2,7 @@
     <string name="app_name">Convocation IITR</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="tab_text_home">Home</string>
+    <string name="tab_text_dress_code">Dress Code</string>
     <string name="tab_text_accommodation">Accommodation</string>
     <string name="tab_text_schedule">Schedule</string>
     <string name="tab_text_degrees">Degrees</string>
