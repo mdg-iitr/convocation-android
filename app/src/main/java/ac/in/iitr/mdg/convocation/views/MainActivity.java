@@ -6,7 +6,6 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -20,8 +19,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -60,11 +57,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Button registerButton = findViewById(R.id.registerButton);
-        String registerText = "<b><big><font color='#000000'>"+"REGISTER NOW"+"</font></big>"+"<br/>"+"<small><font color='#000000'>"+"(To get early bird facilities)"+"</font></small></b>";
-        registerButton.setText((Html.fromHtml(registerText)));
-
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -323,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
 
-                                instiLevelButton.setBackground(getResources().getDrawable(R.drawable.blue_gradient));
+                                instiLevelButton.setBackground(getResources().getDrawable(R.drawable.gradient));
                                 deptLevelButton.setBackground(getResources().getDrawable(R.drawable.white_card));
                                 instiLevelButton.setTextColor(Color.parseColor("#ffffff"));
                                 deptLevelButton.setTextColor(Color.parseColor("#444444"));
@@ -335,7 +327,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick(View view) {
 
                                 instiLevelButton.setBackground(getResources().getDrawable(R.drawable.white_card));
-                                deptLevelButton.setBackground(getResources().getDrawable(R.drawable.blue_gradient));
+                                deptLevelButton.setBackground(getResources().getDrawable(R.drawable.gradient));
                                 deptLevelButton.setTextColor(Color.parseColor("#ffffff"));
                                 instiLevelButton.setTextColor(Color.parseColor("#444444"));
 
@@ -347,23 +339,27 @@ public class MainActivity extends AppCompatActivity {
 
                 case 6:
                     View rootView6 = inflater.inflate(R.layout.fragment_gallery,container,false);
-
                     RecyclerView galleryView = rootView6.findViewById(R.id.gallery_recycler_view);
                     galleryView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-                    Bitmap[] bitmap = new Bitmap[7];
-                    bitmap[0] = Bitmap.createBitmap(250,250, Bitmap.Config.ARGB_8888);
-                    bitmap[1] = Bitmap.createBitmap(500,600, Bitmap.Config.ARGB_8888);
-                    bitmap[2] = Bitmap.createBitmap(400,250, Bitmap.Config.ARGB_8888);
-                    bitmap[3] = Bitmap.createBitmap(300,300, Bitmap.Config.ARGB_8888);
-                    bitmap[4] = Bitmap.createBitmap(450,270, Bitmap.Config.ARGB_8888);
-                    bitmap[5] = Bitmap.createBitmap(350,150, Bitmap.Config.ARGB_8888);
-                    bitmap[6] = Bitmap.createBitmap(200,250, Bitmap.Config.ARGB_8888);
+                    Bitmap[] bitmap = new Bitmap[5];
+                    bitmap[0] = Bitmap.createBitmap(158*2,182*2, Bitmap.Config.ARGB_8888);
+                    bitmap[1] = Bitmap.createBitmap(158*2,129*2, Bitmap.Config.ARGB_8888);
+                    bitmap[2] = Bitmap.createBitmap(158*2,129*2, Bitmap.Config.ARGB_8888);
+                    bitmap[3] = Bitmap.createBitmap(158*2,182*2, Bitmap.Config.ARGB_8888);
+                    bitmap[4] = Bitmap.createBitmap(158*2,129*2, Bitmap.Config.ARGB_8888);
+                    String[] s = new String[5];
+                    s[0] = "Old Convocation";
+                    s[1] = "Medal Distribution";
+                    s[2] = "Cheif Guests";
+                    s[3] = "Degree Distribution";
+                    s[4] = "Old Convocation";
 
-                    for (int i = 0; i<7;i++){
+
+                    for (int i = 0; i<5;i++){
                         Canvas c2 = new Canvas(bitmap[i]);
                         c2.drawColor(Color.LTGRAY);
                     }
-                    GalleryAdapter galleryAdapter = new GalleryAdapter(bitmap);
+                    GalleryAdapter galleryAdapter = new GalleryAdapter(bitmap,s);
                     galleryView.setAdapter(galleryAdapter);
                     SpacesItemDecoration decoration = new SpacesItemDecoration(16);
                     galleryView.addItemDecoration(decoration);
