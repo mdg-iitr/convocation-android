@@ -152,6 +152,9 @@ public class MainActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             switch (getArguments().getInt(ARG_SECTION_NUMBER)){
 
+                case 2:
+                    View rootView2 = inflater.inflate(R.layout.fragment_dresscode,container,false);
+                    return rootView2;
 
                 case 4:
 
