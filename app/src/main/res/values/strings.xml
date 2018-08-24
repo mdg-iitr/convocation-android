@@ -28,4 +28,7 @@
     <string name="reporting_time_text">All students are requested to arrive at 6th October 2018 by 2:30 P.M. for ease in further processes.</string>
     <string name="additional_information">Additional Information</string>
     <string name="additional_information_text">All students are requested to arrive at 6th October 2018 by 2:30 P.M. for ease in further processes.</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="dummy_text">Lorem Ipsum is simply dummy text\nof the printing and typesetting industry.</string>
 </resources>
