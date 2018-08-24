@@ -31,4 +31,8 @@
     <string name="female">Female</string>
     <string name="male">Male</string>
     <string name="dummy_text">Lorem Ipsum is simply dummy text\nof the printing and typesetting industry.</string>
+    <string name="profile">Profile</string>
+    <string name="enrolment_no">Enrolment No.:</string>
+    <string name="dept">Department:</string>
+    <string name="transactionId">Bank Transaction ID</string>
 </resources>
