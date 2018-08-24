@@ -49,6 +49,12 @@
                     android:text="@string/tab_text_home" />
 
                 <android.support.design.widget.TabItem
+                    android:id="@+id/tabItemDressCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_text_dress_code" />
+
+                <android.support.design.widget.TabItem
                     android:id="@+id/tabItemAccommodation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -83,6 +89,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tab_text_livecast" />
+
+                <android.support.design.widget.TabItem
+                    android:id="@+id/tabItemInstruction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_text_instructions" />
+
+                <android.support.design.widget.TabItem
+                    android:id="@+id/tabItemContact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_text_contact" />
 
             </android.support.design.widget.TabLayout>
         </android.support.design.widget.AppBarLayout>
