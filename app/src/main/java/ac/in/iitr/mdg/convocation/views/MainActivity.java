@@ -187,12 +187,12 @@ public class MainActivity extends AppCompatActivity {
 
                 case 4:
 
-                    View rootView3 = inflater.inflate(R.layout.fragment_schedule,container,false);
+                    View rootView4 = inflater.inflate(R.layout.fragment_schedule,container,false);
 
                      /*-----------------------------------------------------*/
                     // ScheduleCard Recycler view
 
-                    RecyclerView recyclerView = (RecyclerView)rootView3.findViewById(R.id.schedule_recyclerView);
+                    RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.schedule_recyclerView);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     final List<Schedule> list = new ArrayList<>();
                     final ScheduleAdapter textAdapter = new ScheduleAdapter(getContext(),list);
@@ -242,15 +242,15 @@ public class MainActivity extends AppCompatActivity {
 
                     /*------------------------------------------------------*/
 
-                    return rootView3;
+                    return rootView4;
 
 
                 case 5:
-                    final View rootView4 = inflater.inflate(R.layout.fragment_degrees,container,false);
-                    final Button bTech = (Button)rootView4.findViewById(R.id.Degrees_button_bTech);
-                    final Button mTech = (Button)rootView4.findViewById(R.id.Degrees_button_mTech);
-                    final Button phD = (Button)rootView4.findViewById(R.id.Degrees_button_phD);
-                    final Button management = (Button)rootView4.findViewById(R.id.Degrees_button_Management);
+                    final View rootView5 = inflater.inflate(R.layout.fragment_degrees,container,false);
+                    final Button bTech = (Button)rootView5.findViewById(R.id.Degrees_button_bTech);
+                    final Button mTech = (Button)rootView5.findViewById(R.id.Degrees_button_mTech);
+                    final Button phD = (Button)rootView5.findViewById(R.id.Degrees_button_phD);
+                    final Button management = (Button)rootView5.findViewById(R.id.Degrees_button_Management);
 
                     bTech.setOnClickListener(new View.OnClickListener() {
                         @SuppressLint("NewApi")
@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
                             phD.setTextColor(getResources().getColor(R.color.textColor));
                             management.setBackgroundColor(getResources().getColor(R.color.white));
                             management.setTextColor(getResources().getColor(R.color.textColor));
-                            RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
+                            RecyclerView recyclerView = (RecyclerView)rootView5.findViewById(R.id.degree_recyclerView);
                             final List<DegreeCard> list = new ArrayList<>();
                             final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
 
@@ -291,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
                             phD.setTextColor(getResources().getColor(R.color.textColor));
                             management.setBackgroundColor(getResources().getColor(R.color.white));
                             management.setTextColor(getResources().getColor(R.color.textColor));
-                            RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
+                            RecyclerView recyclerView = (RecyclerView)rootView5.findViewById(R.id.degree_recyclerView);
                             final List<DegreeCard> list = new ArrayList<>();
                             final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
 
@@ -316,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
                             bTech.setTextColor(getResources().getColor(R.color.textColor));
                             management.setBackgroundColor(getResources().getColor(R.color.white));
                             management.setTextColor(getResources().getColor(R.color.textColor));
-                            RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
+                            RecyclerView recyclerView = (RecyclerView)rootView5.findViewById(R.id.degree_recyclerView);
                             final List<DegreeCard> list = new ArrayList<>();
                             final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
 
@@ -341,7 +341,7 @@ public class MainActivity extends AppCompatActivity {
                             phD.setTextColor(getResources().getColor(R.color.textColor));
                             bTech.setBackgroundColor(getResources().getColor(R.color.white));
                             bTech.setTextColor(getResources().getColor(R.color.textColor));
-                            RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.degree_recyclerView);
+                            RecyclerView recyclerView = (RecyclerView)rootView5.findViewById(R.id.degree_recyclerView);
                             final List<DegreeCard> list = new ArrayList<>();
                             final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
 
@@ -354,14 +354,14 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
 
-                    return rootView4;
+                    return rootView5;
 
 
 
                 case 6:
-                    View rootView5 = inflater.inflate(R.layout.fragment_medals,container,false);
+                    View rootView6 = inflater.inflate(R.layout.fragment_medals,container,false);
 
-                    RecyclerView medalView = rootView5.findViewById(R.id.medals_recycler_view);
+                    RecyclerView medalView = rootView6.findViewById(R.id.medals_recycler_view);
                     medalView.setLayoutManager(new LinearLayoutManager(getContext()));
                     ArrayList<MedalModel> medalArray = new ArrayList<>();
                     medalArray.add(new MedalModel(MedalModel.TYPE_CATEGORY,"President's Gold Medal"));
@@ -380,8 +380,8 @@ public class MainActivity extends AppCompatActivity {
                     medalView.setAdapter(medalAdapter);
 
 
-                    final Button instiLevelButton = rootView5.findViewById(R.id.instiLevel);
-                    final Button deptLevelButton = rootView5.findViewById(R.id.deptLevel);
+                    final Button instiLevelButton = rootView6.findViewById(R.id.instiLevel);
+                    final Button deptLevelButton = rootView6.findViewById(R.id.deptLevel);
                     instiLevelButton.setOnClickListener(new View.OnClickListener() {
                         @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
                         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -410,11 +410,11 @@ public class MainActivity extends AppCompatActivity {
                     });
                     instiLevelButton.performClick();
 
-                    return rootView5;
+                    return rootView6;
 
                 case 7:
-                    View rootView6 = inflater.inflate(R.layout.fragment_gallery,container,false);
-                    RecyclerView galleryView = rootView6.findViewById(R.id.gallery_recycler_view);
+                    View rootView7 = inflater.inflate(R.layout.fragment_gallery,container,false);
+                    RecyclerView galleryView = rootView7.findViewById(R.id.gallery_recycler_view);
                     galleryView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
                     Bitmap[] bitmap = new Bitmap[5];
                     bitmap[0] = Bitmap.createBitmap(158*2,182*2, Bitmap.Config.ARGB_8888);
@@ -439,17 +439,56 @@ public class MainActivity extends AppCompatActivity {
                     SpacesItemDecoration decoration = new SpacesItemDecoration(16);
                     galleryView.addItemDecoration(decoration);
 
-                    return rootView6;
-
-                case 8:
-                    View rootView7 = inflater.inflate(R.layout.fragment_livecast, container, false);
                     return rootView7;
 
-                case 9:
-                    View rootView8 = inflater.inflate(R.layout.fragment_instructions,container,false);
+                case 8:
+                    View rootView8 = inflater.inflate(R.layout.fragment_livecast, container, false);
                     return rootView8;
 
-                    default:
+                case 9:
+                    View rootView9 = inflater.inflate(R.layout.fragment_instructions,container,false);
+                    return rootView9;
+
+                case 10:
+                    View rootView10 = inflater.inflate(R.layout.fragment_contact,container,false);
+
+
+                    RecyclerView contactView = (RecyclerView)rootView10.findViewById(R.id.contact_recyclerView);
+                    contactView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    final List<Contact> contactList = new ArrayList<>();
+                    final ContactAdapter contactAdapter = new ContactAdapter(getContext(),contactList);
+
+                    final Contact contact_category1 = new Contact(Contact.TYPE_CATEGORY, "Medical Section");
+                    contactList.add(contact_category1);
+                    contactAdapter.notifyDataSetChanged();
+
+                    final Contact contact1 = new Contact(Contact.TYPE_CONTACT,new ContactCard("Jayant Mishra","Mental Patient","9876543210"));
+                    contactList.add(contact1);
+                    contactAdapter.notifyDataSetChanged();
+
+                    final Contact contact2 = new Contact(Contact.TYPE_CONTACT,new ContactCard("Anchit Shukla","Liver Patient","8976543210"));
+                    contactList.add(contact2);
+                    contactAdapter.notifyDataSetChanged();
+
+                    final Contact contact3 = new Contact(Contact.TYPE_CATEGORY, "Technical Section");
+                    contactList.add(contact3);
+                    contactAdapter.notifyDataSetChanged();
+
+                    final Contact contact4 = new Contact(Contact.TYPE_CONTACT,new ContactCard("Lakshya Kumawat","Pro Officials","7896543210"));
+                    contactList.add(contact4);
+                    contactAdapter.notifyDataSetChanged();
+
+                    final Contact contact5 = new Contact(Contact.TYPE_CONTACT,new ContactCard("Prasannadeep Das","Pro Officials","8796543210"));
+                    contactList.add(contact5);
+                    contactAdapter.notifyDataSetChanged();
+
+                    contactView.setAdapter(contactAdapter);
+
+                    return rootView10;
+
+
+
+                default:
                         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
                         TextView textView = (TextView) rootView.findViewById(R.id.section_label);
                         textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
