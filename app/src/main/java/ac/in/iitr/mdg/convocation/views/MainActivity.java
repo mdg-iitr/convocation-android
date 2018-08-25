@@ -138,9 +138,8 @@ public class MainActivity extends AppCompatActivity {
          * fragment.
          */
         List<ChiefGuestProfile> guestList = new ArrayList<>();
-        List<ChiefGuestMiscellaneousClass> miscellaneousList = new ArrayList<>();
         List<HotelProfile> hotelList = new ArrayList<>();
-        RecyclerView recyclerViewGuest,recyclerViewMisc,recyclerViewHotel;
+        RecyclerView recyclerViewGuest,recyclerViewHotel;
         ChiefGuestAdapter mAdapterGuest;
         HotelAdapter mAdapterHotel;
 
