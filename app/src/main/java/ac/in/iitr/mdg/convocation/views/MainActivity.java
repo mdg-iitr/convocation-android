@@ -1,6 +1,8 @@
 package ac.in.iitr.mdg.convocation.views;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -8,8 +10,12 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -27,10 +33,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ac.in.iitr.mdg.convocation.views.Accomodation.hotelAdapter;
+import ac.in.iitr.mdg.convocation.views.Accomodation.hotelProfile;
+import ac.in.iitr.mdg.convocation.views.home.GuestAdapter;
+import ac.in.iitr.mdg.convocation.views.home.GuestDesc;
+import ac.in.iitr.mdg.convocation.views.home.chiefGuestsProfile;
+import ac.in.iitr.mdg.convocation.views.home.miscellaneousClass;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -130,6 +144,13 @@ public class MainActivity extends AppCompatActivity {
          * The fragment argument representing the section number for this
          * fragment.
          */
+        List<chiefGuestsProfile> guestList = new ArrayList<>();
+        List<miscellaneousClass> miscellaneousList = new ArrayList<>();
+        List<hotelProfile> hotelList = new ArrayList<>();
+        RecyclerView recyclerViewGuest,recyclerViewMisc,recyclerViewHotel;
+        GuestAdapter mAdapterGuest;
+        hotelAdapter mAdapterHotel;
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
@@ -152,9 +173,17 @@ public class MainActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             switch (getArguments().getInt(ARG_SECTION_NUMBER)){
 
+                case 1:
+                    View rootView1 = inflater.inflate(R.layout.activity_home, container, false);
+                    return setUpHome(rootView1);
+
                 case 2:
                     View rootView2 = inflater.inflate(R.layout.fragment_dresscode,container,false);
                     return rootView2;
+
+                case 3:
+                    View rootViewAcco = inflater.inflate(R.layout.activity_acco, container, false);
+                    return setUpAcco(rootViewAcco);
 
                 case 4:
 
@@ -354,6 +383,8 @@ public class MainActivity extends AppCompatActivity {
                     final Button instiLevelButton = rootView6.findViewById(R.id.instiLevel);
                     final Button deptLevelButton = rootView6.findViewById(R.id.deptLevel);
                     instiLevelButton.setOnClickListener(new View.OnClickListener() {
+                        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+                        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                         @Override
                         public void onClick(View view) {
 
@@ -365,6 +396,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                     deptLevelButton.setOnClickListener(new View.OnClickListener() {
+                        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+                        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                         @Override
                         public void onClick(View view) {
 
@@ -463,6 +496,103 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+        }
+
+        private View setUpHome(View view) {
+
+            ImageButton fblink = (ImageButton) view.findViewById(R.id.fblink);
+            ImageButton twlink = (ImageButton) view.findViewById(R.id.twlink);
+            ImageButton ytlink = (ImageButton) view.findViewById(R.id.ytlink);
+            ImageButton inlink = (ImageButton) view.findViewById(R.id.inlink);
+            View rootView = View.inflate(getContext(), R.layout.chiefguestcard, null);
+
+            recyclerViewGuest = (RecyclerView) view.findViewById(R.id.chiefguestListView);
+
+            mAdapterGuest = new GuestAdapter(guestList, new GuestAdapter.OnItemClickListener(){
+                @Override
+                public void onItemClick(chiefGuestsProfile guest) {
+                    Intent intent = new Intent(getActivity(), GuestDesc.class);
+                    intent.putExtra("headingName", guest.getName());
+                    intent.putExtra("headingDesig", guest.getDesignation());
+                    intent.putExtra("data", guest.getData());
+                    startActivity(intent);
+                }
+            });
+            RecyclerView.LayoutManager mLayoutManagerGuest = new LinearLayoutManager(getActivity().getApplicationContext());
+            recyclerViewGuest.setLayoutManager(mLayoutManagerGuest);
+            recyclerViewGuest.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,true));
+            recyclerViewGuest.setItemAnimator(new DefaultItemAnimator());
+            recyclerViewGuest.setAdapter(mAdapterGuest);
+
+            prepareGuestData();
+
+            return view;
+
+        }
+
+        int k2 =1;
+
+        private void prepareHotelData() {
+
+            if(k2 ==1) {
+                hotelProfile hotel = new hotelProfile("Hotel Prakash", "21,Civil Lines,Roorkee", null, null, null);
+                hotelList.add(hotel);
+
+                hotel = new hotelProfile("Hotel Sungrace", "142,Civil Lines,Roorkee", null, null, null);
+                hotelList.add(hotel);
+
+                hotel = new hotelProfile("Hotel Prakash", "21,Civil Lines,Roorkee", null, null, null);
+                hotelList.add(hotel);
+
+                hotel = new hotelProfile("Hotel Sungrace", "142,Civil Lines,Roorkee", null, null, null);
+                hotelList.add(hotel);
+
+                k2--;
+            }
+
+            mAdapterHotel.notifyDataSetChanged();
+        }
+
+        private View setUpAcco(View view) {
+
+            View rootView = View.inflate(getContext(), R.layout.hotelcard, null);
+
+            recyclerViewHotel = (RecyclerView) view.findViewById(R.id.hotelListView);
+
+            mAdapterHotel = new hotelAdapter(hotelList, new hotelAdapter.OnItemClickListener(){
+                @Override
+                public void onItemClick(hotelProfile hotel) {
+
+                }
+            });
+            RecyclerView.LayoutManager mLayoutManagerHotel = new LinearLayoutManager(getActivity().getApplicationContext());
+            recyclerViewHotel.setLayoutManager(mLayoutManagerHotel);
+            recyclerViewHotel.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+            recyclerViewHotel.setItemAnimator(new DefaultItemAnimator());
+            recyclerViewHotel.setAdapter(mAdapterHotel);
+
+            prepareHotelData();
+
+            return view;
+        }
+
+        int k1 = 1;
+
+        private void prepareGuestData() {
+
+            if(k1==1) {
+
+                chiefGuestsProfile guest = new chiefGuestsProfile("Shri Ram Nath Kovind", "Hon'ble President of India", "(7 Oct. 2018 , PG)", null, null, null);
+                guestList.add(guest);
+
+                guest = new chiefGuestsProfile("Shri Ram Naik", "Hon'ble Governer of U.P.", "(6 Oct. 2018 , UG)", null, null, null);
+                guestList.add(guest);
+                k1--;
+
+            }
+
+
+                mAdapterGuest.notifyDataSetChanged();
         }
 
     }
