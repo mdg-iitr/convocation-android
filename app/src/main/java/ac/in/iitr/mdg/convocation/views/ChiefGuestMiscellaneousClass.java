@@ -1,8 +1,8 @@
-package ac.in.iitr.mdg.convocation.views.home;
+package ac.in.iitr.mdg.convocation.views;
 
 import android.media.Image;
 
-public class miscellaneousClass {
+public class ChiefGuestMiscellaneousClass {
 
     private String title;
 private String Data;
@@ -10,11 +10,11 @@ private Image thumbImage;
 private String mainHead;
 private Image mainImage;
 
-    public miscellaneousClass(){
+    public ChiefGuestMiscellaneousClass(){
 
             }
 
-    public miscellaneousClass(String title,String data,String mainHead, Image mainImage,Image thumbImage){
+    public ChiefGuestMiscellaneousClass(String title, String data, String mainHead, Image mainImage, Image thumbImage){
         this.title = title;
         this.mainHead = mainHead;
         this.thumbImage = thumbImage;

@@ -1,8 +1,8 @@
-package ac.in.iitr.mdg.convocation.views.home;
+package ac.in.iitr.mdg.convocation.views;
 
 import android.media.Image;
 
-public class chiefGuestsProfile {
+public class ChiefGuestProfile {
 
     private String Name;
     private String Designation;
@@ -11,11 +11,11 @@ public class chiefGuestsProfile {
     private String Data;
     private String date;
 
-            public chiefGuestsProfile(){
+            public ChiefGuestProfile(){
         
                     }
 
-            public chiefGuestsProfile(String name,String designation,String date,String data, Image imageMain,Image imageThumb){
+            public ChiefGuestProfile(String name, String designation, String date, String data, Image imageMain, Image imageThumb){
                 this.date = date;
                 this.Name = name;
                 this.Designation = designation;

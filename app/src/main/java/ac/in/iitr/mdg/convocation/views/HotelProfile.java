@@ -1,8 +1,8 @@
-package ac.in.iitr.mdg.convocation.views.Accomodation;
+package ac.in.iitr.mdg.convocation.views;
 
 import android.media.Image;
 
-public class hotelProfile {
+public class HotelProfile {
 
     private String Name;
     private String Address;
@@ -10,11 +10,11 @@ public class hotelProfile {
     private Image imageMain;
     private String Data;
 
-    public hotelProfile(){
+    public HotelProfile(){
 
     }
 
-    public hotelProfile(String name,String address,String data,Image imageMain,Image imageThumb){
+    public HotelProfile(String name, String address, String data, Image imageMain, Image imageThumb){
         this.Name = name;
         this.Address = address;
         this.imageMain = imageMain;

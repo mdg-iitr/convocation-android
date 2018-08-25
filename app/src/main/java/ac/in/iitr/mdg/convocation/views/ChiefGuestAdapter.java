@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.views.home;
+package ac.in.iitr.mdg.convocation.views;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,17 +8,15 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import ac.in.iitr.mdg.convocation.views.R;
-
-public class GuestAdapter extends RecyclerView.Adapter<GuestAdapter.MyViewHolder> {
+public class ChiefGuestAdapter extends RecyclerView.Adapter<ChiefGuestAdapter.MyViewHolder> {
 
             public interface OnItemClickListener {
-        void onItemClick(chiefGuestsProfile guest);
+        void onItemClick(ChiefGuestProfile guest);
     }
 
             private final OnItemClickListener listener;
         
-            private List<chiefGuestsProfile> guestList;
+            private List<ChiefGuestProfile> guestList;
         
             public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name,designation,date;
@@ -30,7 +28,7 @@ public class GuestAdapter extends RecyclerView.Adapter<GuestAdapter.MyViewHolder
                     date = (TextView) view.findViewById(R.id.guest_card_date);
                 }
 
-                public void bind(final chiefGuestsProfile guest, final OnItemClickListener listener){
+                public void bind(final ChiefGuestProfile guest, final OnItemClickListener listener){
                     itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                                     listener.onItemClick(guest);
@@ -40,7 +38,7 @@ public class GuestAdapter extends RecyclerView.Adapter<GuestAdapter.MyViewHolder
     }
 
         
-            public GuestAdapter(List<chiefGuestsProfile> guestList, OnItemClickListener listener) {
+            public ChiefGuestAdapter(List<ChiefGuestProfile> guestList, OnItemClickListener listener) {
                 this.guestList = guestList;
                 this.listener = listener;
             }
@@ -55,7 +53,7 @@ public class GuestAdapter extends RecyclerView.Adapter<GuestAdapter.MyViewHolder
         
             @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-                chiefGuestsProfile guest = guestList.get(position);
+                ChiefGuestProfile guest = guestList.get(position);
                 holder.name.setText(guest.getName());
                 holder.designation.setText(guest.getDesignation());
                 holder.date.setText(guest.getDate());

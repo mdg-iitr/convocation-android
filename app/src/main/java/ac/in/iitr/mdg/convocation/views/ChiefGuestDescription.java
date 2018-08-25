@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.views.home;
+package ac.in.iitr.mdg.convocation.views;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import ac.in.iitr.mdg.convocation.views.R;
 
-public class GuestDesc extends AppCompatActivity {
+public class ChiefGuestDescription extends AppCompatActivity {
 
             private TextView headNameText,headDesigText,headDataText;
 
