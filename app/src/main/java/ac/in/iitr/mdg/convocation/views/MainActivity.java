@@ -504,6 +504,17 @@ public class MainActivity extends AppCompatActivity {
             ImageButton twlink = (ImageButton) view.findViewById(R.id.twlink);
             ImageButton ytlink = (ImageButton) view.findViewById(R.id.ytlink);
             ImageButton inlink = (ImageButton) view.findViewById(R.id.inlink);
+            Button register = (Button) view.findViewById(R.id.register_button);
+
+
+
+            register.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(),RegsiterActivity.class);
+                    startActivity(intent);
+                }
+            });
             View rootView = View.inflate(getContext(), R.layout.chiefguestcard, null);
 
             recyclerViewGuest = (RecyclerView) view.findViewById(R.id.chiefguestListView);
@@ -590,7 +601,6 @@ public class MainActivity extends AppCompatActivity {
                 k1--;
 
             }
-
 
                 mAdapterGuest.notifyDataSetChanged();
         }

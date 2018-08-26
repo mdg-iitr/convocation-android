@@ -25,6 +25,8 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
+        <activity android:name=".RegsiterActivity" />
+        <activity android:name=".home.GuestDesc" />
     </application>
 
 </manifest>
