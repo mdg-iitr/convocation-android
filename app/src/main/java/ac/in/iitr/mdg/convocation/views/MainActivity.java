@@ -10,8 +10,10 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -26,6 +28,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +38,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         canvas.drawARGB(0, 0, 0, 0);
         paint.setColor(color);
         canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2,
-                (min(bitmap.getHeight(),bitmap.getWidth()) / 2), paint);
+                (min(bitmap.getHeight(), bitmap.getWidth()) / 2), paint);
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, rect, rect, paint);
         return output;
@@ -129,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.maps) {
             return true;
-        }else if(id == R.id.feedback){
+        } else if (id == R.id.feedback) {
             return true;
         }
 
@@ -139,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment{
+    public static class PlaceholderFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -147,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
         List<chiefGuestsProfile> guestList = new ArrayList<>();
         List<miscellaneousClass> miscellaneousList = new ArrayList<>();
         List<hotelProfile> hotelList = new ArrayList<>();
-        RecyclerView recyclerViewGuest,recyclerViewMisc,recyclerViewHotel;
+        RecyclerView recyclerViewGuest, recyclerViewMisc, recyclerViewHotel;
         GuestAdapter mAdapterGuest;
         hotelAdapter mAdapterHotel;
 
@@ -171,14 +175,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            switch (getArguments().getInt(ARG_SECTION_NUMBER)){
+            switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
 
                 case 1:
                     View rootView1 = inflater.inflate(R.layout.activity_home, container, false);
                     return setUpHome(rootView1);
 
                 case 2:
-                    View rootView2 = inflater.inflate(R.layout.fragment_dresscode,container,false);
+                    View rootView2 = inflater.inflate(R.layout.fragment_dresscode, container, false);
                     return rootView2;
 
                 case 3:
@@ -187,15 +191,15 @@ public class MainActivity extends AppCompatActivity {
 
                 case 4:
 
-                    View rootView4 = inflater.inflate(R.layout.fragment_schedule,container,false);
+                    View rootView4 = inflater.inflate(R.layout.fragment_schedule, container, false);
 
-                     /*-----------------------------------------------------*/
+                    /*-----------------------------------------------------*/
                     // ScheduleCard Recycler view
 
-                    RecyclerView recyclerView = (RecyclerView)rootView4.findViewById(R.id.schedule_recyclerView);
+                    RecyclerView recyclerView = (RecyclerView) rootView4.findViewById(R.id.schedule_recyclerView);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     final List<Schedule> list = new ArrayList<>();
-                    final ScheduleAdapter textAdapter = new ScheduleAdapter(getContext(),list);
+                    final ScheduleAdapter textAdapter = new ScheduleAdapter(getContext(), list);
 
 //                    Bitmap icon = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.schedule_image_default);
 //             /*OR*/
@@ -209,15 +213,15 @@ public class MainActivity extends AppCompatActivity {
                     list.add(schedule_date1);
                     textAdapter.notifyDataSetChanged();
 
-                    final Schedule schedule1 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Breakfast1","LBS Ground","2:00 pm - 3:00 pm"));
+                    final Schedule schedule1 = new Schedule(Schedule.TYPE_SCHEDULE, new ScheduleCard(null, "Official Breakfast1", "LBS Ground", "2:00 pm - 3:00 pm"));
                     list.add(schedule1);
                     textAdapter.notifyDataSetChanged();
 
-                    final Schedule schedule2 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Lunch1","LBS Ground","2:00 pm - 3:00 pm"));
+                    final Schedule schedule2 = new Schedule(Schedule.TYPE_SCHEDULE, new ScheduleCard(null, "Official Lunch1", "LBS Ground", "2:00 pm - 3:00 pm"));
                     list.add(schedule2);
                     textAdapter.notifyDataSetChanged();
 
-                    final Schedule schedule3 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Dinner1","LBS Ground","2:00 pm - 3:00 pm"));
+                    final Schedule schedule3 = new Schedule(Schedule.TYPE_SCHEDULE, new ScheduleCard(null, "Official Dinner1", "LBS Ground", "2:00 pm - 3:00 pm"));
                     list.add(schedule3);
                     textAdapter.notifyDataSetChanged();
 
@@ -225,15 +229,15 @@ public class MainActivity extends AppCompatActivity {
                     list.add(schedule_date2);
                     textAdapter.notifyDataSetChanged();
 
-                    final Schedule schedule4 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Breakfast2","LBS Ground","2:00 pm - 3:00 pm"));
+                    final Schedule schedule4 = new Schedule(Schedule.TYPE_SCHEDULE, new ScheduleCard(null, "Official Breakfast2", "LBS Ground", "2:00 pm - 3:00 pm"));
                     list.add(schedule4);
                     textAdapter.notifyDataSetChanged();
 
-                    final Schedule schedule5 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Lunch2","LBS Ground","2:00 pm - 3:00 pm"));
+                    final Schedule schedule5 = new Schedule(Schedule.TYPE_SCHEDULE, new ScheduleCard(null, "Official Lunch2", "LBS Ground", "2:00 pm - 3:00 pm"));
                     list.add(schedule5);
                     textAdapter.notifyDataSetChanged();
 
-                    final Schedule schedule6 = new Schedule(Schedule.TYPE_SCHEDULE,new ScheduleCard(null,"Official Dinner2","LBS Ground","2:00 pm - 3:00 pm"));
+                    final Schedule schedule6 = new Schedule(Schedule.TYPE_SCHEDULE, new ScheduleCard(null, "Official Dinner2", "LBS Ground", "2:00 pm - 3:00 pm"));
                     list.add(schedule6);
                     textAdapter.notifyDataSetChanged();
 
@@ -246,11 +250,11 @@ public class MainActivity extends AppCompatActivity {
 
 
                 case 5:
-                    final View rootView5 = inflater.inflate(R.layout.fragment_degrees,container,false);
-                    final Button bTech = (Button)rootView5.findViewById(R.id.Degrees_button_bTech);
-                    final Button mTech = (Button)rootView5.findViewById(R.id.Degrees_button_mTech);
-                    final Button phD = (Button)rootView5.findViewById(R.id.Degrees_button_phD);
-                    final Button management = (Button)rootView5.findViewById(R.id.Degrees_button_Management);
+                    final View rootView5 = inflater.inflate(R.layout.fragment_degrees, container, false);
+                    final Button bTech = (Button) rootView5.findViewById(R.id.Degrees_button_bTech);
+                    final Button mTech = (Button) rootView5.findViewById(R.id.Degrees_button_mTech);
+                    final Button phD = (Button) rootView5.findViewById(R.id.Degrees_button_phD);
+                    final Button management = (Button) rootView5.findViewById(R.id.Degrees_button_Management);
 
                     bTech.setOnClickListener(new View.OnClickListener() {
                         @SuppressLint("NewApi")
@@ -264,12 +268,12 @@ public class MainActivity extends AppCompatActivity {
                             phD.setTextColor(getResources().getColor(R.color.textColor));
                             management.setBackgroundColor(getResources().getColor(R.color.white));
                             management.setTextColor(getResources().getColor(R.color.textColor));
-                            RecyclerView recyclerView = (RecyclerView)rootView5.findViewById(R.id.degree_recyclerView);
+                            RecyclerView recyclerView = (RecyclerView) rootView5.findViewById(R.id.degree_recyclerView);
                             final List<DegreeCard> list = new ArrayList<>();
-                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
+                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
 
-                            for (int i=0;i<10;i++){
-                                list.add(new DegreeCard("Chemical Engineering","Total Students : 120"));
+                            for (int i = 0; i < 10; i++) {
+                                list.add(new DegreeCard("Chemical Engineering", "Total Students : 120"));
                                 textAdapter.notifyDataSetChanged();
                             }
                             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -291,12 +295,12 @@ public class MainActivity extends AppCompatActivity {
                             phD.setTextColor(getResources().getColor(R.color.textColor));
                             management.setBackgroundColor(getResources().getColor(R.color.white));
                             management.setTextColor(getResources().getColor(R.color.textColor));
-                            RecyclerView recyclerView = (RecyclerView)rootView5.findViewById(R.id.degree_recyclerView);
+                            RecyclerView recyclerView = (RecyclerView) rootView5.findViewById(R.id.degree_recyclerView);
                             final List<DegreeCard> list = new ArrayList<>();
-                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
+                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
 
-                            for (int i=0;i<10;i++){
-                                list.add(new DegreeCard("Electrical Engineering","Total Students : 120"));
+                            for (int i = 0; i < 10; i++) {
+                                list.add(new DegreeCard("Electrical Engineering", "Total Students : 120"));
                                 textAdapter.notifyDataSetChanged();
                             }
                             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -316,12 +320,12 @@ public class MainActivity extends AppCompatActivity {
                             bTech.setTextColor(getResources().getColor(R.color.textColor));
                             management.setBackgroundColor(getResources().getColor(R.color.white));
                             management.setTextColor(getResources().getColor(R.color.textColor));
-                            RecyclerView recyclerView = (RecyclerView)rootView5.findViewById(R.id.degree_recyclerView);
+                            RecyclerView recyclerView = (RecyclerView) rootView5.findViewById(R.id.degree_recyclerView);
                             final List<DegreeCard> list = new ArrayList<>();
-                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
+                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
 
-                            for (int i=0;i<10;i++){
-                                list.add(new DegreeCard("Civil Engineering","Total Students : 120"));
+                            for (int i = 0; i < 10; i++) {
+                                list.add(new DegreeCard("Civil Engineering", "Total Students : 120"));
                                 textAdapter.notifyDataSetChanged();
                             }
                             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -341,12 +345,12 @@ public class MainActivity extends AppCompatActivity {
                             phD.setTextColor(getResources().getColor(R.color.textColor));
                             bTech.setBackgroundColor(getResources().getColor(R.color.white));
                             bTech.setTextColor(getResources().getColor(R.color.textColor));
-                            RecyclerView recyclerView = (RecyclerView)rootView5.findViewById(R.id.degree_recyclerView);
+                            RecyclerView recyclerView = (RecyclerView) rootView5.findViewById(R.id.degree_recyclerView);
                             final List<DegreeCard> list = new ArrayList<>();
-                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(),list);
+                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
 
-                            for (int i=0;i<10;i++){
-                                list.add(new DegreeCard("CSE Engineering","Total Students : 120"));
+                            for (int i = 0; i < 10; i++) {
+                                list.add(new DegreeCard("CSE Engineering", "Total Students : 120"));
                                 textAdapter.notifyDataSetChanged();
                             }
                             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -357,25 +361,24 @@ public class MainActivity extends AppCompatActivity {
                     return rootView5;
 
 
-
                 case 6:
-                    View rootView6 = inflater.inflate(R.layout.fragment_medals,container,false);
+                    View rootView6 = inflater.inflate(R.layout.fragment_medals, container, false);
 
                     RecyclerView medalView = rootView6.findViewById(R.id.medals_recycler_view);
                     medalView.setLayoutManager(new LinearLayoutManager(getContext()));
                     ArrayList<MedalModel> medalArray = new ArrayList<>();
-                    medalArray.add(new MedalModel(MedalModel.TYPE_CATEGORY,"President's Gold Medal"));
-                    Bitmap bitmap2 = Bitmap.createBitmap(120,120, Bitmap.Config.ARGB_8888);
+                    medalArray.add(new MedalModel(MedalModel.TYPE_CATEGORY, "President's Gold Medal"));
+                    Bitmap bitmap2 = Bitmap.createBitmap(120, 120, Bitmap.Config.ARGB_8888);
                     Canvas c = new Canvas(bitmap2);
                     c.drawColor(Color.LTGRAY);
-                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER,new MedalHolderModel(bitmap2,"Karthik Iyer","Chemical Engineering", "17112036")));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER,new MedalHolderModel(bitmap2,"Karthik Iyer","Chemical Engineering", "17112036")));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_CATEGORY,"Director's Gold Medal"));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER,new MedalHolderModel(bitmap2,"Karthik Iyer","Chemical Engineering", "17112036")));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER,new MedalHolderModel(bitmap2,"Karthik Iyer","Chemical Engineering", "17112036")));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_CATEGORY,"Institute Gold Medal"));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER,new MedalHolderModel(bitmap2,"Karthik Iyer","Chemical Engineering", "17112036")));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER,new MedalHolderModel(bitmap2,"Karthik Iyer","Chemical Engineering", "17112036")));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER, new MedalHolderModel(bitmap2, "Karthik Iyer", "Chemical Engineering", "17112036")));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER, new MedalHolderModel(bitmap2, "Karthik Iyer", "Chemical Engineering", "17112036")));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_CATEGORY, "Director's Gold Medal"));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER, new MedalHolderModel(bitmap2, "Karthik Iyer", "Chemical Engineering", "17112036")));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER, new MedalHolderModel(bitmap2, "Karthik Iyer", "Chemical Engineering", "17112036")));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_CATEGORY, "Institute Gold Medal"));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER, new MedalHolderModel(bitmap2, "Karthik Iyer", "Chemical Engineering", "17112036")));
+                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER, new MedalHolderModel(bitmap2, "Karthik Iyer", "Chemical Engineering", "17112036")));
                     MedalAdapter medalAdapter = new MedalAdapter(medalArray);
                     medalView.setAdapter(medalAdapter);
 
@@ -388,10 +391,10 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
 
-                                instiLevelButton.setBackground(getResources().getDrawable(R.drawable.gradient));
-                                deptLevelButton.setBackground(getResources().getDrawable(R.drawable.white_card));
-                                instiLevelButton.setTextColor(Color.parseColor("#ffffff"));
-                                deptLevelButton.setTextColor(Color.parseColor("#444444"));
+                            instiLevelButton.setBackground(getResources().getDrawable(R.drawable.gradient));
+                            deptLevelButton.setBackground(getResources().getDrawable(R.drawable.white_card));
+                            instiLevelButton.setTextColor(Color.parseColor("#ffffff"));
+                            deptLevelButton.setTextColor(Color.parseColor("#444444"));
 
                         }
                     });
@@ -401,10 +404,10 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
 
-                                instiLevelButton.setBackground(getResources().getDrawable(R.drawable.white_card));
-                                deptLevelButton.setBackground(getResources().getDrawable(R.drawable.gradient));
-                                deptLevelButton.setTextColor(Color.parseColor("#ffffff"));
-                                instiLevelButton.setTextColor(Color.parseColor("#444444"));
+                            instiLevelButton.setBackground(getResources().getDrawable(R.drawable.white_card));
+                            deptLevelButton.setBackground(getResources().getDrawable(R.drawable.gradient));
+                            deptLevelButton.setTextColor(Color.parseColor("#ffffff"));
+                            instiLevelButton.setTextColor(Color.parseColor("#444444"));
 
                         }
                     });
@@ -413,15 +416,15 @@ public class MainActivity extends AppCompatActivity {
                     return rootView6;
 
                 case 7:
-                    View rootView7 = inflater.inflate(R.layout.fragment_gallery,container,false);
+                    View rootView7 = inflater.inflate(R.layout.fragment_gallery, container, false);
                     RecyclerView galleryView = rootView7.findViewById(R.id.gallery_recycler_view);
-                    galleryView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+                    galleryView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
                     Bitmap[] bitmap = new Bitmap[5];
-                    bitmap[0] = Bitmap.createBitmap(158*2,182*2, Bitmap.Config.ARGB_8888);
-                    bitmap[1] = Bitmap.createBitmap(158*2,129*2, Bitmap.Config.ARGB_8888);
-                    bitmap[2] = Bitmap.createBitmap(158*2,129*2, Bitmap.Config.ARGB_8888);
-                    bitmap[3] = Bitmap.createBitmap(158*2,182*2, Bitmap.Config.ARGB_8888);
-                    bitmap[4] = Bitmap.createBitmap(158*2,129*2, Bitmap.Config.ARGB_8888);
+                    bitmap[0] = Bitmap.createBitmap(158 * 2, 182 * 2, Bitmap.Config.ARGB_8888);
+                    bitmap[1] = Bitmap.createBitmap(158 * 2, 129 * 2, Bitmap.Config.ARGB_8888);
+                    bitmap[2] = Bitmap.createBitmap(158 * 2, 129 * 2, Bitmap.Config.ARGB_8888);
+                    bitmap[3] = Bitmap.createBitmap(158 * 2, 182 * 2, Bitmap.Config.ARGB_8888);
+                    bitmap[4] = Bitmap.createBitmap(158 * 2, 129 * 2, Bitmap.Config.ARGB_8888);
                     String[] s = new String[5];
                     s[0] = "Old Convocation";
                     s[1] = "Medal Distribution";
@@ -430,11 +433,11 @@ public class MainActivity extends AppCompatActivity {
                     s[4] = "Old Convocation";
 
 
-                    for (int i = 0; i<5;i++){
+                    for (int i = 0; i < 5; i++) {
                         Canvas c2 = new Canvas(bitmap[i]);
                         c2.drawColor(Color.LTGRAY);
                     }
-                    GalleryAdapter galleryAdapter = new GalleryAdapter(bitmap,s);
+                    GalleryAdapter galleryAdapter = new GalleryAdapter(bitmap, s);
                     galleryView.setAdapter(galleryAdapter);
                     SpacesItemDecoration decoration = new SpacesItemDecoration(16);
                     galleryView.addItemDecoration(decoration);
@@ -446,27 +449,27 @@ public class MainActivity extends AppCompatActivity {
                     return rootView8;
 
                 case 9:
-                    View rootView9 = inflater.inflate(R.layout.fragment_instructions,container,false);
+                    View rootView9 = inflater.inflate(R.layout.fragment_instructions, container, false);
                     return rootView9;
 
                 case 10:
-                    View rootView10 = inflater.inflate(R.layout.fragment_contact,container,false);
+                    View rootView10 = inflater.inflate(R.layout.fragment_contact, container, false);
 
 
-                    RecyclerView contactView = (RecyclerView)rootView10.findViewById(R.id.contact_recyclerView);
+                    RecyclerView contactView = (RecyclerView) rootView10.findViewById(R.id.contact_recyclerView);
                     contactView.setLayoutManager(new LinearLayoutManager(getContext()));
                     final List<Contact> contactList = new ArrayList<>();
-                    final ContactAdapter contactAdapter = new ContactAdapter(getContext(),contactList);
+                    final ContactAdapter contactAdapter = new ContactAdapter(getContext(), contactList);
 
                     final Contact contact_category1 = new Contact(Contact.TYPE_CATEGORY, "Medical Section");
                     contactList.add(contact_category1);
                     contactAdapter.notifyDataSetChanged();
 
-                    final Contact contact1 = new Contact(Contact.TYPE_CONTACT,new ContactCard("Jayant Mishra","Mental Patient","9876543210"));
+                    final Contact contact1 = new Contact(Contact.TYPE_CONTACT, new ContactCard("Jayant Mishra", "Mental Patient", "9876543210"));
                     contactList.add(contact1);
                     contactAdapter.notifyDataSetChanged();
 
-                    final Contact contact2 = new Contact(Contact.TYPE_CONTACT,new ContactCard("Anchit Shukla","Liver Patient","8976543210"));
+                    final Contact contact2 = new Contact(Contact.TYPE_CONTACT, new ContactCard("Anchit Shukla", "Liver Patient", "8976543210"));
                     contactList.add(contact2);
                     contactAdapter.notifyDataSetChanged();
 
@@ -474,11 +477,11 @@ public class MainActivity extends AppCompatActivity {
                     contactList.add(contact3);
                     contactAdapter.notifyDataSetChanged();
 
-                    final Contact contact4 = new Contact(Contact.TYPE_CONTACT,new ContactCard("Lakshya Kumawat","Pro Officials","7896543210"));
+                    final Contact contact4 = new Contact(Contact.TYPE_CONTACT, new ContactCard("Lakshya Kumawat", "Pro Officials", "7896543210"));
                     contactList.add(contact4);
                     contactAdapter.notifyDataSetChanged();
 
-                    final Contact contact5 = new Contact(Contact.TYPE_CONTACT,new ContactCard("Prasannadeep Das","Pro Officials","8796543210"));
+                    final Contact contact5 = new Contact(Contact.TYPE_CONTACT, new ContactCard("Prasannadeep Das", "Pro Officials", "8796543210"));
                     contactList.add(contact5);
                     contactAdapter.notifyDataSetChanged();
 
@@ -487,16 +490,20 @@ public class MainActivity extends AppCompatActivity {
                     return rootView10;
 
 
-
                 default:
-                        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-                        TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-                        textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-                        return rootView;
+                    View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+                    TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+                    textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+                    return rootView;
 
             }
 
         }
+
+        private Button register;
+        private Intent intentFilterIntent;
+        private Uri intentUri;
+        private static final String CONVO_CHANNELI_OAUTH_URL = "https://channeli.in/oauth/?client_id=248033f9cc5a67b44777&redirect_url=convoiitr://convo.sdslabs.co.in/";
 
         private View setUpHome(View view) {
 
@@ -504,22 +511,18 @@ public class MainActivity extends AppCompatActivity {
             ImageButton twlink = (ImageButton) view.findViewById(R.id.twlink);
             ImageButton ytlink = (ImageButton) view.findViewById(R.id.ytlink);
             ImageButton inlink = (ImageButton) view.findViewById(R.id.inlink);
-            Button register = (Button) view.findViewById(R.id.register_button);
+            register = (Button) view.findViewById(R.id.register_button);
 
 
+            getIntentFilter();
 
-            register.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getContext(),RegsiterActivity.class);
-                    startActivity(intent);
-                }
-            });
+            setupChromeCustomTab();
+
             View rootView = View.inflate(getContext(), R.layout.chiefguestcard, null);
 
             recyclerViewGuest = (RecyclerView) view.findViewById(R.id.chiefguestListView);
 
-            mAdapterGuest = new GuestAdapter(guestList, new GuestAdapter.OnItemClickListener(){
+            mAdapterGuest = new GuestAdapter(guestList, new GuestAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(chiefGuestsProfile guest) {
                     Intent intent = new Intent(getActivity(), GuestDesc.class);
@@ -531,7 +534,7 @@ public class MainActivity extends AppCompatActivity {
             });
             RecyclerView.LayoutManager mLayoutManagerGuest = new LinearLayoutManager(getActivity().getApplicationContext());
             recyclerViewGuest.setLayoutManager(mLayoutManagerGuest);
-            recyclerViewGuest.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,true));
+            recyclerViewGuest.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));
             recyclerViewGuest.setItemAnimator(new DefaultItemAnimator());
             recyclerViewGuest.setAdapter(mAdapterGuest);
 
@@ -539,6 +542,36 @@ public class MainActivity extends AppCompatActivity {
 
             return view;
 
+        }
+
+        private void setupChromeCustomTab() {
+            final CustomTabsIntent chromeIntent = new CustomTabsIntent.Builder().build();
+            register.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    chromeIntent.launchUrl(getActivity(), Uri.parse(CONVO_CHANNELI_OAUTH_URL));
+                    Log.d("checkURi","uri launched");
+                }
+            });
+        }
+
+        private void getIntentFilter() {
+
+
+            Log.d("checkURi","intent filter called");
+
+            intentFilterIntent = getIntent();
+            if (intentFilterIntent != null) {
+                intentUri = intentFilterIntent.getData();
+                String code;
+                if (intentUri != null) {
+                    code = intentUri.getQueryParameter("code");
+                    Log.d("URI_CODE", code);
+                    Toast.makeText(getActivity(), "Machaya : " + code, Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getActivity(), RegsiterActivity.class));
+                }
+            }
         }
 
         int k2 =1;
