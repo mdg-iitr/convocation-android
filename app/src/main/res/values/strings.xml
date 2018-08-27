@@ -37,4 +37,14 @@
     <string name="feedback">Feedback</string>
     <string name="name_and_locaton_of_all_the_nearby_hotels_and_guest_houses_are_there_in_the_pdf_which_can_be_downloaded_from_below_link">Name and locaton of all the nearby hotels and guest houses are there in the pdf which can be downloaded from below link.</string>
     <string name="mobile">Mobile</string>
+    <string name="Register">Register now</string>
+    <string name="registration">Registration</string>
+    <string name="basic_details">Basic Details</string>
+    <string name="email">E-Mail Id</string>
+    <string name="phone">Phone Number</string>
+    <string name="bank_transaction">Bank Transaction Id</string>
+    <string name="girl_dress">*Girls dresses may include different inputs</string>
+    <string name="additional_details">Additional Details</string>
+    <string name="address">Permanent Address</string>
+
 </resources>

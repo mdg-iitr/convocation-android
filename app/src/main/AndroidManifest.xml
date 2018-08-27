@@ -25,10 +25,15 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-        <activity android:name=".ChiefGuestDescription"
+        <activity
+            android:name=".ChiefGuestDescription"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 
+        </activity>
+        <activity android:name=".RegisterActivity"
+            android:label="@string/registration"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 

@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
             switch (getArguments().getInt(ARG_SECTION_NUMBER)){
 
                 case 1:
-                    View rootView1 = inflater.inflate(R.layout.activity_home, container, false);
+                    View rootView1 = inflater.inflate(R.layout.fragment_home, container, false);
                     return setUpHome(rootView1);
 
                 case 2:
@@ -174,8 +174,8 @@ public class MainActivity extends AppCompatActivity {
                     return rootView2;
 
                 case 3:
-                    View rootViewAcco = inflater.inflate(R.layout.activity_acco, container, false);
-                    return setUpAcco(rootViewAcco);
+                    View rootView3 = inflater.inflate(R.layout.fragment_accomodation, container, false);
+                    return setUpAcco(rootView3);
 
                 case 4:
 
