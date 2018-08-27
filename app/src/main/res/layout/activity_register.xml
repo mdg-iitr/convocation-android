@@ -29,7 +29,8 @@
                 android:id="@+id/back_button_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/ic_navigate_before_black_24dp"/>
 
             <TextView
                 android:id="@+id/registration"
@@ -134,7 +135,8 @@
                     android:id="@+id/register_sizeOfDress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"></Spinner>
+                    android:layout_marginTop="28dp"
+                    android:spinnerMode="dropdown" />
 
 
                 <TextView
@@ -311,6 +313,7 @@
                     android:textSize="16sp" />
 
                 <CheckBox
+                    android:id="@+id/register_terms"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -320,13 +323,14 @@
 
 
             <Button
+                android:id="@+id/register_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:background="@drawable/gradient"
                 android:fontFamily="@font/metropolis_semibold"
                 android:text="@string/submit"
-                android:textColor="#ffffff"
+                android:textColor="@color/whiteTransparent"
                 android:textSize="18sp" />
 
 
