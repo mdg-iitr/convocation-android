@@ -1,9 +1,8 @@
 package ac.in.iitr.mdg.convocation.views;
 
 import android.annotation.SuppressLint;
-
 import android.annotation.TargetApi;
-
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -12,8 +11,10 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -48,6 +49,10 @@ import static java.lang.Math.min;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    private static final String CONVO_CHANNELI_OAUTH_URL = "https://channeli.in/oauth/?client_id=248033f9cc5a67b44777&redirect_url=convoiitr://convo.sdslabs.co.in/";
+//    private static Intent intentFilterIntent;
+//    private static Uri intentUri;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -155,6 +160,14 @@ public class MainActivity extends AppCompatActivity {
         ChiefGuestAdapter mAdapterGuest;
         HotelAdapter mAdapterHotel;
 
+        Context activityContext;
+
+        @Override
+        public void onAttach(Context context) {
+            super.onAttach(context);
+            this.activityContext = context;
+        }
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
@@ -183,10 +196,17 @@ public class MainActivity extends AppCompatActivity {
                     registerNowButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+
+                            setupChromeCustomTab();
+                        }
+                    });
+                            return setUpHome(rootView1);
+
                             startActivity(new Intent(getContext(),RegisterActivity.class));
                         }
                     });
                     return setUpHome(rootView1);
+
 
                 case 2:
                     View rootView2 = inflater.inflate(R.layout.fragment_dresscode,container,false);
@@ -604,6 +624,11 @@ public class MainActivity extends AppCompatActivity {
 
 
                 mAdapterGuest.notifyDataSetChanged();
+        }
+
+        public void setupChromeCustomTab() {
+            final CustomTabsIntent chromeIntent = new CustomTabsIntent.Builder().build();
+            chromeIntent.launchUrl(activityContext, Uri.parse(CONVO_CHANNELI_OAUTH_URL));
         }
 
     }

@@ -195,6 +195,9 @@
         <Button
             android:id="@+id/button_register_now"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/gradient"
             android:layout_height="54dp"
             android:layout_marginTop="60dp"
             android:background="@drawable/gradient_no_radius"
