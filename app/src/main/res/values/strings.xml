@@ -46,5 +46,14 @@
     <string name="girl_dress">*Girls dresses may include different inputs</string>
     <string name="additional_details">Additional Details</string>
     <string name="address">Permanent Address</string>
-
+    <string name="people_details">People Details</string>
+    <string name="number_of_people">(Select number of people coming with you)</string>
+    <string name="none">None</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="vehicle_details">Vehicle Details</string>
+    <string name="number_of_vehicle">(Select number of vehicle coming with you)</string>
+    <string name="terms">Terms &amp; Conditions</string>
+    <string name="termsAndCondition">I agree to all terms and conditions.</string>
+    <string name="submit">Submit</string>
 </resources>

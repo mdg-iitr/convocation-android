@@ -29,16 +29,17 @@
                 android:id="@+id/back_button_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/ic_navigate_before_black_24dp"/>
 
             <TextView
                 android:id="@+id/registration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:fontFamily="@font/metropolis_semibold"
                 android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:fontFamily="@font/metropolis_semibold"/>
+                android:textSize="20sp" />
 
         </android.support.v7.widget.Toolbar>
 
@@ -47,132 +48,290 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="25dp"
-            tools:ignore="RtlCompat">
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#262626"
+                android:layout_marginEnd="25dp"
+                android:layout_marginStart="20dp"
+                android:orientation="vertical"
+                tools:ignore="RtlCompat">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/metropolis_semibold"
+                    android:text="@string/basic_details"
+                    android:textColor="#262626"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/register_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/name"
+                    android:inputType="textPersonName"
+                    android:textColor="#737373"
+                    android:textColorHint="#afafaf"
+                    android:theme="@style/BottomLine" />
+
+
+                <EditText
+                    android:id="@+id/register_enrollment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:hint="@string/enrollment"
+                    android:inputType="number"
+                    android:textColor="#737373"
+                    android:textColorHint="#afafaf"
+                    android:theme="@style/BottomLine" />
+
+
+                <EditText
+                    android:id="@+id/register_email1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#737373"
+                    android:textColorHint="#afafaf"
+                    android:theme="@style/BottomLine" />
+
+
+                <EditText
+                    android:id="@+id/register_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:hint="@string/phone"
+                    android:inputType="number"
+                    android:textColor="#737373"
+                    android:textColorHint="#afafaf"
+                    android:theme="@style/BottomLine" />
+
+
+                <EditText
+                    android:id="@+id/register_bankTransactionId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:hint="@string/bank_transaction"
+                    android:inputType="textPhonetic"
+                    android:textColor="#737373"
+                    android:textColorHint="#afafaf"
+                    android:theme="@style/BottomLine" />
+
+
+                <Spinner
+                    android:id="@+id/register_sizeOfDress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:spinnerMode="dropdown" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/metropolis_regular"
+                    android:lineSpacingExtra="8sp"
+                    android:text="@string/girl_dress"
+                    android:textColor="#737373"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/metropolis_semibold"
+                    android:text="@string/additional_details"
+                    android:textColor="#262626"
+                    android:textSize="16sp" />
+
+
+                <EditText
+                    android:id="@+id/register_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:hint="@string/address"
+                    android:inputType="textPostalAddress"
+                    android:textColor="#737373"
+                    android:textColorHint="#afafaf"
+                    android:theme="@style/BottomLine" />
+
+
+                <EditText
+                    android:id="@+id/register_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:hint="@string/mobile"
+                    android:inputType="number"
+                    android:textColor="#737373"
+                    android:textColorHint="#afafaf"
+                    android:theme="@style/BottomLine" />
+
+
+                <EditText
+                    android:id="@+id/register_email2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#737373"
+                    android:textColorHint="#afafaf"
+                    android:theme="@style/BottomLine" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/metropolis_semibold"
+                    android:text="@string/people_details"
+                    android:textColor="#262626"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/metropolis_regular"
+                    android:text="@string/number_of_people"
+                    android:textColor="#737373"
+                    android:textSize="10sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/register_numberOfPeople_none"
+                        style="@style/AllCapsFalse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:text="@string/none"
+                        android:textAlignment="center"
+                        android:textColor="#444444"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/register_numberOfPeople_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:text="@string/one"
+                        android:textAlignment="center"
+                        android:textColor="#444444"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/register_numberOfPeople_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:text="@string/two"
+                        android:textAlignment="center"
+                        android:textColor="#444444"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/metropolis_semibold"
+                    android:text="@string/vehicle_details"
+                    android:textColor="#262626"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/metropolis_regular"
+                    android:text="@string/number_of_vehicle"
+                    android:textColor="#737373"
+                    android:textSize="10sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/register_numberOfVehicle_none"
+                        style="@style/AllCapsFalse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:text="@string/none"
+                        android:textAlignment="center"
+                        android:textColor="#444444"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/register_numberOfVehicle_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:text="@string/one"
+                        android:textAlignment="center"
+                        android:textColor="#444444"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70dp"
+                    android:fontFamily="@font/metropolis_semibold"
+                    android:text="@string/terms"
+                    android:textColor="#262626"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/register_terms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/termsAndCondition"
+                    android:theme="@style/BottomLine" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/register_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/gradient"
                 android:fontFamily="@font/metropolis_semibold"
-                android:text="@string/basic_details"
-                android:layout_marginTop="20dp"/>
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/register_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="@string/name"
-                android:textColorHint="#afafaf"
-                android:inputType="textPersonName"/>
-
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/register_enrollment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:hint="@string/enrollment"
-                android:textColorHint="#afafaf"
-                android:inputType="number"/>
-
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/register_email1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:hint="@string/email"
-                android:textColorHint="#afafaf"
-                android:inputType="textEmailAddress"/>
-
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/register_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:hint="@string/phone"
-                android:textColorHint="#afafaf"
-                android:inputType="number"/>
-
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/register_bankTransactionId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:hint="@string/bank_transaction"
-                android:textColorHint="#afafaf"
-                android:inputType="textPhonetic"/>
-
-            <!--<android.support.v7.widget.DropDownListView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="28dp">-->
-
-            <!--</android.support.v7.widget.DropDownListView>-->
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/metropolis_regular"
-                android:textSize="12sp"
-                android:textColor="#737373"
-                android:lineSpacingExtra="8sp"
-                android:text="@string/girl_dress"
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:fontFamily="@font/metropolis_semibold"
-                android:textSize="16sp"
-                android:textColor="#262626"
-                android:text="@string/additional_details" />
-
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/register_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:hint="@string/address"
-                android:textColorHint="#afafaf"
-                android:inputType="textPostalAddress"/>
-
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/register_mobile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:hint="@string/mobile"
-                android:textColorHint="#afafaf"
-                android:inputType="number"/>
-
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/register_email2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:hint="@string/email"
-                android:textColorHint="#afafaf"
-                android:inputType="textEmailAddress"/>
-
-
-
-
-
+                android:text="@string/submit"
+                android:textColor="@color/whiteTransparent"
+                android:textSize="18sp" />
 
 
         </LinearLayout>
