@@ -41,13 +41,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import ac.in.iitr.mdg.convocation.views.Accomodation.hotelAdapter;
-import ac.in.iitr.mdg.convocation.views.Accomodation.hotelProfile;
-import ac.in.iitr.mdg.convocation.views.home.GuestAdapter;
-import ac.in.iitr.mdg.convocation.views.home.GuestDesc;
-import ac.in.iitr.mdg.convocation.views.home.chiefGuestsProfile;
-import ac.in.iitr.mdg.convocation.views.home.miscellaneousClass;
-
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
@@ -156,12 +149,11 @@ public class MainActivity extends AppCompatActivity {
          * The fragment argument representing the section number for this
          * fragment.
          */
-        List<chiefGuestsProfile> guestList = new ArrayList<>();
-        List<miscellaneousClass> miscellaneousList = new ArrayList<>();
-        List<hotelProfile> hotelList = new ArrayList<>();
-        RecyclerView recyclerViewGuest,recyclerViewMisc,recyclerViewHotel;
-        GuestAdapter mAdapterGuest;
-        hotelAdapter mAdapterHotel;
+        List<ChiefGuestProfile> guestList = new ArrayList<>();
+        List<HotelProfile> hotelList = new ArrayList<>();
+        RecyclerView recyclerViewGuest,recyclerViewHotel;
+        ChiefGuestAdapter mAdapterGuest;
+        HotelAdapter mAdapterHotel;
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -186,7 +178,14 @@ public class MainActivity extends AppCompatActivity {
             switch (getArguments().getInt(ARG_SECTION_NUMBER)){
 
                 case 1:
-                    View rootView1 = inflater.inflate(R.layout.activity_home, container, false);
+                    View rootView1 = inflater.inflate(R.layout.fragment_home, container, false);
+                    Button registerNowButton = rootView1.findViewById(R.id.button_register_now);
+                    registerNowButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(getContext(),RegisterActivity.class));
+                        }
+                    });
                     return setUpHome(rootView1);
 
                 case 2:
@@ -194,8 +193,8 @@ public class MainActivity extends AppCompatActivity {
                     return rootView2;
 
                 case 3:
-                    View rootViewAcco = inflater.inflate(R.layout.activity_acco, container, false);
-                    return setUpAcco(rootViewAcco);
+                    View rootView3 = inflater.inflate(R.layout.fragment_accomodation, container, false);
+                    return setUpAcco(rootView3);
 
                 case 4:
 
@@ -520,10 +519,10 @@ public class MainActivity extends AppCompatActivity {
 
             recyclerViewGuest = (RecyclerView) view.findViewById(R.id.chiefguestListView);
 
-            mAdapterGuest = new GuestAdapter(guestList, new GuestAdapter.OnItemClickListener(){
+            mAdapterGuest = new ChiefGuestAdapter(guestList, new ChiefGuestAdapter.OnItemClickListener(){
                 @Override
-                public void onItemClick(chiefGuestsProfile guest) {
-                    Intent intent = new Intent(getActivity(), GuestDesc.class);
+                public void onItemClick(ChiefGuestProfile guest) {
+                    Intent intent = new Intent(getActivity(), ChiefGuestDescription.class);
                     intent.putExtra("headingName", guest.getName());
                     intent.putExtra("headingDesig", guest.getDesignation());
                     intent.putExtra("data", guest.getData());
@@ -547,16 +546,16 @@ public class MainActivity extends AppCompatActivity {
         private void prepareHotelData() {
 
             if(k2 ==1) {
-                hotelProfile hotel = new hotelProfile("Hotel Prakash", "21,Civil Lines,Roorkee", null, null, null);
+                HotelProfile hotel = new HotelProfile("Hotel Prakash", "21,Civil Lines,Roorkee", null, null, null);
                 hotelList.add(hotel);
 
-                hotel = new hotelProfile("Hotel Sungrace", "142,Civil Lines,Roorkee", null, null, null);
+                hotel = new HotelProfile("Hotel Sungrace", "142,Civil Lines,Roorkee", null, null, null);
                 hotelList.add(hotel);
 
-                hotel = new hotelProfile("Hotel Prakash", "21,Civil Lines,Roorkee", null, null, null);
+                hotel = new HotelProfile("Hotel Prakash", "21,Civil Lines,Roorkee", null, null, null);
                 hotelList.add(hotel);
 
-                hotel = new hotelProfile("Hotel Sungrace", "142,Civil Lines,Roorkee", null, null, null);
+                hotel = new HotelProfile("Hotel Sungrace", "142,Civil Lines,Roorkee", null, null, null);
                 hotelList.add(hotel);
 
                 k2--;
@@ -571,9 +570,9 @@ public class MainActivity extends AppCompatActivity {
 
             recyclerViewHotel = (RecyclerView) view.findViewById(R.id.hotelListView);
 
-            mAdapterHotel = new hotelAdapter(hotelList, new hotelAdapter.OnItemClickListener(){
+            mAdapterHotel = new HotelAdapter(hotelList, new HotelAdapter.OnItemClickListener(){
                 @Override
-                public void onItemClick(hotelProfile hotel) {
+                public void onItemClick(HotelProfile hotel) {
 
                 }
             });
@@ -594,10 +593,10 @@ public class MainActivity extends AppCompatActivity {
 
             if(k1==1) {
 
-                chiefGuestsProfile guest = new chiefGuestsProfile("Shri Ram Nath Kovind", "Hon'ble President of India", "(7 Oct. 2018 , PG)", null, null, null);
+                ChiefGuestProfile guest = new ChiefGuestProfile("Shri Ram Nath Kovind", "Hon'ble President of India", "(7 Oct. 2018 , PG)", null, null, null);
                 guestList.add(guest);
 
-                guest = new chiefGuestsProfile("Shri Ram Naik", "Hon'ble Governer of U.P.", "(6 Oct. 2018 , UG)", null, null, null);
+                guest = new ChiefGuestProfile("Shri Ram Naik", "Hon'ble Governer of U.P.", "(6 Oct. 2018 , UG)", null, null, null);
                 guestList.add(guest);
                 k1--;
 

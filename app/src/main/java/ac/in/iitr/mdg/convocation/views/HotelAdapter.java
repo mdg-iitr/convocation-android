@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.views.Accomodation;
+package ac.in.iitr.mdg.convocation.views;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,17 +8,15 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import ac.in.iitr.mdg.convocation.views.R;
-
-public class hotelAdapter extends RecyclerView.Adapter<hotelAdapter.MyViewHolder> {
+public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.MyViewHolder> {
 
     public interface OnItemClickListener {
-        void onItemClick(hotelProfile hotel);
+        void onItemClick(HotelProfile hotel);
     }
 
-    private final hotelAdapter.OnItemClickListener listener;
+    private final HotelAdapter.OnItemClickListener listener;
 
-    private List<hotelProfile> hotelList;
+    private List<HotelProfile> hotelList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView serialNo,name,address;
@@ -28,7 +26,7 @@ public class hotelAdapter extends RecyclerView.Adapter<hotelAdapter.MyViewHolder
             name = (TextView) view.findViewById(R.id.hotel_card_name);
         }
 
-        public void bind(final hotelProfile hotel, final hotelAdapter.OnItemClickListener listener){
+        public void bind(final HotelProfile hotel, final HotelAdapter.OnItemClickListener listener){
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(hotel);
@@ -38,22 +36,22 @@ public class hotelAdapter extends RecyclerView.Adapter<hotelAdapter.MyViewHolder
     }
 
 
-    public hotelAdapter(List<hotelProfile> guestList,hotelAdapter.OnItemClickListener listener) {
+    public HotelAdapter(List<HotelProfile> guestList, HotelAdapter.OnItemClickListener listener) {
         this.hotelList = guestList;
         this.listener = listener;
     }
 
     @Override
-    public hotelAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public HotelAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.hotelcard, parent, false);
 
-        return new hotelAdapter.MyViewHolder(itemView);
+        return new HotelAdapter.MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(hotelAdapter.MyViewHolder holder, int position) {
-        hotelProfile hotel = hotelList.get(position);
+    public void onBindViewHolder(HotelAdapter.MyViewHolder holder, int position) {
+        HotelProfile hotel = hotelList.get(position);
         holder.name.setText(hotel.getName());
         holder.bind(hotelList.get(position), listener);
     }
