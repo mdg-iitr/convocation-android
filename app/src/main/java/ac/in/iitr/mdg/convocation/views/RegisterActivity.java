@@ -28,10 +28,12 @@ public class RegisterActivity extends AppCompatActivity {
     private Intent intentFilterIntent;
     private Uri intentUri;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
 
         getIntentFilter();
 
