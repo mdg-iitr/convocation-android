@@ -113,12 +113,12 @@
                 android:textColorHint="#afafaf"
                 android:inputType="textPhonetic"/>
 
-            <android.support.v7.widget.DropDownListView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp">
+            <!--<android.support.v7.widget.DropDownListView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="28dp">-->
 
-            </android.support.v7.widget.DropDownListView>
+            <!--</android.support.v7.widget.DropDownListView>-->
 
             <TextView
                 android:layout_width="match_parent"
