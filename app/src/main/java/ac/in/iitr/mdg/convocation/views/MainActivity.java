@@ -167,6 +167,13 @@ public class MainActivity extends AppCompatActivity {
 
                 case 1:
                     View rootView1 = inflater.inflate(R.layout.fragment_home, container, false);
+                    Button registerNowButton = rootView1.findViewById(R.id.button_register_now);
+                    registerNowButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(getContext(),RegisterActivity.class));
+                        }
+                    });
                     return setUpHome(rootView1);
 
                 case 2:

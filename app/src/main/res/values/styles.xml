@@ -56,4 +56,9 @@
         <item name="android:textSize">@dimen/text_size</item>
         <item name="android:fontFamily" tools:ignore="NewApi">@font/metropolis_regular</item>
     </style>
+
+
+    <style name="BottomLine" parent="@style/LightTheme">
+    <item name="colorAccent" tools:ignore="NewApi">@color/colorPrimary</item>
+    </style>
 </resources>
