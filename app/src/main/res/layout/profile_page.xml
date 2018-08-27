@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="ac.in.iitr.mdg.convocation.views.BranchStudents">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_no_radius"
+        android:padding="@dimen/appbar_padding_top"
+        android:theme="@style/ToolbarStyle">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_profile"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="1"
+            app:collapseIcon="@drawable/ic_navigate_before_black_24dp"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ToolbarStyle"
+            app:titleTextAppearance="@style/BoldText">
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent" />
+
+            <TextView
+                android:id="@+id/profile_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/metropolis_bold"
+                android:text="@string/profile"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="35dp"
+                android:src="@drawable/grey_card" />
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/profile_image"
+                android:layout_marginLeft="29.8dp"
+                android:layout_marginStart="29.8dp"
+                android:layout_marginTop="8.6dp"
+                android:layout_toRightOf="@+id/profile_image"
+                android:fontFamily="@font/metropolis_semibold"
+                android:text="sample"
+                android:textColor="#444444"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/profile_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_name"
+                android:layout_marginLeft="29.8dp"
+                android:layout_marginStart="29.8dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@+id/profile_image"
+                android:fontFamily="@font/metropolis_light"
+                android:text="sample"
+                android:textColor="#737373"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/profile_contact_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_email"
+                android:layout_marginLeft="29.8dp"
+                android:layout_marginStart="29.8dp"
+                android:layout_marginTop="11dp"
+                android:layout_toRightOf="@+id/profile_image"
+                android:fontFamily="@font/metropolis_regular"
+                android:text="123456789"
+                android:textColor="#444444"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_below="@+id/profile_image"
+                android:layout_marginTop="25.8dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginRight="22dp"
+                android:background="#ededed"
+                android:id="@+id/divider1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enrolment_no"
+                android:layout_below="@+id/divider1"
+                android:layout_marginTop="21dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="22dp"
+                android:textColor="#444444"
+                android:textSize="16sp"
+                android:fontFamily="@font/metropolis_medium"
+                android:id="@+id/enNoTag"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dept"
+                android:layout_below="@+id/enNoTag"
+                android:layout_marginTop="12.4dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="22dp"
+                android:textColor="#444444"
+                android:textSize="16sp"
+                android:fontFamily="@font/metropolis_medium"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123456789"
+                android:layout_below="@+id/divider1"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textColor="#737373"
+                android:textSize="16sp"
+                android:fontFamily="@font/metropolis_light"
+                android:id="@+id/enrolment_no_display"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123456789"
+                android:layout_below="@+id/enrolment_no_display"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textColor="#737373"
+                android:textSize="16sp"
+                android:fontFamily="@font/metropolis_light"
+                android:id="@+id/dept_display"
+                />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+
+                android:id="@+id/bank_card"
+                android:layout_below="@+id/dept_display"
+                android:layout_marginTop="28.8dp"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/gradient"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/bank_card_layout"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/transidTag"
+                        android:text="@string/transactionId"
+                        android:layout_marginTop="30dp"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/metropolis_medium"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/transidTag"
+                        android:id="@+id/transaction_id"
+                        android:text="@string/transactionId"
+                        android:layout_marginTop="9dp"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="24sp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/metropolis_bold"
+                        android:layout_marginBottom="26dp"
+                        />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_below="@+id/bank_card"
+                android:layout_marginTop="25.8dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginRight="22dp"
+                android:background="#ededed"
+                android:id="@+id/divider2"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_maps"
+                android:textAppearance="@style/AllCapsFalse"
+                android:fontFamily="@font/metropolis_medium"
+                android:textSize="14sp"
+                android:layout_below="@+id/divider2"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="17.9dp"
+                android:textColor="#444444"
+                android:id="@+id/mapsButton"
+                android:background="@android:color/transparent"
+                android:textAlignment="viewStart"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_below="@+id/mapsButton"
+                android:layout_marginTop="18.3dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginRight="22dp"
+                android:background="#ededed"
+                android:id="@+id/divider3"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_feedback"
+                android:textAppearance="@style/AllCapsFalse"
+                android:fontFamily="@font/metropolis_medium"
+                android:textSize="14sp"
+                android:layout_below="@+id/divider3"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="17.9dp"
+                android:textColor="#444444"
+                android:background="@android:color/transparent"
+                android:id="@+id/feedbackButton"
+                android:textAlignment="viewStart"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_below="@+id/feedbackButton"
+                android:layout_marginTop="17.7dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginRight="22dp"
+                android:background="#ededed"
+                android:id="@+id/divider4"
+                />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+
+</LinearLayout>
