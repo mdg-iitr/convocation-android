@@ -200,11 +200,7 @@ public class MainActivity extends AppCompatActivity {
                             setupChromeCustomTab();
                         }
                     });
-                            return setUpHome(rootView1);
 
-                            startActivity(new Intent(getContext(),RegisterActivity.class));
-                        }
-                    });
                     return setUpHome(rootView1);
 
 
