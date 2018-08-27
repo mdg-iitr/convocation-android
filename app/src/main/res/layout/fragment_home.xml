@@ -195,9 +195,6 @@
         <Button
             android:id="@+id/button_register_now"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:background="@drawable/gradient"
             android:layout_height="54dp"
             android:layout_marginTop="60dp"
             android:background="@drawable/gradient_no_radius"
@@ -208,7 +205,6 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="16sp" />
-
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>
