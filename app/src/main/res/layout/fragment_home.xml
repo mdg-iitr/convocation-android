@@ -197,7 +197,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:background="@drawable/gradient"
+            android:background="@drawable/gradient_no_radius"
             android:fontFamily="@font/metropolis_semibold"
             android:gravity="center_vertical"
             android:letterSpacing="0.01"
