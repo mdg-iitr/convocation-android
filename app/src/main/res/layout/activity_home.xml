@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="11dp"
+        android:paddingTop="10dp"
+        tools:context="com.mdg.convocation2018.convocation18.HomeActivity"
+        android:paddingStart="11dp"
+        tools:ignore="RtlSymmetry">
+
+        <include layout="@layout/homecard" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="40dp"
+            android:textColor="#262626"
+            android:textSize="16sp"
+            android:text="@string/chief_guests"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/chiefguestListView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:orientation="horizontal"
+            />
+
+        <TextView
+            android:layout_width="91dp"
+            android:layout_height="19dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="40dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:text="@string/social_links" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/social_fb"
+                android:layout_width="49.8dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="70dp">
+
+                <ImageButton
+                    android:id="@+id/fblink"
+                    android:layout_width="24.9dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/facebook"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/whiteTransparent"/>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/social_in"
+                android:layout_width="49.8dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="70dp">
+
+                <ImageButton
+                    android:id="@+id/inlink"
+                    android:layout_width="24.9dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/linkedin"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/whiteTransparent"/>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/social_tw"
+                android:layout_width="49.8dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="70dp">
+
+                <ImageButton
+                    android:id="@+id/twlink"
+                    android:layout_width="24.9dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/twitter"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/whiteTransparent"/>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/social_yt"
+                android:layout_width="49.8dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="70dp">
+
+                <ImageButton
+                    android:id="@+id/ytlink"
+                    android:layout_width="24.9dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/fill_1"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/whiteTransparent"/>
+
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="316dp"
+            android:layout_height="0.1dp"
+            android:background="#ededed"
+            android:layout_marginRight="22dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp" />
+
+
+        <TextView
+            android:id="@+id/maps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#444444"
+            android:textSize="14sp"
+            android:layout_marginTop="17.9dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginBottom="36dp"
+            android:text="@string/maps"
+            android:layout_marginStart="11dp" />
+
+        <View
+            android:layout_width="316dp"
+            android:layout_height="0.1dp"
+            android:background="#ededed"
+            android:layout_marginRight="22dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp" />
+
+
+        <TextView
+            android:id="@+id/feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#444444"
+            android:textSize="14sp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginBottom="17dp"
+            android:text="@string/feedback"
+            android:layout_marginStart="11dp" />
+
+        <View
+            android:layout_width="316dp"
+            android:layout_height="0.1dp"
+            android:background="#ededed"
+            android:layout_marginRight="22dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp" />
+
+
+    </LinearLayout>
+</ScrollView>

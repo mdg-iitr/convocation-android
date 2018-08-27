@@ -10,7 +10,7 @@
     <string name="tab_text_gallery">Gallery</string>
     <string name="tab_text_livecast">Livecast</string>
     <string name="tab_text_instructions">Instructions</string>
-    <string name="tab_text_contact">Contact</string>
+    <string name="tab_text_contact">Contact us</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="action_maps">Maps</string>
@@ -31,8 +31,17 @@
     <string name="female">Female</string>
     <string name="male">Male</string>
     <string name="dummy_text">Lorem Ipsum is simply dummy text\nof the printing and typesetting industry.</string>
+
     <string name="profile">Profile</string>
     <string name="enrolment_no">Enrolment No.:</string>
     <string name="dept">Department:</string>
     <string name="transactionId">Bank Transaction ID</string>
+
+    <string name="chief_guests">Chief Guests</string>
+    <string name="social_links">Social Links</string>
+    <string name="maps">Maps</string>
+    <string name="feedback">Feedback</string>
+    <string name="name_and_locaton_of_all_the_nearby_hotels_and_guest_houses_are_there_in_the_pdf_which_can_be_downloaded_from_below_link">Name and locaton of all the nearby hotels and guest houses are there in the pdf which can be downloaded from below link.</string>
+    <string name="mobile">Mobile</string>
+
 </resources>
