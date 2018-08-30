@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,9 +11,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * Created by suyash on 7/31/18.
- */
+import ac.in.iitr.mdg.convocation.R;
+import ac.in.iitr.mdg.convocation.models.Schedule;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Context context;

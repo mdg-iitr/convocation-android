@@ -1,8 +1,4 @@
-package ac.in.iitr.mdg.convocation.views;
-
-/**
- * Created by karthik on 1/8/18.
- */
+package ac.in.iitr.mdg.convocation.models;
 
 public class MedalModel {
 
@@ -12,16 +8,14 @@ public class MedalModel {
     private MedalHolderModel medalHolder;
     private int type;
 
-    MedalModel(int type, String medalCategory) {
+    public MedalModel(int type, String medalCategory) {
         this.type = type;
         this.medalCategory = medalCategory;
     }
 
-    MedalModel(int type, MedalHolderModel medalHolder) {
-
+    public MedalModel(int type, MedalHolderModel medalHolder) {
         this.type = type;
         this.medalHolder = medalHolder;
-
     }
 
     public MedalHolderModel getMedalHolder() {

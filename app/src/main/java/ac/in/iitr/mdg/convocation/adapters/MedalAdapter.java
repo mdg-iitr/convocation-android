@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation.adapters;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,9 +10,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by karthik on 1/8/18.
- */
+import ac.in.iitr.mdg.convocation.R;
+import ac.in.iitr.mdg.convocation.models.MedalModel;
 
 public class MedalAdapter extends RecyclerView.Adapter {
 

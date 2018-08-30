@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:orientation="vertical"
-    tools:context=".MainActivity$PlaceholderFragment">
+    tools:context="ac.in.iitr.mdg.convocation.MainActivity$PlaceholderFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/schedule_recyclerView"

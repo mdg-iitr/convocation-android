@@ -1,12 +1,8 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation.models;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
-/**
- * Created by karthik on 1/8/18.
- */
 
 public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ac.in.iitr.mdg.convocation.views">
+    package="ac.in.iitr.mdg.convocation">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="ac.in.iitr.mdg.convocation.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,19 +20,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BranchStudents"
+            android:name=".BranchStudentsActivity"
             android:label="@string/app_name"
 
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
         <activity
-            android:name=".ChiefGuestDescription"
+            android:name=".ChiefGuestDescriptionActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-        <activity android:name=".RegisterActivity"
+        <activity
+            android:name="ac.in.iitr.mdg.convocation.RegisterActivity"
             android:label="@string/registration"
             android:theme="@style/AppTheme.NoActionBar">
 
@@ -47,11 +48,11 @@
                     android:pathPrefix="/"
                     android:scheme="convoiitr" />
             </intent-filter>
-
         </activity>
 
-        <activity android:name=".ProfileActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="ac.in.iitr.mdg.convocation.ProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
 

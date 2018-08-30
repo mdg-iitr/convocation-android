@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -16,8 +16,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import ac.in.iitr.mdg.convocation.adapters.BranchStudentAdapter;
+import ac.in.iitr.mdg.convocation.models.BranchStudentCard;
 
-public class BranchStudents extends AppCompatActivity {
+public class BranchStudentsActivity extends AppCompatActivity {
     public BranchStudentAdapter textAdapter;
     public RecyclerView recyclerView;
 

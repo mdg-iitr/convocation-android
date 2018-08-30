@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,12 +9,15 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import ac.in.iitr.mdg.convocation.R;
+import ac.in.iitr.mdg.convocation.models.ChiefGuestProfile;
+
 public class ChiefGuestAdapter extends RecyclerView.Adapter<ChiefGuestAdapter.MyViewHolder> {
 
     private final OnItemClickListener listener;
     private List<ChiefGuestProfile> guestList;
 
-    ChiefGuestAdapter(List<ChiefGuestProfile> guestList, OnItemClickListener listener) {
+    public ChiefGuestAdapter(List<ChiefGuestProfile> guestList, OnItemClickListener listener) {
         this.guestList = guestList;
         this.listener = listener;
     }

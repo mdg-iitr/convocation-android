@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
+
+import ac.in.iitr.mdg.convocation.R;
+import ac.in.iitr.mdg.convocation.models.HotelProfile;
 
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.MyViewHolder> {
 

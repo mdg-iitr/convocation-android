@@ -1,10 +1,10 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-public class ChiefGuestDescription extends AppCompatActivity {
+public class ChiefGuestDescriptionActivity extends AppCompatActivity {
 
     public static final String INTEN_EXTRA_GUEST_NAME = "guest_name";
 

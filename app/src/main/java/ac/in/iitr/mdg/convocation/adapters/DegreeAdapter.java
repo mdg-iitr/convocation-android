@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +12,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * Created by suyash on 8/1/18.
- */
+import ac.in.iitr.mdg.convocation.BranchStudentsActivity;
+import ac.in.iitr.mdg.convocation.R;
+import ac.in.iitr.mdg.convocation.models.DegreeCard;
 
 public class DegreeAdapter extends RecyclerView.Adapter<DegreeAdapter.Branchholder> {
     Context context;
@@ -41,7 +41,7 @@ public class DegreeAdapter extends RecyclerView.Adapter<DegreeAdapter.Branchhold
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), BranchStudents.class);
+                Intent intent = new Intent(v.getContext(), BranchStudentsActivity.class);
                 intent.putExtra("branch", mylist.getBranchName());
                 v.getContext().startActivity(intent);
             }

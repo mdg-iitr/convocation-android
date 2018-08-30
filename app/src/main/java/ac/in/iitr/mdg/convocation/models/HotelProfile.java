@@ -1,24 +1,22 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation.models;
 
 import android.media.Image;
 
-public class ChiefGuestProfile {
+public class HotelProfile {
 
     private String Name;
-    private String Designation;
+    private String Address;
     private Image imageThumb;
     private Image imageMain;
     private String Data;
-    private String date;
 
-    public ChiefGuestProfile() {
+    public HotelProfile() {
 
     }
 
-    public ChiefGuestProfile(String name, String designation, String date, String data, Image imageMain, Image imageThumb) {
-        this.date = date;
+    public HotelProfile(String name, String address, String data, Image imageMain, Image imageThumb) {
         this.Name = name;
-        this.Designation = designation;
+        this.Address = address;
         this.imageMain = imageMain;
         this.imageThumb = imageThumb;
         this.Data = data;
@@ -48,12 +46,12 @@ public class ChiefGuestProfile {
         Data = data;
     }
 
-    public String getDesignation() {
-        return Designation;
+    public String getAddress() {
+        return Address;
     }
 
-    public void setDesignation(String designation) {
-        Designation = designation;
+    public void setAddress(String address) {
+        Address = address;
     }
 
     public String getName() {
@@ -63,13 +61,4 @@ public class ChiefGuestProfile {
     public void setName(String name) {
         Name = name;
     }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 }
-

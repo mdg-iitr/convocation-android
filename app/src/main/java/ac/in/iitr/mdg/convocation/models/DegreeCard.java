@@ -1,12 +1,8 @@
-package ac.in.iitr.mdg.convocation.views;
-
-/**
- * Created by suyash on 8/1/18.
- */
+package ac.in.iitr.mdg.convocation.models;
 
 public class DegreeCard {
-    String branchName, numberOfStudents;
 
+    private String branchName, numberOfStudents;
 
     public DegreeCard(String branchName, String numberOfStudents) {
         this.branchName = branchName;

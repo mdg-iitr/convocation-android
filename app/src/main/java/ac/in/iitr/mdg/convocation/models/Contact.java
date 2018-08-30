@@ -1,8 +1,4 @@
-package ac.in.iitr.mdg.convocation.views;
-
-/**
- * Created by suyash on 8/24/18.
- */
+package ac.in.iitr.mdg.convocation.models;
 
 public class Contact {
     public static final int TYPE_CATEGORY = 0;

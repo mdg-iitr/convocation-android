@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -35,9 +35,25 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ac.in.iitr.mdg.convocation.adapters.ChiefGuestAdapter;
+import ac.in.iitr.mdg.convocation.adapters.ContactAdapter;
+import ac.in.iitr.mdg.convocation.adapters.DegreeAdapter;
+import ac.in.iitr.mdg.convocation.adapters.GalleryAdapter;
+import ac.in.iitr.mdg.convocation.adapters.HotelAdapter;
+import ac.in.iitr.mdg.convocation.adapters.MedalAdapter;
+import ac.in.iitr.mdg.convocation.adapters.ScheduleAdapter;
+import ac.in.iitr.mdg.convocation.models.ChiefGuestProfile;
+import ac.in.iitr.mdg.convocation.models.Contact;
+import ac.in.iitr.mdg.convocation.models.ContactCard;
+import ac.in.iitr.mdg.convocation.models.DegreeCard;
+import ac.in.iitr.mdg.convocation.models.HotelProfile;
+import ac.in.iitr.mdg.convocation.models.MedalHolderModel;
+import ac.in.iitr.mdg.convocation.models.MedalModel;
+import ac.in.iitr.mdg.convocation.models.Schedule;
+import ac.in.iitr.mdg.convocation.models.ScheduleCard;
+import ac.in.iitr.mdg.convocation.models.SpacesItemDecoration;
 
 public class MainActivity extends AppCompatActivity {
-
 
     private static final String CONVO_CHANNELI_OAUTH_URL = "https://channeli.in/oauth/?client_id=248033f9cc5a67b44777&redirect_url=convoiitr://convo.sdslabs.co.in/";
 
@@ -175,15 +191,16 @@ public class MainActivity extends AppCompatActivity {
                             management.setBackgroundColor(getResources().getColor(R.color.white));
                             management.setTextColor(getResources().getColor(R.color.textColor));
                             RecyclerView recyclerView = (RecyclerView) rootView5.findViewById(R.id.degree_recyclerView);
-                            final List<DegreeCard> list = new ArrayList<>();
-                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
+                            List<DegreeCard> list = new ArrayList<>();
+                            DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            recyclerView.setAdapter(textAdapter);
 
                             for (int i = 0; i < 10; i++) {
                                 list.add(new DegreeCard("Chemical Engineering", "Total Students : 120"));
-                                textAdapter.notifyDataSetChanged();
                             }
-                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                            recyclerView.setAdapter(textAdapter);
+
+                            textAdapter.notifyDataSetChanged();
                         }
                     });
 
@@ -200,15 +217,16 @@ public class MainActivity extends AppCompatActivity {
                             management.setBackgroundColor(getResources().getColor(R.color.white));
                             management.setTextColor(getResources().getColor(R.color.textColor));
                             RecyclerView recyclerView = (RecyclerView) rootView5.findViewById(R.id.degree_recyclerView);
-                            final List<DegreeCard> list = new ArrayList<>();
-                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
+                            List<DegreeCard> list = new ArrayList<>();
+                            DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            recyclerView.setAdapter(textAdapter);
 
                             for (int i = 0; i < 10; i++) {
                                 list.add(new DegreeCard("Electrical Engineering", "Total Students : 120"));
-                                textAdapter.notifyDataSetChanged();
                             }
-                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                            recyclerView.setAdapter(textAdapter);
+
+                            textAdapter.notifyDataSetChanged();
                         }
                     });
 
@@ -225,15 +243,16 @@ public class MainActivity extends AppCompatActivity {
                             management.setBackgroundColor(getResources().getColor(R.color.white));
                             management.setTextColor(getResources().getColor(R.color.textColor));
                             RecyclerView recyclerView = (RecyclerView) rootView5.findViewById(R.id.degree_recyclerView);
-                            final List<DegreeCard> list = new ArrayList<>();
-                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
+                            List<DegreeCard> list = new ArrayList<>();
+                            DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            recyclerView.setAdapter(textAdapter);
 
                             for (int i = 0; i < 10; i++) {
                                 list.add(new DegreeCard("Civil Engineering", "Total Students : 120"));
-                                textAdapter.notifyDataSetChanged();
                             }
-                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                            recyclerView.setAdapter(textAdapter);
+
+                            textAdapter.notifyDataSetChanged();
                         }
                     });
 
@@ -249,16 +268,17 @@ public class MainActivity extends AppCompatActivity {
                             phD.setTextColor(getResources().getColor(R.color.textColor));
                             bTech.setBackgroundColor(getResources().getColor(R.color.white));
                             bTech.setTextColor(getResources().getColor(R.color.textColor));
-                            RecyclerView recyclerView = (RecyclerView) rootView5.findViewById(R.id.degree_recyclerView);
-                            final List<DegreeCard> list = new ArrayList<>();
-                            final DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
+                            RecyclerView recyclerView = rootView5.findViewById(R.id.degree_recyclerView);
+                            List<DegreeCard> list = new ArrayList<>();
+                            DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            recyclerView.setAdapter(textAdapter);
 
                             for (int i = 0; i < 10; i++) {
                                 list.add(new DegreeCard("CSE Engineering", "Total Students : 120"));
-                                textAdapter.notifyDataSetChanged();
                             }
-                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                            recyclerView.setAdapter(textAdapter);
+
+                            textAdapter.notifyDataSetChanged();
                         }
                     });
 
@@ -399,7 +419,7 @@ public class MainActivity extends AppCompatActivity {
             mAdapterGuest = new ChiefGuestAdapter(guestList, new ChiefGuestAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(ChiefGuestProfile guest) {
-                    Intent intent = new Intent(getActivity(), ChiefGuestDescription.class);
+                    Intent intent = new Intent(getActivity(), ChiefGuestDescriptionActivity.class);
                     intent.putExtra("headingName", guest.getName());
                     intent.putExtra("headingDesig", guest.getDesignation());
                     intent.putExtra("data", guest.getData());

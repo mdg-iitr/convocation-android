@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;

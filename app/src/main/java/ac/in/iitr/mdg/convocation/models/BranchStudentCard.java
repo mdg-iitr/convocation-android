@@ -1,12 +1,7 @@
-package ac.in.iitr.mdg.convocation.views;
-
-/**
- * Created by suyash on 8/1/18.
- */
+package ac.in.iitr.mdg.convocation.models;
 
 public class BranchStudentCard {
-    String student_name, student_enrollment;
-
+    private String student_name, student_enrollment;
 
     public BranchStudentCard(String student_name, String student_enrollment) {
         this.student_name = student_name;

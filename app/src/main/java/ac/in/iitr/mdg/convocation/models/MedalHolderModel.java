@@ -1,25 +1,19 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation.models;
 
 import android.graphics.Bitmap;
 
-/**
- * Created by karthik on 1/8/18.
- */
-
 public class MedalHolderModel {
 
-    public Bitmap medalHolderImage;
-    public String medalHolderName;
-    public String medalHolderBranch;
-    public String medalHolderEnNo;
+    private Bitmap medalHolderImage;
+    private String medalHolderName;
+    private String medalHolderBranch;
+    private String medalHolderEnNo;
 
-    MedalHolderModel(Bitmap medalHolderImage, String medalHolderName, String medalHolderBranch, String medalHolderEnNo) {
-
+    public MedalHolderModel(Bitmap medalHolderImage, String medalHolderName, String medalHolderBranch, String medalHolderEnNo) {
         this.medalHolderImage = medalHolderImage;
         this.medalHolderBranch = medalHolderBranch;
         this.medalHolderEnNo = medalHolderEnNo;
         this.medalHolderName = medalHolderName;
-
     }
 
     public String getMedalHolderBranch() {

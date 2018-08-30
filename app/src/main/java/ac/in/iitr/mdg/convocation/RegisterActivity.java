@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -16,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 public class RegisterActivity extends AppCompatActivity {
     Spinner sizeOfDress;

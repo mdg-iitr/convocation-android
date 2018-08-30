@@ -1,8 +1,4 @@
-package ac.in.iitr.mdg.convocation.views;
-
-/**
- * Created by suyash on 8/2/18.
- */
+package ac.in.iitr.mdg.convocation.models;
 
 public class Schedule {
     public static final int TYPE_DATE = 0;

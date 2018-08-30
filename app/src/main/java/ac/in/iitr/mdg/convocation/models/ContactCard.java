@@ -1,8 +1,5 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation.models;
 
-/**
- * Created by suyash on 8/24/18.
- */
 
 public class ContactCard {
     public String contact_name, contact_post, contact_number;

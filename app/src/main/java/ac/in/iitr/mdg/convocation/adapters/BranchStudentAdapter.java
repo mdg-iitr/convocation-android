@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.views;
+package ac.in.iitr.mdg.convocation.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,10 +11,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Locale;
 
-
-/**
- * Created by suyash on 8/1/18.
- */
+import ac.in.iitr.mdg.convocation.R;
+import ac.in.iitr.mdg.convocation.models.BranchStudentCard;
 
 public class BranchStudentAdapter extends RecyclerView.Adapter<BranchStudentAdapter.BranchStudentHolder> {
     Context context;
