@@ -16,34 +16,23 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
 
     private Bitmap[] imageDataSet;
     private String[] textDataSet;
-    public static class ViewHolder extends RecyclerView.ViewHolder{
 
-        public ImageView mImageView;
-        public TextView mTextView;
-        public ViewHolder(View i){
-            super(i);
-            mImageView = i.findViewById(R.id.gallery_photo);
-            mTextView = i.findViewById(R.id.gallery_photo_text);
-        }
-
-    }
-
-    public GalleryAdapter(Bitmap[] b,String[] s){
+    public GalleryAdapter(Bitmap[] b, String[] s) {
         imageDataSet = b;
         textDataSet = s;
     }
 
     @Override
-    public GalleryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public GalleryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //create a new View
-        View i =  LayoutInflater.from(parent.getContext()).inflate(R.layout.gallery_image,parent,false);
+        View i = LayoutInflater.from(parent.getContext()).inflate(R.layout.gallery_image, parent, false);
         ViewHolder viewHolder = new ViewHolder(i);
         return viewHolder;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder,int position){
+    public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mImageView.setImageBitmap(imageDataSet[position]);
@@ -54,6 +43,19 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
     @Override
     public int getItemCount() {
         return imageDataSet.length;
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        public ImageView mImageView;
+        public TextView mTextView;
+
+        public ViewHolder(View i) {
+            super(i);
+            mImageView = i.findViewById(R.id.gallery_photo);
+            mTextView = i.findViewById(R.id.gallery_photo_text);
+        }
+
     }
 
 }

@@ -1,111 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/female_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/female"
-        android:textSize="16sp"
-        android:fontFamily="@font/metropolis_semibold"
-        android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
-        android:id="@+id/female_tag"
+        android:fontFamily="@font/metropolis_semibold"
+        android:text="@string/female"
         android:textColor="#262626"
-        />
+        android:textSize="16sp" />
+
     <ImageView
+        android:id="@+id/female_dress_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="29.6dp"
-        android:layout_marginStart="24.5dp"
-        android:layout_marginLeft="24.5dp"
-        android:src="@drawable/grey_card"
-        android:id="@+id/female_dress_image"
         android:layout_below="@+id/female_tag"
-        />
+        android:layout_marginLeft="24.5dp"
+        android:layout_marginStart="24.5dp"
+        android:layout_marginTop="29.6dp"
+        android:src="@drawable/grey_card" />
+
     <TextView
+        android:id="@+id/female_dress_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/female_dress_image"
-        android:layout_toRightOf="@+id/female_dress_image"
         android:layout_alignTop="@+id/female_dress_image"
         android:layout_marginLeft="29.5dp"
         android:layout_marginStart="29.5dp"
-        android:text="@string/female"
-        android:id="@+id/female_dress_name"
-        android:fontFamily="@font/metropolis_medium"
-        android:textSize="16sp"
-        android:textColor="#444444"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/female_dress_image"
         android:layout_toRightOf="@+id/female_dress_image"
+        android:fontFamily="@font/metropolis_medium"
+        android:text="@string/female"
+        android:textColor="#444444"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/female_dress_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/female_dress_name"
         android:layout_marginLeft="29.5dp"
         android:layout_marginStart="29.5dp"
         android:layout_marginTop="19dp"
-        android:text="@string/dummy_text"
-        android:textSize="12sp"
-        android:id="@+id/female_dress_description"
+        android:layout_toEndOf="@+id/female_dress_image"
+        android:layout_toRightOf="@+id/female_dress_image"
         android:fontFamily="@font/metropolis_medium"
+        android:text="@string/dummy_text"
         android:textColor="#737373"
-        />
+        android:textSize="12sp" />
+
     <TextView
+        android:id="@+id/male_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/male"
-        android:textSize="16sp"
-        android:fontFamily="@font/metropolis_semibold"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="45.2dp"
         android:layout_below="@+id/female_dress_image"
-        android:id="@+id/male_tag"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="45.2dp"
+        android:fontFamily="@font/metropolis_semibold"
+        android:text="@string/male"
         android:textColor="#262626"
-        />
+        android:textSize="16sp" />
 
     <ImageView
+        android:id="@+id/male_dress_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="29.6dp"
-        android:layout_marginStart="24.5dp"
-        android:layout_marginLeft="24.5dp"
-        android:src="@drawable/grey_card"
-        android:id="@+id/male_dress_image"
         android:layout_below="@+id/male_tag"
-        />
+        android:layout_marginLeft="24.5dp"
+        android:layout_marginStart="24.5dp"
+        android:layout_marginTop="29.6dp"
+        android:src="@drawable/grey_card" />
+
     <TextView
+        android:id="@+id/male_dress_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/male_dress_image"
-        android:layout_toRightOf="@+id/male_dress_image"
         android:layout_alignTop="@+id/male_dress_image"
         android:layout_marginLeft="29.5dp"
         android:layout_marginStart="29.5dp"
-        android:text="@string/male"
-        android:id="@+id/male_dress_name"
-        android:fontFamily="@font/metropolis_medium"
-        android:textSize="16sp"
-        android:textColor="#444444"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/male_dress_image"
         android:layout_toRightOf="@+id/male_dress_image"
+        android:fontFamily="@font/metropolis_medium"
+        android:text="@string/male"
+        android:textColor="#444444"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/male_dress_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/male_dress_name"
         android:layout_marginLeft="29.5dp"
         android:layout_marginStart="29.5dp"
         android:layout_marginTop="19dp"
-        android:text="@string/dummy_text"
-        android:textSize="12sp"
-        android:id="@+id/male_dress_description"
+        android:layout_toEndOf="@+id/male_dress_image"
+        android:layout_toRightOf="@+id/male_dress_image"
         android:fontFamily="@font/metropolis_medium"
+        android:text="@string/dummy_text"
         android:textColor="#737373"
-        />
+        android:textSize="12sp" />
 
 </RelativeLayout>

@@ -5,7 +5,7 @@ package ac.in.iitr.mdg.convocation.views;
  */
 
 public class ContactCard {
-    public String contact_name,contact_post,contact_number;
+    public String contact_name, contact_post, contact_number;
 
     public ContactCard(String contact_name, String contact_post, String contact_number) {
         this.contact_name = contact_name;

@@ -107,208 +107,194 @@
                 android:textSize="14sp" />
 
             <View
+                android:id="@+id/divider1"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:layout_below="@+id/profile_image"
-                android:layout_marginTop="25.8dp"
-                android:layout_marginStart="22dp"
-                android:layout_marginLeft="22dp"
                 android:layout_marginEnd="22dp"
+                android:layout_marginLeft="22dp"
                 android:layout_marginRight="22dp"
-                android:background="#ededed"
-                android:id="@+id/divider1"
-                />
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="25.8dp"
+                android:background="#ededed" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/enrolment_no"
-                android:layout_below="@+id/divider1"
-                android:layout_marginTop="21dp"
-                android:layout_marginStart="22dp"
-                android:layout_marginLeft="22dp"
-                android:textColor="#444444"
-                android:textSize="16sp"
-                android:fontFamily="@font/metropolis_medium"
                 android:id="@+id/enNoTag"
-                />
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dept"
-                android:layout_below="@+id/enNoTag"
-                android:layout_marginTop="12.4dp"
-                android:layout_marginStart="22dp"
-                android:layout_marginLeft="22dp"
-                android:textColor="#444444"
-                android:textSize="16sp"
-                android:fontFamily="@font/metropolis_medium"
-                />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="123456789"
                 android:layout_below="@+id/divider1"
-                android:layout_marginTop="22dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:textColor="#737373"
-                android:textSize="16sp"
-                android:fontFamily="@font/metropolis_light"
-                android:id="@+id/enrolment_no_display"
-                />
+                android:layout_marginLeft="22dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="21dp"
+                android:fontFamily="@font/metropolis_medium"
+                android:text="@string/enrolment_no"
+                android:textColor="#444444"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="123456789"
-                android:layout_below="@+id/enrolment_no_display"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_below="@+id/enNoTag"
+                android:layout_marginLeft="22dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="12.4dp"
+                android:fontFamily="@font/metropolis_medium"
+                android:text="@string/dept"
+                android:textColor="#444444"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/enrolment_no_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:textColor="#737373"
-                android:textSize="16sp"
+                android:layout_below="@+id/divider1"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="22dp"
                 android:fontFamily="@font/metropolis_light"
+                android:text="123456789"
+                android:textColor="#737373"
+                android:textSize="16sp" />
+
+            <TextView
                 android:id="@+id/dept_display"
-                />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/enrolment_no_display"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/metropolis_light"
+                android:text="123456789"
+                android:textColor="#737373"
+                android:textSize="16sp" />
 
             <android.support.v7.widget.CardView
+                android:id="@+id/bank_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-
-                android:id="@+id/bank_card"
                 android:layout_below="@+id/dept_display"
-                android:layout_marginTop="28.8dp"
-                >
+                android:layout_marginEnd="20dp"
+                android:layout_marginLeft="20dp"
+
+                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="28.8dp">
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/gradient"/>
+                    android:src="@drawable/gradient" />
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:id="@+id/bank_card_layout"
-                    >
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <TextView
+                        android:id="@+id/transidTag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/transidTag"
-                        android:text="@string/transactionId"
-                        android:layout_marginTop="30dp"
                         android:layout_centerHorizontal="true"
-                        android:textSize="14sp"
-                        android:textColor="@color/white"
+                        android:layout_marginTop="30dp"
                         android:fontFamily="@font/metropolis_medium"
-                        />
+                        android:text="@string/transactionId"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
                     <TextView
+                        android:id="@+id/transaction_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/transidTag"
-                        android:id="@+id/transaction_id"
-                        android:text="@string/transactionId"
-                        android:layout_marginTop="9dp"
                         android:layout_centerHorizontal="true"
-                        android:textSize="24sp"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/metropolis_bold"
                         android:layout_marginBottom="26dp"
-                        />
+                        android:layout_marginTop="9dp"
+                        android:fontFamily="@font/metropolis_bold"
+                        android:text="@string/transactionId"
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
 
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
 
             <View
+                android:id="@+id/divider2"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:layout_below="@+id/bank_card"
-                android:layout_marginTop="25.8dp"
-                android:layout_marginStart="22dp"
-                android:layout_marginLeft="22dp"
                 android:layout_marginEnd="22dp"
+                android:layout_marginLeft="22dp"
                 android:layout_marginRight="22dp"
-                android:background="#ededed"
-                android:id="@+id/divider2"
-                />
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="25.8dp"
+                android:background="#ededed" />
 
             <Button
+                android:id="@+id/mapsButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/action_maps"
-                android:textAppearance="@style/AllCapsFalse"
-                android:fontFamily="@font/metropolis_medium"
-                android:textSize="14sp"
                 android:layout_below="@+id/divider2"
-                android:layout_marginStart="22dp"
                 android:layout_marginLeft="22dp"
+                android:layout_marginStart="22dp"
                 android:layout_marginTop="17.9dp"
-                android:textColor="#444444"
-                android:id="@+id/mapsButton"
                 android:background="@android:color/transparent"
+                android:fontFamily="@font/metropolis_medium"
+                android:text="@string/action_maps"
                 android:textAlignment="viewStart"
-                />
+                android:textAppearance="@style/AllCapsFalse"
+                android:textColor="#444444"
+                android:textSize="14sp" />
 
             <View
+                android:id="@+id/divider3"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:layout_below="@+id/mapsButton"
-                android:layout_marginTop="18.3dp"
-                android:layout_marginStart="22dp"
-                android:layout_marginLeft="22dp"
                 android:layout_marginEnd="22dp"
+                android:layout_marginLeft="22dp"
                 android:layout_marginRight="22dp"
-                android:background="#ededed"
-                android:id="@+id/divider3"
-                />
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="18.3dp"
+                android:background="#ededed" />
 
             <Button
+                android:id="@+id/feedbackButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/action_feedback"
-                android:textAppearance="@style/AllCapsFalse"
-                android:fontFamily="@font/metropolis_medium"
-                android:textSize="14sp"
                 android:layout_below="@+id/divider3"
-                android:layout_marginStart="22dp"
                 android:layout_marginLeft="22dp"
+                android:layout_marginStart="22dp"
                 android:layout_marginTop="17.9dp"
-                android:textColor="#444444"
                 android:background="@android:color/transparent"
-                android:id="@+id/feedbackButton"
+                android:fontFamily="@font/metropolis_medium"
+                android:text="@string/action_feedback"
                 android:textAlignment="viewStart"
-                />
+                android:textAppearance="@style/AllCapsFalse"
+                android:textColor="#444444"
+                android:textSize="14sp" />
 
             <View
+                android:id="@+id/divider4"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:layout_below="@+id/feedbackButton"
-                android:layout_marginTop="17.7dp"
-                android:layout_marginStart="22dp"
-                android:layout_marginLeft="22dp"
                 android:layout_marginEnd="22dp"
+                android:layout_marginLeft="22dp"
                 android:layout_marginRight="22dp"
-                android:background="#ededed"
-                android:id="@+id/divider4"
-                />
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="17.7dp"
+                android:background="#ededed" />
 
         </RelativeLayout>
 
     </ScrollView>
-
-
 
 
 </LinearLayout>

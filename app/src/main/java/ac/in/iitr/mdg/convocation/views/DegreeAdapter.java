@@ -28,21 +28,21 @@ public class DegreeAdapter extends RecyclerView.Adapter<DegreeAdapter.Branchhold
     @NonNull
     @Override
     public Branchholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_degree,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_degree, parent, false);
         Branchholder textHolder = new Branchholder(view);
         return textHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull Branchholder holder, int position) {
-        final DegreeCard mylist =list.get(position);
+        final DegreeCard mylist = list.get(position);
         holder.branch.setText(mylist.getBranchName());
         holder.no_of_students.setText(mylist.getNumberOfStudents());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(),BranchStudents.class);
-                intent.putExtra("branch",mylist.getBranchName());
+                Intent intent = new Intent(v.getContext(), BranchStudents.class);
+                intent.putExtra("branch", mylist.getBranchName());
                 v.getContext().startActivity(intent);
             }
         });
@@ -52,25 +52,26 @@ public class DegreeAdapter extends RecyclerView.Adapter<DegreeAdapter.Branchhold
     public int getItemCount() {
         int arr = 0;
         try {
-            if (list.size()== 0){
-                arr =0;
-            }
-            else {
+            if (list.size() == 0) {
+                arr = 0;
+            } else {
                 arr = list.size();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         return arr;
     }
-    class Branchholder extends RecyclerView.ViewHolder{
+
+    class Branchholder extends RecyclerView.ViewHolder {
         public TextView branch, no_of_students;
         public CardView cardView;
+
         public Branchholder(View itemView) {
             super(itemView);
-            branch = (TextView)itemView.findViewById(R.id.degree_branch);
-            no_of_students = (TextView)itemView.findViewById(R.id.degree_number_of_students);
-            cardView = (CardView)itemView.findViewById(R.id.degreeCard);
+            branch = (TextView) itemView.findViewById(R.id.degree_branch);
+            no_of_students = (TextView) itemView.findViewById(R.id.degree_number_of_students);
+            cardView = (CardView) itemView.findViewById(R.id.degreeCard);
         }
     }
 }

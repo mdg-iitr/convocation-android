@@ -5,10 +5,10 @@ package ac.in.iitr.mdg.convocation.views;
  */
 
 public class Schedule {
-    public String schedule_date;
-    public ScheduleCard scheduleCard;
     public static final int TYPE_DATE = 0;
     public static final int TYPE_SCHEDULE = 1;
+    public String schedule_date;
+    public ScheduleCard scheduleCard;
     private int type;
 
     public Schedule(int type, String schedule_date) {

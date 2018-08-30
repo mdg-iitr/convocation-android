@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,38 +9,38 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:id="@+id/instiLevel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="13dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="14dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/metropolis_regular"
             android:text="@string/inst_medals"
             android:textAppearance="@style/AllCapsFalse"
-            android:textSize="12sp"
-            android:fontFamily="@font/metropolis_regular"
-            android:layout_marginStart="14dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginTop="14dp"
-            android:id="@+id/instiLevel"
-            android:layout_weight="1"/>
+            android:textSize="12sp" />
 
         <Button
+            android:id="@+id/deptLevel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/dept_medals"
-            android:textAppearance="@style/AllCapsFalse"
-            android:textSize="12sp"
-            android:fontFamily="@font/metropolis_regular"
             android:layout_marginEnd="13dp"
             android:layout_marginTop="14dp"
-            android:id="@+id/deptLevel"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:fontFamily="@font/metropolis_regular"
+            android:text="@string/dept_medals"
+            android:textAppearance="@style/AllCapsFalse"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/medals_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="14dp"
+        android:layout_below="@+id/linearLayout"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_below="@+id/linearLayout"/>
+        android:layout_marginTop="14dp" />
 
 </RelativeLayout>

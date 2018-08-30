@@ -8,7 +8,7 @@ import android.graphics.Bitmap;
 
 public class ScheduleCard {
     public Bitmap schedule_image;
-    public String schedule_event,schedule_venue,schedule_time;
+    public String schedule_event, schedule_venue, schedule_time;
 
 
     public ScheduleCard(Bitmap schedule_image, String schedule_event, String schedule_venue, String schedule_time) {

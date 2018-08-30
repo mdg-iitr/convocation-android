@@ -10,31 +10,8 @@ import java.util.List;
 
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.MyViewHolder> {
 
-    public interface OnItemClickListener {
-        void onItemClick(HotelProfile hotel);
-    }
-
     private final HotelAdapter.OnItemClickListener listener;
-
     private List<HotelProfile> hotelList;
-
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView serialNo,name,address;
-
-        public MyViewHolder(View view) {
-            super(view);
-            name = (TextView) view.findViewById(R.id.hotel_card_name);
-        }
-
-        public void bind(final HotelProfile hotel, final HotelAdapter.OnItemClickListener listener){
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
-                    listener.onItemClick(hotel);
-                }
-            });
-        }
-    }
-
 
     public HotelAdapter(List<HotelProfile> guestList, HotelAdapter.OnItemClickListener listener) {
         this.hotelList = guestList;
@@ -59,6 +36,28 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.MyViewHolder
     @Override
     public int getItemCount() {
         return hotelList.size();
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(HotelProfile hotel);
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView serialNo, name, address;
+
+        public MyViewHolder(View view) {
+            super(view);
+            name = (TextView) view.findViewById(R.id.hotel_card_name);
+        }
+
+        public void bind(final HotelProfile hotel, final HotelAdapter.OnItemClickListener listener) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(hotel);
+                }
+            });
+        }
     }
 }
 

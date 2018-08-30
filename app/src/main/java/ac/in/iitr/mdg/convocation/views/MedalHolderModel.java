@@ -13,6 +13,15 @@ public class MedalHolderModel {
     public String medalHolderBranch;
     public String medalHolderEnNo;
 
+    MedalHolderModel(Bitmap medalHolderImage, String medalHolderName, String medalHolderBranch, String medalHolderEnNo) {
+
+        this.medalHolderImage = medalHolderImage;
+        this.medalHolderBranch = medalHolderBranch;
+        this.medalHolderEnNo = medalHolderEnNo;
+        this.medalHolderName = medalHolderName;
+
+    }
+
     public String getMedalHolderBranch() {
         return medalHolderBranch;
     }
@@ -24,15 +33,8 @@ public class MedalHolderModel {
     public String getMedalHolderName() {
         return medalHolderName;
     }
-    public Bitmap getMedalHolderImage(){
+
+    public Bitmap getMedalHolderImage() {
         return medalHolderImage;
-    }
-    MedalHolderModel(Bitmap medalHolderImage, String medalHolderName,String medalHolderBranch,String medalHolderEnNo){
-
-        this.medalHolderImage = medalHolderImage;
-        this.medalHolderBranch = medalHolderBranch;
-        this.medalHolderEnNo = medalHolderEnNo;
-        this.medalHolderName = medalHolderName;
-
     }
 }

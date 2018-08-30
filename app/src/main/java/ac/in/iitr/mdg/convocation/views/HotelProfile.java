@@ -10,11 +10,11 @@ public class HotelProfile {
     private Image imageMain;
     private String Data;
 
-    public HotelProfile(){
+    public HotelProfile() {
 
     }
 
-    public HotelProfile(String name, String address, String data, Image imageMain, Image imageThumb){
+    public HotelProfile(String name, String address, String data, Image imageMain, Image imageThumb) {
         this.Name = name;
         this.Address = address;
         this.imageMain = imageMain;
@@ -26,37 +26,36 @@ public class HotelProfile {
         return imageMain;
     }
 
+    public void setImageMain(Image imageMain) {
+        this.imageMain = imageMain;
+    }
+
     public Image getImageThumb() {
         return imageThumb;
+    }
+
+    public void setImageThumb(Image imageThumb) {
+        this.imageThumb = imageThumb;
     }
 
     public String getData() {
         return Data;
     }
 
-    public String getAddress() {
-        return Address;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-
     public void setData(String data) {
         Data = data;
+    }
+
+    public String getAddress() {
+        return Address;
     }
 
     public void setAddress(String address) {
         Address = address;
     }
 
-    public void setImageMain(Image imageMain) {
-        this.imageMain = imageMain;
-    }
-
-    public void setImageThumb(Image imageThumb) {
-        this.imageThumb = imageThumb;
+    public String getName() {
+        return Name;
     }
 
     public void setName(String name) {

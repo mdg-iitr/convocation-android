@@ -5,10 +5,10 @@ package ac.in.iitr.mdg.convocation.views;
  */
 
 public class Contact {
-    public String contact_category;
-    public ContactCard contactCard;
     public static final int TYPE_CATEGORY = 0;
     public static final int TYPE_CONTACT = 1;
+    public String contact_category;
+    public ContactCard contactCard;
     private int type;
 
     public Contact(int type, String contact_category) {

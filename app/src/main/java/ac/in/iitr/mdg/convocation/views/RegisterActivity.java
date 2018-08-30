@@ -1,15 +1,12 @@
 package ac.in.iitr.mdg.convocation.views;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.Toast;
-
-import android.annotation.SuppressLint;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,11 +15,12 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class RegisterActivity extends AppCompatActivity {
     Spinner sizeOfDress;
-    Button peopleDetailNone,peopleDetailOne,peopleDetailTwo,vehicleDetailNone,vehicleDetailOne,submit;
+    Button peopleDetailNone, peopleDetailOne, peopleDetailTwo, vehicleDetailNone, vehicleDetailOne, submit;
     CheckBox checkBox_terms;
 
     private Intent intentFilterIntent;
@@ -156,17 +154,15 @@ public class RegisterActivity extends AppCompatActivity {
             @SuppressLint("NewApi")
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
+                if (isChecked) {
                     submit.setClickable(true);
                     submit.setTextColor(getResources().getColor(R.color.white));
-                }
-                else {
+                } else {
                     submit.setClickable(false);
                     submit.setTextColor(getResources().getColor(R.color.whiteTransparent));
                 }
             }
         });
-
 
 
     }

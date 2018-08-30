@@ -88,15 +88,15 @@
             app:ignore="RtlCompat" />
 
     </LinearLayout>
-    
+
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_below="@id/linearLayout"
-        android:background="#ededed"
-        android:layout_marginStart="25dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
+        android:background="#ededed"
         app:ignore="RtlCompat" />
 
 </RelativeLayout>

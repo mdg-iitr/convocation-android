@@ -11,60 +11,58 @@ public class ChiefGuestProfile {
     private String Data;
     private String date;
 
-            public ChiefGuestProfile(){
-        
-                    }
+    public ChiefGuestProfile() {
 
-            public ChiefGuestProfile(String name, String designation, String date, String data, Image imageMain, Image imageThumb){
-                this.date = date;
-                this.Name = name;
-                this.Designation = designation;
-                this.imageMain = imageMain;
-                this.imageThumb = imageThumb;
-                this.Data = data;
-            }
+    }
 
-            public Image getImageMain() {
-                return imageMain;
-            }
+    public ChiefGuestProfile(String name, String designation, String date, String data, Image imageMain, Image imageThumb) {
+        this.date = date;
+        this.Name = name;
+        this.Designation = designation;
+        this.imageMain = imageMain;
+        this.imageThumb = imageThumb;
+        this.Data = data;
+    }
 
-            public Image getImageThumb() {
-                return imageThumb;
-            }
+    public Image getImageMain() {
+        return imageMain;
+    }
 
+    public void setImageMain(Image imageMain) {
+        this.imageMain = imageMain;
+    }
 
-            public String getData() {
-                return Data;
-            }
+    public Image getImageThumb() {
+        return imageThumb;
+    }
 
-            public String getDesignation() {
-                return Designation;
-            }
+    public void setImageThumb(Image imageThumb) {
+        this.imageThumb = imageThumb;
+    }
 
-            public String getName() {
-                return Name;
-            }
+    public String getData() {
+        return Data;
+    }
 
-        
-            public void setData(String data) {
-                Data = data;
-            }
+    public void setData(String data) {
+        Data = data;
+    }
 
-            public void setDesignation(String designation) {
-                Designation = designation;
-            }
+    public String getDesignation() {
+        return Designation;
+    }
 
-            public void setImageMain(Image imageMain) {
-                this.imageMain = imageMain;
-            }
+    public void setDesignation(String designation) {
+        Designation = designation;
+    }
 
-            public void setImageThumb(Image imageThumb) {
-                this.imageThumb = imageThumb;
-            }
+    public String getName() {
+        return Name;
+    }
 
-            public void setName(String name) {
-                Name = name;
-            }
+    public void setName(String name) {
+        Name = name;
+    }
 
     public String getDate() {
         return date;
