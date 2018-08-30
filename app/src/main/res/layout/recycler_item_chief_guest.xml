@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chief_guest_card"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:background="@color/colorAccent"
+    app:cardElevation="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/guest_card_thumbimage"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
+            android:background="#dedede" />
+
+        <TextView
+            android:id="@+id/guest_card_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/metropolis_medium"
+            android:gravity="center_horizontal"
+            android:textColor="#444444"
+            android:textSize="12sp"
+            tools:text="Shri Ram Naik" />
+
+        <TextView
+            android:id="@+id/guest_card_desg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/metropolis_regular"
+            android:gravity="center_horizontal"
+            android:textColor="#838383"
+            android:textSize="10sp"
+            tools:text="Hon’ble Governor of U.P." />
+
+        <TextView
+            android:id="@+id/guest_card_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/metropolis_regular"
+            android:gravity="center_horizontal"
+            android:textColor="#838383"
+            android:textSize="10sp"
+            tools:text="(6 Oct. 2018 , UG)" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

@@ -30,6 +30,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -409,12 +410,12 @@ public class MainActivity extends AppCompatActivity {
 
         private View setUpHome(View view) {
 
-            ImageButton fblink = view.findViewById(R.id.fblink);
-            ImageButton twlink = view.findViewById(R.id.twlink);
-            ImageButton ytlink = view.findViewById(R.id.ytlink);
-            ImageButton inlink = view.findViewById(R.id.inlink);
+            ImageView fblink = view.findViewById(R.id.fblink);
+            ImageView twlink = view.findViewById(R.id.twlink);
+            ImageView ytlink = view.findViewById(R.id.ytlink);
+            ImageView inlink = view.findViewById(R.id.inlink);
 
-            recyclerViewGuest = view.findViewById(R.id.chiefguestListView);
+            recyclerViewGuest = view.findViewById(R.id.chief_guest_recycler);
 
             mAdapterGuest = new ChiefGuestAdapter(guestList, new ChiefGuestAdapter.OnItemClickListener() {
                 @Override

@@ -26,7 +26,7 @@ public class ChiefGuestAdapter extends RecyclerView.Adapter<ChiefGuestAdapter.My
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.chiefguestcard, parent, false);
+                .inflate(R.layout.recycler_item_chief_guest, parent, false);
 
         return new MyViewHolder(itemView);
     }
