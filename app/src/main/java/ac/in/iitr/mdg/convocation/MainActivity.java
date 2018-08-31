@@ -31,10 +31,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import ac.in.iitr.mdg.convocation.adapters.ChiefGuestAdapter;
 import ac.in.iitr.mdg.convocation.adapters.ContactAdapter;
@@ -160,8 +162,12 @@ public class MainActivity extends AppCompatActivity {
 
                     View rootView4 = inflater.inflate(R.layout.fragment_schedule, container, false);
 
+                    final ProgressBar progressBar = rootView4.findViewById(R.id.progress_bar);
+                    progressBar.setVisibility(View.VISIBLE);
+
                     final RecyclerView recyclerView = rootView4.findViewById(R.id.schedule_recyclerView);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    recyclerView.setVisibility(View.GONE);
 
                     ApiClient.getClientWithoutAuth(activityContext)
                             .create(ConvoApi.class)
@@ -189,6 +195,8 @@ public class MainActivity extends AppCompatActivity {
 
                                     }
                                     textAdapter.notifyDataSetChanged();
+                                    recyclerView.setVisibility(View.VISIBLE);
+                                    progressBar.setVisibility(View.GONE);
                                 }
 
                                 @Override
