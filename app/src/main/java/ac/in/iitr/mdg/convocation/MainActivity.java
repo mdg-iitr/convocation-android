@@ -65,7 +65,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String CONVO_CHANNELI_OAUTH_URL = "https://channeli.in/oauth/?client_id=248033f9cc5a67b44777&redirect_url=convoiitr://convo.sdslabs.co.in/";
+    private static final String CONVO_CHANNELI_OAUTH_URL = "http://people.iitr.ernet.in/oauth/?client_id=248033f9cc5a67b44777&redirect_url=convoiitr://convo.sdslabs.co.in/";
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,16 +37,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void getIntentFilter() {
         //get intent filter for a param(channeliRedirectUriCode) and send request to verify whether user in a new user or an already existing user
-        intentFilterIntent = getIntent();
-        if (intentFilterIntent != null) {
-            intentUri = intentFilterIntent.getData();
-            String code;
-            if (intentUri != null) {
-                code = intentUri.getQueryParameter("code");
-                Log.d("URI_CODE", code);
-                Toast.makeText(this, "Machaya : " + code, Toast.LENGTH_SHORT).show();
-            }
-        }
 
         Toolbar toolbar = findViewById(R.id.toolbar_register);
         toolbar.setTitle("");
@@ -53,8 +44,8 @@ public class RegisterActivity extends AppCompatActivity {
         textView.setText("Registration");
         setSupportActionBar(toolbar);
 
-        ImageButton imageButton = (ImageButton) findViewById(R.id.back_button_register);
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        ImageView imageView = findViewById(R.id.back_button_register);
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
@@ -152,6 +143,16 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        intentFilterIntent = getIntent();
+        if (intentFilterIntent != null) {
+            intentUri = intentFilterIntent.getData();
+            String code;
+            if (intentUri != null) {
+                code = intentUri.getQueryParameter("code");
+                Log.d("URI_CODE", code);
+                Toast.makeText(this, "Machaya : " + code, Toast.LENGTH_SHORT).show();
+            }
+        }
 
     }
 
