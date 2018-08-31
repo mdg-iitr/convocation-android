@@ -82,7 +82,6 @@
                     android:textColorHint="#afafaf"
                     android:theme="@style/BottomLine" />
 
-
                 <EditText
                     android:id="@+id/register_enrollment"
                     android:layout_width="match_parent"
@@ -94,9 +93,8 @@
                     android:textColorHint="#afafaf"
                     android:theme="@style/BottomLine" />
 
-
                 <EditText
-                    android:id="@+id/register_email1"
+                    android:id="@+id/register_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
@@ -106,18 +104,16 @@
                     android:textColorHint="#afafaf"
                     android:theme="@style/BottomLine" />
 
-
                 <EditText
                     android:id="@+id/register_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
                     android:hint="@string/phone"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:textColor="#737373"
                     android:textColorHint="#afafaf"
                     android:theme="@style/BottomLine" />
-
 
                 <EditText
                     android:id="@+id/register_bankTransactionId"
@@ -130,14 +126,12 @@
                     android:textColorHint="#afafaf"
                     android:theme="@style/BottomLine" />
 
-
                 <Spinner
                     android:id="@+id/register_sizeOfDress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
                     android:spinnerMode="dropdown" />
-
 
                 <TextView
                     android:layout_width="match_parent"
@@ -157,7 +151,6 @@
                     android:textColor="#262626"
                     android:textSize="16sp" />
 
-
                 <EditText
                     android:id="@+id/register_address"
                     android:layout_width="match_parent"
@@ -169,29 +162,27 @@
                     android:textColorHint="#afafaf"
                     android:theme="@style/BottomLine" />
 
-
-                <EditText
-                    android:id="@+id/register_mobile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:hint="@string/mobile"
-                    android:inputType="number"
-                    android:textColor="#737373"
-                    android:textColorHint="#afafaf"
-                    android:theme="@style/BottomLine" />
-
-
-                <EditText
-                    android:id="@+id/register_email2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:hint="@string/email"
-                    android:inputType="textEmailAddress"
-                    android:textColor="#737373"
-                    android:textColorHint="#afafaf"
-                    android:theme="@style/BottomLine" />
+                <!--<EditText-->
+                    <!--android:id="@+id/register_mobile"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="28dp"-->
+                    <!--android:hint="@string/mobile"-->
+                    <!--android:inputType="number"-->
+                    <!--android:textColor="#737373"-->
+                    <!--android:textColorHint="#afafaf"-->
+                    <!--android:theme="@style/BottomLine" />-->
+                <!---->
+                <!--<EditText-->
+                    <!--android:id="@+id/register_email2"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="28dp"-->
+                    <!--android:hint="@string/email"-->
+                    <!--android:inputType="textEmailAddress"-->
+                    <!--android:textColor="#737373"-->
+                    <!--android:textColorHint="#afafaf"-->
+                    <!--android:theme="@style/BottomLine" />-->
 
                 <TextView
                     android:layout_width="match_parent"

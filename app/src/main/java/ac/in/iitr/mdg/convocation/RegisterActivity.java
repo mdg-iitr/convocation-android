@@ -3,27 +3,27 @@ package ac.in.iitr.mdg.convocation;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.greenrobot.eventbus.EventBus;
-
-import ac.in.iitr.mdg.convocation.events.CloseCustomTabEvent;
 import ac.in.iitr.mdg.convocation.network.ApiClient;
 import ac.in.iitr.mdg.convocation.network.ConvoApi;
+import ac.in.iitr.mdg.convocation.responsemodels.CommonResponse;
 import ac.in.iitr.mdg.convocation.responsemodels.OauthResponse;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -32,9 +32,15 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    Spinner sizeOfDress;
-    Button peopleDetailNone, peopleDetailOne, peopleDetailTwo, vehicleDetailNone, vehicleDetailOne, submit;
-    CheckBox checkBox_terms;
+    private Spinner sizeOfDress;
+    private Button peopleDetailNone, peopleDetailOne, peopleDetailTwo, vehicleDetailNone, vehicleDetailOne, submit;
+    private CheckBox checkBox_terms;
+
+    private int numPeopleSelected = 0;
+    private boolean isFourWheeler = false;
+
+    private EditText basicName, basicEnrNo, basicEmail, basicPhNo, basicTransactionID;
+    private EditText additionalAddress;
 
     private Intent intentFilterIntent;
     private Uri intentUri;
@@ -51,6 +57,16 @@ public class RegisterActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.registration);
         textView.setText("Registration");
         setSupportActionBar(toolbar);
+
+        basicName = findViewById(R.id.register_name);
+        basicName.setEnabled(false);
+        basicEnrNo = findViewById(R.id.register_enrollment);
+        basicEnrNo.setEnabled(false);
+        basicEmail = findViewById(R.id.register_email);
+        basicPhNo = findViewById(R.id.register_phone);
+        basicTransactionID = findViewById(R.id.register_bankTransactionId);
+
+        additionalAddress = findViewById(R.id.register_address);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
@@ -80,6 +96,59 @@ public class RegisterActivity extends AppCompatActivity {
         submit.setClickable(false);
         checkBox_terms.setChecked(false);
 
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (validateData()) {
+                    ApiClient.getClientWithoutAuth(RegisterActivity.this)
+                            .create(ConvoApi.class)
+                            .registerUser(
+                                    basicEnrNo.getText().toString(),
+                                    basicPhNo.getText().toString(),
+                                    basicName.getText().toString(),
+                                    basicEmail.getText().toString(),
+                                    numPeopleSelected,
+                                    (isFourWheeler) ? 1 : 0,
+                                    basicTransactionID.getText().toString())
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new Observer<CommonResponse>() {
+                                @Override
+                                public void onSubscribe(Disposable d) {
+
+                                }
+
+                                @Override
+                                public void onNext(CommonResponse commonResponse) {
+                                    if (!commonResponse.getStatus().equals("error")) {
+                                        updateIsRegisteredInSharedPrefs(true);
+                                        Toast.makeText(RegisterActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    } else {
+                                        if (commonResponse.getMessage().toLowerCase().contains("already")) {
+                                            Toast.makeText(RegisterActivity.this, "Already registered", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        } else {
+                                            Toast.makeText(RegisterActivity.this, "Failed to register, Please Try Again", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+                                    Toast.makeText(RegisterActivity.this, "Failed to register, Please Try Again", Toast.LENGTH_SHORT).show();
+                                    e.printStackTrace();
+                                }
+
+                                @Override
+                                public void onComplete() {
+
+                                }
+                            });
+                }
+            }
+        });
+
         peopleDetailNone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +158,8 @@ public class RegisterActivity extends AppCompatActivity {
                 peopleDetailOne.setTextColor(getResources().getColor(R.color.textColor));
                 peopleDetailTwo.setBackgroundColor(getResources().getColor(R.color.white));
                 peopleDetailTwo.setTextColor(getResources().getColor(R.color.textColor));
+
+                numPeopleSelected = 0;
             }
         });
 
@@ -104,6 +175,7 @@ public class RegisterActivity extends AppCompatActivity {
                 peopleDetailTwo.setBackgroundColor(getResources().getColor(R.color.white));
                 peopleDetailTwo.setTextColor(getResources().getColor(R.color.textColor));
 
+                numPeopleSelected = 1;
             }
         });
 
@@ -116,6 +188,8 @@ public class RegisterActivity extends AppCompatActivity {
                 peopleDetailOne.setTextColor(getResources().getColor(R.color.textColor));
                 peopleDetailNone.setBackgroundColor(getResources().getColor(R.color.white));
                 peopleDetailNone.setTextColor(getResources().getColor(R.color.textColor));
+
+                numPeopleSelected = 2;
             }
         });
 
@@ -126,6 +200,8 @@ public class RegisterActivity extends AppCompatActivity {
                 vehicleDetailNone.setTextColor(getResources().getColor(R.color.white));
                 vehicleDetailOne.setBackgroundColor(getResources().getColor(R.color.white));
                 vehicleDetailOne.setTextColor(getResources().getColor(R.color.textColor));
+
+                isFourWheeler = false;
             }
         });
         vehicleDetailNone.performClick();
@@ -138,6 +214,8 @@ public class RegisterActivity extends AppCompatActivity {
                 vehicleDetailOne.setTextColor(getResources().getColor(R.color.white));
                 vehicleDetailNone.setBackgroundColor(getResources().getColor(R.color.white));
                 vehicleDetailNone.setTextColor(getResources().getColor(R.color.textColor));
+
+                isFourWheeler = true;
             }
         });
 
@@ -168,7 +246,6 @@ public class RegisterActivity extends AppCompatActivity {
             if (intentUri != null) {
                 code = intentUri.getQueryParameter("code");
                 Log.d("URI_CODE", code);
-                Toast.makeText(this, "Machaya : " + code, Toast.LENGTH_SHORT).show();
                 progressDialog.setMessage("Retrieving Data");
                 progressDialog.show();
                 ApiClient.getClientWithoutAuth(this).create(ConvoApi.class)
@@ -183,8 +260,23 @@ public class RegisterActivity extends AppCompatActivity {
 
                             @Override
                             public void onNext(OauthResponse oauthResponse) {
+
                                 progressDialog.dismiss();
-                                Toast.makeText(RegisterActivity.this, "Successfully Fetched details :)", Toast.LENGTH_SHORT).show();
+
+                                if (oauthResponse.getToken() != null && !oauthResponse.getToken().isEmpty()) {
+                                    updateTokenInSharedPrefs(oauthResponse.getToken());
+                                }
+
+                                if (oauthResponse.isRegistered()) {
+                                    Toast.makeText(RegisterActivity.this, "You have already registered successfully", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                    return;
+                                }
+
+                                basicName.setText(oauthResponse.getName());
+                                basicEnrNo.setText(oauthResponse.getEnrollmentNumber());
+                                basicEmail.setText(oauthResponse.getEmail());
+                                basicPhNo.setText(oauthResponse.getPhoneNumber());
                             }
 
                             @Override
@@ -201,5 +293,40 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    private void updateTokenInSharedPrefs(String token) {
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
+        SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
+        sharedPrefEditor.putString(getString(R.string.token_identifier), token);
+        sharedPrefEditor.commit();
+    }
+
+    private void updateIsRegisteredInSharedPrefs(boolean isRegistered) {
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
+        SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
+        sharedPrefEditor.putBoolean(getString(R.string.token_identifier), isRegistered);
+        sharedPrefEditor.commit();
+    }
+
+    private boolean validateData() {
+        boolean isValid = true;
+
+        if (basicPhNo.getText().toString().isEmpty() || !Patterns.PHONE.matcher(basicPhNo.getText().toString()).matches()) {
+            isValid = false;
+            basicPhNo.setError("Please enter phone number");
+        }
+
+        if (basicEmail.getText().toString().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(basicEmail.getText().toString()).matches()) {
+            isValid = false;
+            basicEmail.setError("Please enter valid email address");
+        }
+
+        if (basicTransactionID.getText().toString().isEmpty()) {
+            isValid = false;
+            basicTransactionID.setError("Transaction Id can't be empty");
+        }
+
+        return isValid;
     }
 }
