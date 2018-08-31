@@ -5,19 +5,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import ac.in.iitr.mdg.convocation.R;
-import ac.in.iitr.mdg.convocation.responsemodels.ChiefGuestProfile;
+import ac.in.iitr.mdg.convocation.responsemodels.ChiefGuestResponse;
 
 public class ChiefGuestAdapter extends RecyclerView.Adapter<ChiefGuestAdapter.MyViewHolder> {
 
     private final OnItemClickListener listener;
-    private List<ChiefGuestProfile> guestList;
+    private List<ChiefGuestResponse> guestList;
 
-    public ChiefGuestAdapter(List<ChiefGuestProfile> guestList, OnItemClickListener listener) {
+    public ChiefGuestAdapter(List<ChiefGuestResponse> guestList, OnItemClickListener listener) {
         this.guestList = guestList;
         this.listener = listener;
     }
@@ -33,10 +36,16 @@ public class ChiefGuestAdapter extends RecyclerView.Adapter<ChiefGuestAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        ChiefGuestProfile guest = guestList.get(position);
+        ChiefGuestResponse guest = guestList.get(position);
+        String imageUrl = guest.getImage();
+        if (imageUrl.isEmpty()) {
+            Picasso.get().load("null").placeholder(R.drawable.grey_card).into(holder.guestImage);
+        } else {
+            Picasso.get().load(imageUrl).placeholder(R.drawable.grey_card).into(holder.guestImage);
+        }
         holder.name.setText(guest.getName());
         holder.designation.setText(guest.getDesignation());
-        holder.date.setText(guest.getDate());
+//        holder.subtitle.setText(guest.getSubtitle());
         holder.bind(guestList.get(position), listener);
     }
 
@@ -46,20 +55,22 @@ public class ChiefGuestAdapter extends RecyclerView.Adapter<ChiefGuestAdapter.My
     }
 
     public interface OnItemClickListener {
-        void onItemClick(ChiefGuestProfile guest);
+        void onItemClick(ChiefGuestResponse guest);
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView name, designation, date;
+        TextView name, designation, subtitle;
+        ImageView guestImage;
 
         MyViewHolder(View view) {
             super(view);
+            guestImage = view.findViewById(R.id.guest_card_thumbimage);
             name = view.findViewById(R.id.guest_card_name);
             designation = view.findViewById(R.id.guest_card_desg);
-            date = view.findViewById(R.id.guest_card_date);
+            subtitle = view.findViewById(R.id.guest_card_date);
         }
 
-        void bind(final ChiefGuestProfile guest, final OnItemClickListener listener) {
+        void bind(final ChiefGuestResponse guest, final OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

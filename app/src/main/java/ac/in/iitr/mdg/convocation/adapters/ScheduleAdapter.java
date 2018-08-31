@@ -63,8 +63,12 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         ScheduleViewModel model = list.get(position);
         if (model != null) {
             if (model.getType() == ScheduleViewModel.TYPE_SCHEDULE) {
-//                Picasso.get().load(model.getScheduleEventModel().getImage()).placeholder(R.drawable.grey_card).into(((ScheduleHolder) holder).scheduleEventImage);
-                Picasso.get().load("null").placeholder(R.drawable.grey_card).into(((ScheduleHolder) holder).scheduleEventImage);
+                String imageUrl = model.getScheduleEventModel().getImage();
+                if (imageUrl.isEmpty()) {
+                    Picasso.get().load("null").placeholder(R.drawable.grey_card).into(((ScheduleHolder) holder).scheduleEventImage);
+                } else {
+                    Picasso.get().load(imageUrl).placeholder(R.drawable.grey_card).into(((ScheduleHolder) holder).scheduleEventImage);
+                }
                 ((ScheduleHolder) holder).scheduleEventTitleText.setText(model.getScheduleEventModel().getTitle());
                 ((ScheduleHolder) holder).scheduleEventVenueText.setText(model.getScheduleEventModel().getVenue());
                 ((ScheduleHolder) holder).scheduleEventTimeText.setText(model.getScheduleEventModel().getTimeStart());

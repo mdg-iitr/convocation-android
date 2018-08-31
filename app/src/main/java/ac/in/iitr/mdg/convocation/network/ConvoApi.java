@@ -2,11 +2,11 @@ package ac.in.iitr.mdg.convocation.network;
 
 import java.util.ArrayList;
 
+import ac.in.iitr.mdg.convocation.responsemodels.ChiefGuestResponse;
 import ac.in.iitr.mdg.convocation.responsemodels.CommonResponse;
 import ac.in.iitr.mdg.convocation.responsemodels.OauthResponse;
 import ac.in.iitr.mdg.convocation.responsemodels.ScheduleModel;
 import io.reactivex.Observable;
-import okhttp3.ResponseBody;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -30,5 +30,8 @@ public interface ConvoApi {
                                             @Field("adults") int adults,
                                             @Field("four_wheeler") int isFourWheeler,
                                             @Field("transaction_id") String transactionId);
+
+    @GET("user/chief_guests/")
+    Observable<ArrayList<ChiefGuestResponse>> getChiefGuests();
 
 }

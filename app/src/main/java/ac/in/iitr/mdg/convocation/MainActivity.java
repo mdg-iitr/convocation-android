@@ -32,6 +32,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -47,7 +48,7 @@ import ac.in.iitr.mdg.convocation.adapters.MedalAdapter;
 import ac.in.iitr.mdg.convocation.adapters.ScheduleAdapter;
 import ac.in.iitr.mdg.convocation.network.ApiClient;
 import ac.in.iitr.mdg.convocation.network.ConvoApi;
-import ac.in.iitr.mdg.convocation.responsemodels.ChiefGuestProfile;
+import ac.in.iitr.mdg.convocation.responsemodels.ChiefGuestResponse;
 import ac.in.iitr.mdg.convocation.responsemodels.Contact;
 import ac.in.iitr.mdg.convocation.responsemodels.ContactCard;
 import ac.in.iitr.mdg.convocation.responsemodels.DegreeCard;
@@ -161,13 +162,10 @@ public class MainActivity extends AppCompatActivity {
     public static class PlaceholderFragment extends Fragment {
 
         private static final String ARG_SECTION_NUMBER = "section_number";
-        List<ChiefGuestProfile> guestList = new ArrayList<>();
         List<HotelProfile> hotelList = new ArrayList<>();
-        RecyclerView recyclerViewGuest, recyclerViewHotel;
-        ChiefGuestAdapter mAdapterGuest;
+        RecyclerView recyclerViewHotel;
         HotelAdapter mAdapterHotel;
         Context activityContext;
-        int k1 = 1;
         int k2 = 1;
 
         public PlaceholderFragment() {
@@ -197,16 +195,69 @@ public class MainActivity extends AppCompatActivity {
             }
             switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
                 case 1:
-                    View rootView1 = inflater.inflate(R.layout.fragment_home, container, false);
-//                    Button registerNowButton = rootView1.findViewById(R.id.button_register_now);
-//                    registerNowButton.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View view) {
-//                            setupChromeCustomTab();
-//                        }
-//                    });
+                    View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-                    return setUpHome(rootView1);
+                    final ProgressBar progressBarHome = view.findViewById(R.id.home_progress_bar);
+                    progressBarHome.setVisibility(View.VISIBLE);
+
+                    final LinearLayout homeWrapper = view.findViewById(R.id.home_wrapper);
+                    homeWrapper.setVisibility(View.GONE);
+
+                    ImageView fblink = view.findViewById(R.id.fblink);
+                    ImageView twlink = view.findViewById(R.id.twlink);
+                    ImageView ytlink = view.findViewById(R.id.ytlink);
+                    ImageView inlink = view.findViewById(R.id.inlink);
+
+                    RecyclerView recyclerViewGuest = view.findViewById(R.id.chief_guest_recycler);
+                    RecyclerView.LayoutManager mLayoutManagerGuest = new LinearLayoutManager(getActivity().getApplicationContext());
+                    recyclerViewGuest.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));
+                    recyclerViewGuest.setItemAnimator(new DefaultItemAnimator());
+
+                    final ArrayList<ChiefGuestResponse> guestList = new ArrayList<>();
+                    final ChiefGuestAdapter mAdapterGuest = new ChiefGuestAdapter(guestList, new ChiefGuestAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(ChiefGuestResponse guest) {
+                            Intent intent = new Intent(getActivity(), ChiefGuestDescriptionActivity.class);
+                            intent.putExtra(ChiefGuestDescriptionActivity.INTENT_EXTRA_GUEST_NAME, guest.getName());
+                            intent.putExtra(ChiefGuestDescriptionActivity.INTENT_EXTRA_GUEST_DESIGNATION, guest.getDesignation());
+                            intent.putExtra(ChiefGuestDescriptionActivity.INTENT_EXTRA_GUEST_BIO, guest.getBio());
+                            startActivity(intent);
+                        }
+                    });
+                    recyclerViewGuest.setAdapter(mAdapterGuest);
+
+                    ApiClient.getClientWithoutAuth(activityContext).create(ConvoApi.class)
+                            .getChiefGuests()
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new Observer<ArrayList<ChiefGuestResponse>>() {
+                                @Override
+                                public void onSubscribe(Disposable d) {
+
+                                }
+
+                                @Override
+                                public void onNext(ArrayList<ChiefGuestResponse> chiefGuestResponses) {
+                                    progressBarHome.setVisibility(View.GONE);
+                                    homeWrapper.setVisibility(View.VISIBLE);
+                                    guestList.clear();
+                                    guestList.addAll(chiefGuestResponses);
+                                    mAdapterGuest.notifyDataSetChanged();
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+                                    progressBarHome.setVisibility(View.GONE);
+                                    e.printStackTrace();
+                                }
+
+                                @Override
+                                public void onComplete() {
+
+                                }
+                            });
+
+                    return view;
 
                 case 2:
                     return inflater.inflate(R.layout.fragment_dresscode, container, false);
@@ -219,8 +270,8 @@ public class MainActivity extends AppCompatActivity {
 
                     View rootView4 = inflater.inflate(R.layout.fragment_schedule, container, false);
 
-                    final ProgressBar progressBar = rootView4.findViewById(R.id.progress_bar);
-                    progressBar.setVisibility(View.VISIBLE);
+                    final ProgressBar progressBarSchedule = rootView4.findViewById(R.id.progress_bar);
+                    progressBarSchedule.setVisibility(View.VISIBLE);
 
                     final RecyclerView recyclerView = rootView4.findViewById(R.id.schedule_recyclerView);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -253,11 +304,12 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                     textAdapter.notifyDataSetChanged();
                                     recyclerView.setVisibility(View.VISIBLE);
-                                    progressBar.setVisibility(View.GONE);
+                                    progressBarSchedule.setVisibility(View.GONE);
                                 }
 
                                 @Override
                                 public void onError(Throwable e) {
+                                    progressBarSchedule.setVisibility(View.GONE);
                                     e.printStackTrace();
                                 }
 
@@ -505,48 +557,23 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        private View setUpHome(View view) {
+//        private View setUpHome(View view) {
+//
+//
+//
+//        }
 
-            ImageView fblink = view.findViewById(R.id.fblink);
-            ImageView twlink = view.findViewById(R.id.twlink);
-            ImageView ytlink = view.findViewById(R.id.ytlink);
-            ImageView inlink = view.findViewById(R.id.inlink);
-
-            recyclerViewGuest = view.findViewById(R.id.chief_guest_recycler);
-
-            mAdapterGuest = new ChiefGuestAdapter(guestList, new ChiefGuestAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(ChiefGuestProfile guest) {
-                    Intent intent = new Intent(getActivity(), ChiefGuestDescriptionActivity.class);
-                    intent.putExtra("headingName", guest.getName());
-                    intent.putExtra("headingDesig", guest.getDesignation());
-                    intent.putExtra("data", guest.getData());
-                    startActivity(intent);
-                }
-            });
-            RecyclerView.LayoutManager mLayoutManagerGuest = new LinearLayoutManager(getActivity().getApplicationContext());
-            recyclerViewGuest.setLayoutManager(mLayoutManagerGuest);
-            recyclerViewGuest.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));
-            recyclerViewGuest.setItemAnimator(new DefaultItemAnimator());
-            recyclerViewGuest.setAdapter(mAdapterGuest);
-
-            prepareGuestData();
-
-            return view;
-
-        }
-
-        private void prepareGuestData() {
-            if (k1 == 1) {
-                ChiefGuestProfile guest = new ChiefGuestProfile("Shri Ram Nath Kovind", "Hon'ble President of India", "(7 Oct. 2018 , PG)", null, null, null);
-                guestList.add(guest);
-
-                guest = new ChiefGuestProfile("Shri Ram Naik", "Hon'ble Governer of U.P.", "(6 Oct. 2018 , UG)", null, null, null);
-                guestList.add(guest);
-                k1--;
-            }
-            mAdapterGuest.notifyDataSetChanged();
-        }
+//        private void prepareGuestData() {
+//            if (k1 == 1) {
+//                ChiefGuestProfile guest = new ChiefGuestProfile("Shri Ram Nath Kovind", "Hon'ble President of India", "(7 Oct. 2018 , PG)", null, null, null);
+//                guestList.add(guest);
+//
+//                guest = new ChiefGuestProfile("Shri Ram Naik", "Hon'ble Governer of U.P.", "(6 Oct. 2018 , UG)", null, null, null);
+//                guestList.add(guest);
+//                k1--;
+//            }
+//            mAdapterGuest.notifyDataSetChanged();
+//        }
 
         private View setUpAcco(View view) {
 

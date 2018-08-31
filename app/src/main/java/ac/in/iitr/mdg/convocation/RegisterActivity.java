@@ -104,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (validateData()) {
                     progressDialog.setMessage("Registering");
                     progressDialog.show();
-                    ApiClient.getClientWithoutAuth(RegisterActivity.this)
+                    ApiClient.getAuthClient(RegisterActivity.this)
                             .create(ConvoApi.class)
                             .registerUser(
                                     basicEnrNo.getText().toString(),

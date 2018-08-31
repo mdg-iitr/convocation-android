@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.responsemodels;
+package ac.in.iitr.mdg.convocation.viewmodels;
 
 import android.media.Image;
 
