@@ -36,7 +36,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginStart="30dp"
                 android:background="@null"
-                android:src="@drawable/bell" />
+                android:src="@drawable/grey_card" />
 
             <ImageButton
                 android:id="@+id/bellNotification"
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:background="@null"
-                android:src="@drawable/bell" />
+                app:srcCompat="@drawable/bell" />
 
         </android.support.v7.widget.Toolbar>
 
@@ -124,6 +124,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <Button
+        android:id="@+id/button_register_now"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/gradient_no_radius"
+        android:fontFamily="@font/metropolis_semibold"
+        android:gravity="center_vertical"
+        android:letterSpacing="0.01"
+        android:text="@string/Register"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
 </android.support.design.widget.CoordinatorLayout>
 

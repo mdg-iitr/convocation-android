@@ -126,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         finish();
                                     } else {
                                         if (commonResponse.getMessage().toLowerCase().contains("already")) {
+                                            updateIsRegisteredInSharedPrefs(true);
                                             Toast.makeText(RegisterActivity.this, "Already registered", Toast.LENGTH_SHORT).show();
                                             finish();
                                         } else {
@@ -268,6 +269,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
 
                                 if (oauthResponse.isRegistered()) {
+                                    updateIsRegisteredInSharedPrefs(true);
                                     Toast.makeText(RegisterActivity.this, "You have already registered successfully", Toast.LENGTH_SHORT).show();
                                     finish();
                                     return;
@@ -305,7 +307,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void updateIsRegisteredInSharedPrefs(boolean isRegistered) {
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
         SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
-        sharedPrefEditor.putBoolean(getString(R.string.token_identifier), isRegistered);
+        sharedPrefEditor.putBoolean(getString(R.string.is_registered_identifier), isRegistered);
         sharedPrefEditor.commit();
     }
 

@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -181,26 +181,26 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="44dp"
                 android:layout_marginTop="44dp" />
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/button_register_now"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="60dp"
-            android:background="@drawable/gradient_no_radius"
-            android:fontFamily="@font/metropolis_semibold"
-            android:gravity="center_vertical"
-            android:letterSpacing="0.01"
-            android:text="@string/Register"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+        <!--<Button-->
+            <!--android:id="@+id/button_register_now"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="54dp"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--android:layout_marginTop="60dp"-->
+            <!--android:background="@drawable/gradient_no_radius"-->
+            <!--android:fontFamily="@font/metropolis_semibold"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:letterSpacing="0.01"-->
+            <!--android:text="@string/Register"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="16sp" />-->
 
-    </FrameLayout>
+    <!--</FrameLayout>-->
 
 </android.support.v4.widget.NestedScrollView>

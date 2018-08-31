@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -34,11 +35,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import ac.in.iitr.mdg.convocation.adapters.ChiefGuestAdapter;
 import ac.in.iitr.mdg.convocation.adapters.ContactAdapter;
@@ -73,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
 
+    private Button registerButton;
+
+    private boolean isRegisteredFromSharedPrefs = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,12 +97,65 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setOffscreenPageLimit(10);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                updateRegisterButtonVisibility();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         TabLayout tabLayout = findViewById(R.id.tabs);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
+        registerButton = findViewById(R.id.button_register_now);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setupChromeCustomTab();
+            }
+        });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
+        isRegisteredFromSharedPrefs = sharedPreferences.getBoolean(getString(R.string.is_registered_identifier), false);
+
+        updateRegisterButtonVisibility();
+    }
+
+    public void updateRegisterButtonVisibility() {
+        if (mViewPager.getCurrentItem() != 0) {
+            registerButton.setVisibility(View.GONE);
+        } else {
+            if (isRegisteredFromSharedPrefs) {
+                registerButton.setVisibility(View.GONE);
+            } else {
+                registerButton.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    public void setupChromeCustomTab() {
+        final CustomTabsIntent chromeIntent = new CustomTabsIntent.Builder().build();
+        chromeIntent.intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        chromeIntent.intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        chromeIntent.launchUrl(this, Uri.parse(CONVO_CHANNELI_OAUTH_URL));
     }
 
     public static class PlaceholderFragment extends Fragment {
@@ -143,13 +198,13 @@ public class MainActivity extends AppCompatActivity {
             switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
                 case 1:
                     View rootView1 = inflater.inflate(R.layout.fragment_home, container, false);
-                    Button registerNowButton = rootView1.findViewById(R.id.button_register_now);
-                    registerNowButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            setupChromeCustomTab();
-                        }
-                    });
+//                    Button registerNowButton = rootView1.findViewById(R.id.button_register_now);
+//                    registerNowButton.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            setupChromeCustomTab();
+//                        }
+//                    });
 
                     return setUpHome(rootView1);
 
@@ -532,13 +587,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             mAdapterHotel.notifyDataSetChanged();
-        }
-
-        public void setupChromeCustomTab() {
-            final CustomTabsIntent chromeIntent = new CustomTabsIntent.Builder().build();
-            chromeIntent.intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            chromeIntent.intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            chromeIntent.launchUrl(activityContext, Uri.parse(CONVO_CHANNELI_OAUTH_URL));
         }
 
     }
