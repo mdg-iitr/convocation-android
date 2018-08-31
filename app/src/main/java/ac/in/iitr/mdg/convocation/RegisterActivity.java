@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -71,6 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setIndeterminate(true);
+        progressDialog.setIndeterminateDrawable(ContextCompat.getDrawable(this, R.drawable.progress));
 
         ImageView imageView = findViewById(R.id.back_button_register);
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +102,8 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (validateData()) {
+                    progressDialog.setMessage("Registering");
+                    progressDialog.show();
                     ApiClient.getClientWithoutAuth(RegisterActivity.this)
                             .create(ConvoApi.class)
                             .registerUser(
@@ -120,6 +124,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onNext(CommonResponse commonResponse) {
+                                    progressDialog.dismiss();
                                     if (!commonResponse.getStatus().equals("error")) {
                                         updateIsRegisteredInSharedPrefs(true);
                                         Toast.makeText(RegisterActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
@@ -137,13 +142,14 @@ public class RegisterActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onError(Throwable e) {
+                                    progressDialog.dismiss();
                                     Toast.makeText(RegisterActivity.this, "Failed to register, Please Try Again", Toast.LENGTH_SHORT).show();
                                     e.printStackTrace();
                                 }
 
                                 @Override
                                 public void onComplete() {
-
+                                    progressDialog.dismiss();
                                 }
                             });
                 }
@@ -283,13 +289,14 @@ public class RegisterActivity extends AppCompatActivity {
 
                             @Override
                             public void onError(Throwable e) {
+                                progressDialog.dismiss();
                                 Toast.makeText(RegisterActivity.this, "Failed to fetch details, please try again", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
 
                             @Override
                             public void onComplete() {
-
+                                progressDialog.dismiss();
                             }
                         });
             }
