@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="ac.in.iitr.mdg.convocation.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -24,21 +24,15 @@
         <activity
             android:name=".BranchStudentsActivity"
             android:label="@string/app_name"
-
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".ChiefGuestDescriptionActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="ac.in.iitr.mdg.convocation.RegisterActivity"
+            android:name=".RegisterActivity"
             android:label="@string/registration"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -51,11 +45,9 @@
                     android:scheme="convoiitr" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="ac.in.iitr.mdg.convocation.ProfileActivity"
+            android:name=".ProfileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package ac.in.iitr.mdg.convocation;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +19,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.EventBus;
+
+import ac.in.iitr.mdg.convocation.events.CloseCustomTabEvent;
+import ac.in.iitr.mdg.convocation.network.ApiClient;
+import ac.in.iitr.mdg.convocation.network.ConvoApi;
+import ac.in.iitr.mdg.convocation.responsemodels.OauthResponse;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 public class RegisterActivity extends AppCompatActivity {
 
     Spinner sizeOfDress;
@@ -27,22 +39,22 @@ public class RegisterActivity extends AppCompatActivity {
     private Intent intentFilterIntent;
     private Uri intentUri;
 
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        getIntentFilter();
-    }
-
-    private void getIntentFilter() {
-        //get intent filter for a param(channeliRedirectUriCode) and send request to verify whether user in a new user or an already existing user
 
         Toolbar toolbar = findViewById(R.id.toolbar_register);
         toolbar.setTitle("");
         TextView textView = findViewById(R.id.registration);
         textView.setText("Registration");
         setSupportActionBar(toolbar);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setIndeterminate(true);
 
         ImageView imageView = findViewById(R.id.back_button_register);
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -143,6 +155,12 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        getIntentFilter();
+    }
+
+    private void getIntentFilter() {
+
+        //get intent filter for a param(channeliRedirectUriCode) and send request to verify whether user in a new user or an already existing user
         intentFilterIntent = getIntent();
         if (intentFilterIntent != null) {
             intentUri = intentFilterIntent.getData();
@@ -151,9 +169,37 @@ public class RegisterActivity extends AppCompatActivity {
                 code = intentUri.getQueryParameter("code");
                 Log.d("URI_CODE", code);
                 Toast.makeText(this, "Machaya : " + code, Toast.LENGTH_SHORT).show();
+                progressDialog.setMessage("Retrieving Data");
+                progressDialog.show();
+                ApiClient.getClientWithoutAuth(this).create(ConvoApi.class)
+                        .getOauth(code)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Observer<OauthResponse>() {
+                            @Override
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onNext(OauthResponse oauthResponse) {
+                                progressDialog.dismiss();
+                                Toast.makeText(RegisterActivity.this, "Successfully Fetched details :)", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                Toast.makeText(RegisterActivity.this, "Failed to fetch details, please try again", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+
+                            @Override
+                            public void onComplete() {
+
+                            }
+                        });
             }
         }
 
     }
-
 }

@@ -34,6 +34,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -65,7 +67,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String CONVO_CHANNELI_OAUTH_URL = "http://people.iitr.ernet.in/oauth/?client_id=248033f9cc5a67b44777&redirect_url=convoiitr://convo.sdslabs.co.in/";
+    public static final String CONVO_CHANNELI_OAUTH_URL = "http://people.iitr.ernet.in/oauth/?client_id=248033f9cc5a67b44777&redirect_url=convoiitr://convo.sdslabs.co.in/";
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -534,6 +536,8 @@ public class MainActivity extends AppCompatActivity {
 
         public void setupChromeCustomTab() {
             final CustomTabsIntent chromeIntent = new CustomTabsIntent.Builder().build();
+            chromeIntent.intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            chromeIntent.intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             chromeIntent.launchUrl(activityContext, Uri.parse(CONVO_CHANNELI_OAUTH_URL));
         }
 
