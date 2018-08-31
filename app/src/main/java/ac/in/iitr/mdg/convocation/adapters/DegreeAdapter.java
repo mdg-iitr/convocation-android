@@ -14,7 +14,7 @@ import java.util.List;
 
 import ac.in.iitr.mdg.convocation.BranchStudentsActivity;
 import ac.in.iitr.mdg.convocation.R;
-import ac.in.iitr.mdg.convocation.models.DegreeCard;
+import ac.in.iitr.mdg.convocation.responsemodels.DegreeCard;
 
 public class DegreeAdapter extends RecyclerView.Adapter<DegreeAdapter.Branchholder> {
     Context context;

@@ -43,16 +43,23 @@ import ac.in.iitr.mdg.convocation.adapters.GalleryAdapter;
 import ac.in.iitr.mdg.convocation.adapters.HotelAdapter;
 import ac.in.iitr.mdg.convocation.adapters.MedalAdapter;
 import ac.in.iitr.mdg.convocation.adapters.ScheduleAdapter;
-import ac.in.iitr.mdg.convocation.models.ChiefGuestProfile;
-import ac.in.iitr.mdg.convocation.models.Contact;
-import ac.in.iitr.mdg.convocation.models.ContactCard;
-import ac.in.iitr.mdg.convocation.models.DegreeCard;
-import ac.in.iitr.mdg.convocation.models.HotelProfile;
-import ac.in.iitr.mdg.convocation.models.MedalHolderModel;
-import ac.in.iitr.mdg.convocation.models.MedalModel;
-import ac.in.iitr.mdg.convocation.models.Schedule;
-import ac.in.iitr.mdg.convocation.models.ScheduleCard;
-import ac.in.iitr.mdg.convocation.models.SpacesItemDecoration;
+import ac.in.iitr.mdg.convocation.network.ApiClient;
+import ac.in.iitr.mdg.convocation.network.ConvoApi;
+import ac.in.iitr.mdg.convocation.responsemodels.ChiefGuestProfile;
+import ac.in.iitr.mdg.convocation.responsemodels.Contact;
+import ac.in.iitr.mdg.convocation.responsemodels.ContactCard;
+import ac.in.iitr.mdg.convocation.responsemodels.DegreeCard;
+import ac.in.iitr.mdg.convocation.responsemodels.HotelProfile;
+import ac.in.iitr.mdg.convocation.responsemodels.MedalHolderModel;
+import ac.in.iitr.mdg.convocation.responsemodels.MedalModel;
+import ac.in.iitr.mdg.convocation.responsemodels.ScheduleEventModel;
+import ac.in.iitr.mdg.convocation.responsemodels.ScheduleModel;
+import ac.in.iitr.mdg.convocation.responsemodels.SpacesItemDecoration;
+import ac.in.iitr.mdg.convocation.viewmodels.ScheduleViewModel;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -153,22 +160,47 @@ public class MainActivity extends AppCompatActivity {
 
                     View rootView4 = inflater.inflate(R.layout.fragment_schedule, container, false);
 
-                    RecyclerView recyclerView = rootView4.findViewById(R.id.schedule_recyclerView);
+                    final RecyclerView recyclerView = rootView4.findViewById(R.id.schedule_recyclerView);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                    List<Schedule> list = new ArrayList<>();
-                    ScheduleAdapter textAdapter = new ScheduleAdapter(getContext(), list);
-                    recyclerView.setAdapter(textAdapter);
 
-                    list.add(new Schedule(Schedule.TYPE_DATE, "21 September 2018"));
-                    list.add(new Schedule(Schedule.TYPE_SCHEDULE, new ScheduleCard(null, "Official Breakfast1", "LBS Ground", "2:00 pm - 3:00 pm")));
-                    list.add(new Schedule(Schedule.TYPE_SCHEDULE, new ScheduleCard(null, "Official Lunch1", "LBS Ground", "2:00 pm - 3:00 pm")));
-                    list.add(new Schedule(Schedule.TYPE_SCHEDULE, new ScheduleCard(null, "Official Dinner1", "LBS Ground", "2:00 pm - 3:00 pm")));
-                    list.add(new Schedule(Schedule.TYPE_DATE, "22 September 2018"));
-                    list.add(new Schedule(Schedule.TYPE_SCHEDULE, new ScheduleCard(null, "Official Breakfast2", "LBS Ground", "2:00 pm - 3:00 pm")));
-                    list.add(new Schedule(Schedule.TYPE_SCHEDULE, new ScheduleCard(null, "Official Lunch2", "LBS Ground", "2:00 pm - 3:00 pm")));
-                    list.add(new Schedule(Schedule.TYPE_SCHEDULE, new ScheduleCard(null, "Official Dinner2", "LBS Ground", "2:00 pm - 3:00 pm")));
+                    ApiClient.getClientWithoutAuth(activityContext)
+                            .create(ConvoApi.class)
+                            .getSchedule()
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new Observer<ArrayList<ScheduleModel>>() {
+                                @Override
+                                public void onSubscribe(Disposable d) {
 
-                    textAdapter.notifyDataSetChanged();
+                                }
+
+                                @Override
+                                public void onNext(ArrayList<ScheduleModel> scheduleModels) {
+                                    List<ScheduleViewModel> list = new ArrayList<>();
+                                    ScheduleAdapter textAdapter = new ScheduleAdapter(activityContext, list);
+                                    recyclerView.setAdapter(textAdapter);
+                                    for (ScheduleModel model : scheduleModels) {
+
+                                        list.add(new ScheduleViewModel(ScheduleViewModel.TYPE_DATE, model.getDate(), null));
+
+                                        for (ScheduleEventModel eventModel : model.getScheduleEventModels()) {
+                                            list.add(new ScheduleViewModel(ScheduleViewModel.TYPE_SCHEDULE, null, eventModel));
+                                        }
+
+                                    }
+                                    textAdapter.notifyDataSetChanged();
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+                                    e.printStackTrace();
+                                }
+
+                                @Override
+                                public void onComplete() {
+
+                                }
+                            });
 
                     return rootView4;
 

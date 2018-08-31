@@ -36,13 +36,13 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textAllCaps">false</item>
         <item name="textAllCaps">false</item>
-        <item name="android:fontFamily" tools:ignore="NewApi">@font/metropolis_bold</item>
+        <item name="android:fontFamily">@font/metropolis_bold</item>
     </style>
     <style name="CustomTabDesign" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/whiteTransparent</item>
-        <item name="android:fontFamily" tools:ignore="NewApi">@font/metropolis_semibold</item>
+        <item name="android:fontFamily">@font/metropolis_semibold</item>
     </style>
     <style name="AllCapsFalse">
         <item name="android:textAllCaps">false</item>
@@ -54,11 +54,11 @@
         <item name="textAllCaps">false</item>
         <item name="colorAccent">@color/cursorAccent</item>
         <item name="android:textSize">@dimen/text_size</item>
-        <item name="android:fontFamily" tools:ignore="NewApi">@font/metropolis_regular</item>
+        <item name="android:fontFamily">@font/metropolis_regular</item>
     </style>
 
 
     <style name="BottomLine" parent="@style/LightTheme">
-    <item name="colorAccent" tools:ignore="NewApi">@color/colorPrimary</item>
+    <item name="colorAccent">@color/colorPrimary</item>
     </style>
 </resources>

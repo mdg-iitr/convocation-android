@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
+
     Spinner sizeOfDress;
     Button peopleDetailNone, peopleDetailOne, peopleDetailTwo, vehicleDetailNone, vehicleDetailOne, submit;
     CheckBox checkBox_terms;
@@ -25,15 +26,12 @@ public class RegisterActivity extends AppCompatActivity {
     private Intent intentFilterIntent;
     private Uri intentUri;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-
         getIntentFilter();
-
     }
 
     private void getIntentFilter() {
@@ -49,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_register);
+        Toolbar toolbar = findViewById(R.id.toolbar_register);
         toolbar.setTitle("");
         TextView textView = findViewById(R.id.registration);
         textView.setText("Registration");
@@ -62,7 +60,6 @@ public class RegisterActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
 
         sizeOfDress = findViewById(R.id.register_sizeOfDress);
         String[] items = new String[]{"Select size of dress"};
@@ -81,7 +78,6 @@ public class RegisterActivity extends AppCompatActivity {
         checkBox_terms.setChecked(false);
 
         peopleDetailNone.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NewApi")
             @Override
             public void onClick(View v) {
                 peopleDetailNone.setBackground(getResources().getDrawable(R.drawable.gradient));
@@ -90,14 +86,12 @@ public class RegisterActivity extends AppCompatActivity {
                 peopleDetailOne.setTextColor(getResources().getColor(R.color.textColor));
                 peopleDetailTwo.setBackgroundColor(getResources().getColor(R.color.white));
                 peopleDetailTwo.setTextColor(getResources().getColor(R.color.textColor));
-
             }
         });
 
         peopleDetailNone.performClick();
 
         peopleDetailOne.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NewApi")
             @Override
             public void onClick(View v) {
                 peopleDetailOne.setBackground(getResources().getDrawable(R.drawable.gradient));
@@ -111,7 +105,6 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         peopleDetailTwo.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NewApi")
             @Override
             public void onClick(View v) {
                 peopleDetailTwo.setBackground(getResources().getDrawable(R.drawable.gradient));
@@ -120,19 +113,16 @@ public class RegisterActivity extends AppCompatActivity {
                 peopleDetailOne.setTextColor(getResources().getColor(R.color.textColor));
                 peopleDetailNone.setBackgroundColor(getResources().getColor(R.color.white));
                 peopleDetailNone.setTextColor(getResources().getColor(R.color.textColor));
-
             }
         });
 
         vehicleDetailNone.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NewApi")
             @Override
             public void onClick(View v) {
                 vehicleDetailNone.setBackground(getResources().getDrawable(R.drawable.gradient));
                 vehicleDetailNone.setTextColor(getResources().getColor(R.color.white));
                 vehicleDetailOne.setBackgroundColor(getResources().getColor(R.color.white));
                 vehicleDetailOne.setTextColor(getResources().getColor(R.color.textColor));
-
             }
         });
         vehicleDetailNone.performClick();
@@ -145,7 +135,6 @@ public class RegisterActivity extends AppCompatActivity {
                 vehicleDetailOne.setTextColor(getResources().getColor(R.color.white));
                 vehicleDetailNone.setBackgroundColor(getResources().getColor(R.color.white));
                 vehicleDetailNone.setTextColor(getResources().getColor(R.color.textColor));
-
             }
         });
 

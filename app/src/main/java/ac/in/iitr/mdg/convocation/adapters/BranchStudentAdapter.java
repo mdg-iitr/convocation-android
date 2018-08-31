@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import ac.in.iitr.mdg.convocation.R;
-import ac.in.iitr.mdg.convocation.models.BranchStudentCard;
+import ac.in.iitr.mdg.convocation.responsemodels.BranchStudentCard;
 
 public class BranchStudentAdapter extends RecyclerView.Adapter<BranchStudentAdapter.BranchStudentHolder> {
     Context context;

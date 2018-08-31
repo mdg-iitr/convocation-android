@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.models;
+package ac.in.iitr.mdg.convocation.responsemodels;
 
 import android.graphics.Bitmap;
 

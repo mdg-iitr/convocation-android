@@ -9,16 +9,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import ac.in.iitr.mdg.convocation.R;
-import ac.in.iitr.mdg.convocation.models.Schedule;
+import ac.in.iitr.mdg.convocation.viewmodels.ScheduleViewModel;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    Context context;
-    List<Schedule> list;
 
-    public ScheduleAdapter(Context context, List<Schedule> list) {
+    private Context context;
+    private List<ScheduleViewModel> list;
+
+    public ScheduleAdapter(Context context, List<ScheduleViewModel> list) {
         this.context = context;
         this.list = list;
     }
@@ -28,11 +31,11 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         switch (viewType) {
-            case Schedule.TYPE_DATE:
+            case ScheduleViewModel.TYPE_DATE:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_schedule_date, parent, false);
                 return new ScheduleDateHolder(view);
 
-            case Schedule.TYPE_SCHEDULE:
+            case ScheduleViewModel.TYPE_SCHEDULE:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_schedule, parent, false);
                 return new ScheduleHolder(view);
 
@@ -46,9 +49,9 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public int getItemViewType(int position) {
         switch (list.get(position).getType()) {
             case 0:
-                return Schedule.TYPE_DATE;
+                return ScheduleViewModel.TYPE_DATE;
             case 1:
-                return Schedule.TYPE_SCHEDULE;
+                return ScheduleViewModel.TYPE_SCHEDULE;
             default:
                 return -1;
         }
@@ -57,15 +60,16 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Schedule mylist = list.get(position);
-        if (mylist != null) {
-            if (mylist.getType() == Schedule.TYPE_SCHEDULE) {
-                ((ScheduleHolder) holder).schedule_image.setImageBitmap(mylist.getScheduleCard().getSchedule_image());
-                ((ScheduleHolder) holder).schedule_event.setText(mylist.getScheduleCard().getSchedule_event());
-                ((ScheduleHolder) holder).schedule_venue.setText(mylist.getScheduleCard().getSchedule_venue());
-                ((ScheduleHolder) holder).schedule_time.setText(mylist.getScheduleCard().getSchedule_time());
-            } else if (mylist.getType() == Schedule.TYPE_DATE) {
-                ((ScheduleDateHolder) holder).date.setText(mylist.getSchedule_date());
+        ScheduleViewModel model = list.get(position);
+        if (model != null) {
+            if (model.getType() == ScheduleViewModel.TYPE_SCHEDULE) {
+//                Picasso.get().load(model.getScheduleEventModel().getImage()).placeholder(R.drawable.grey_card).into(((ScheduleHolder) holder).scheduleEventImage);
+                Picasso.get().load("null").placeholder(R.drawable.grey_card).into(((ScheduleHolder) holder).scheduleEventImage);
+                ((ScheduleHolder) holder).scheduleEventTitleText.setText(model.getScheduleEventModel().getTitle());
+                ((ScheduleHolder) holder).scheduleEventVenueText.setText(model.getScheduleEventModel().getVenue());
+                ((ScheduleHolder) holder).scheduleEventTimeText.setText(model.getScheduleEventModel().getTimeStart());
+            } else if (model.getType() == ScheduleViewModel.TYPE_DATE) {
+                ((ScheduleDateHolder) holder).scheduleDateText.setText(model.getDate());
             }
         }
     }
@@ -80,31 +84,31 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 arr = list.size();
             }
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         return arr;
     }
 
 
     class ScheduleHolder extends RecyclerView.ViewHolder {
-        ImageView schedule_image;
-        TextView schedule_event, schedule_venue, schedule_time;
+        ImageView scheduleEventImage;
+        TextView scheduleEventTitleText, scheduleEventVenueText, scheduleEventTimeText;
 
-        public ScheduleHolder(View itemView) {
+        ScheduleHolder(View itemView) {
             super(itemView);
-            schedule_image = itemView.findViewById(R.id.scheduleCard_image);
-            schedule_event = itemView.findViewById(R.id.scheduleCard_event);
-            schedule_venue = itemView.findViewById(R.id.scheduleCard_venue);
-            schedule_time = itemView.findViewById(R.id.scheduleCard_time);
+            scheduleEventImage = itemView.findViewById(R.id.schedule_image);
+            scheduleEventTitleText = itemView.findViewById(R.id.schedule_event_title);
+            scheduleEventVenueText = itemView.findViewById(R.id.schedule_event_venue);
+            scheduleEventTimeText = itemView.findViewById(R.id.schedule_event_time);
         }
     }
 
     class ScheduleDateHolder extends RecyclerView.ViewHolder {
-        public TextView date;
+        public TextView scheduleDateText;
 
-        public ScheduleDateHolder(View itemView) {
+        ScheduleDateHolder(View itemView) {
             super(itemView);
-            date = (TextView) itemView.findViewById(R.id.schedule_date);
+            scheduleDateText = itemView.findViewById(R.id.schedule_date);
         }
     }
 }

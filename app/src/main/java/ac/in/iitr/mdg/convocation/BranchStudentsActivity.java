@@ -17,7 +17,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ac.in.iitr.mdg.convocation.adapters.BranchStudentAdapter;
-import ac.in.iitr.mdg.convocation.models.BranchStudentCard;
+import ac.in.iitr.mdg.convocation.responsemodels.BranchStudentCard;
 
 public class BranchStudentsActivity extends AppCompatActivity {
     public BranchStudentAdapter textAdapter;

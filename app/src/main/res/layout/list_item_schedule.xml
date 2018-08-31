@@ -2,102 +2,89 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scheduleCard"
+    android:id="@+id/scheduleEventModel"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="10dp"
-    android:layout_marginStart="10dp"
+    android:layout_height="70dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginStart="20dp"
     android:layout_marginTop="6dp"
     app:cardCornerRadius="@dimen/card_corner_radius"
     app:ignore="NamespaceTypo"
     card_view:cardBackgroundColor="#ffffff">
 
-
-    <ImageView
-        android:id="@+id/scheduleCard_image"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="5dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        app:ignore="RtlCompat" />
-
-    <TextView
-        android:id="@+id/scheduleCard_event"
+    <RelativeLayout
+        android:id="@+id/image_title_venue_wrapper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="12dp"
-        android:layout_toRightOf="@id/scheduleCard_image"
-        android:fontFamily="@font/metropolis_medium"
-        android:gravity="top"
-        android:padding="5dp"
-        android:textColor="#444444"
-        android:textSize="14sp"
-        app:ignore="RtlCompat" />
+        android:layout_marginTop="10dp">
 
-    <TextView
-        android:id="@+id/scheduleCard_venue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="35dp"
-        android:layout_toRightOf="@id/scheduleCard_image"
-        android:fontFamily="@font/metropolis_extralight"
-        android:gravity="bottom"
-        android:padding="5dp"
-        android:textColor="#737373"
-        android:textSize="12sp"
-        app:ignore="RtlCompat" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/schedule_image"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:background="#dedede" />
 
         <TextView
+            android:id="@+id/schedule_event_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginEnd="33dp"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/metropolis_regular"
-            android:gravity="right"
-            android:text="@string/time"
+            android:layout_alignTop="@+id/schedule_image"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="1dp"
+            android:layout_toEndOf="@id/schedule_image"
+            android:fontFamily="@font/metropolis_medium"
+            android:text="Sample Event"
             android:textColor="#444444"
-            android:textSize="12sp"
-            app:ignore="RtlCompat" />
+            android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/scheduleCard_time"
+            android:id="@+id/schedule_event_venue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginBottom="25dp"
-            android:layout_marginEnd="33dp"
+            android:layout_below="@id/schedule_event_title"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="6dp"
+            android:layout_toEndOf="@+id/schedule_image"
             android:fontFamily="@font/metropolis_extralight"
-            android:gravity="right"
+            android:text="Sample Venue"
             android:textColor="#737373"
-            android:textSize="12sp"
-            app:ignore="RtlCompat" />
+            android:textSize="12sp" />
 
-    </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/schedule_event_time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/image_title_venue_wrapper"
+        android:layout_marginEnd="13dp"
+        android:fontFamily="@font/metropolis_regular"
+        android:gravity="end"
+        android:text="@string/time"
+        android:textColor="#444444"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/schedule_event_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/schedule_event_time_label"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="13dp"
+        android:layout_marginTop="6dp"
+        android:text="12:34:56"
+        android:fontFamily="@font/metropolis_extralight"
+        android:textColor="#737373"
+        android:textSize="12sp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@id/linearLayout"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="15dp"
-        android:background="#ededed"
-        app:ignore="RtlCompat" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="#ededed" />
 
 </RelativeLayout>
 

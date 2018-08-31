@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import ac.in.iitr.mdg.convocation.R;
-import ac.in.iitr.mdg.convocation.models.ChiefGuestProfile;
+import ac.in.iitr.mdg.convocation.responsemodels.ChiefGuestProfile;
 
 public class ChiefGuestAdapter extends RecyclerView.Adapter<ChiefGuestAdapter.MyViewHolder> {
 

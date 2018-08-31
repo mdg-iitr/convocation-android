@@ -1,22 +1,24 @@
-package ac.in.iitr.mdg.convocation.models;
+package ac.in.iitr.mdg.convocation.responsemodels;
 
 import android.media.Image;
 
-public class HotelProfile {
+public class ChiefGuestProfile {
 
     private String Name;
-    private String Address;
+    private String Designation;
     private Image imageThumb;
     private Image imageMain;
     private String Data;
+    private String date;
 
-    public HotelProfile() {
+    public ChiefGuestProfile() {
 
     }
 
-    public HotelProfile(String name, String address, String data, Image imageMain, Image imageThumb) {
+    public ChiefGuestProfile(String name, String designation, String date, String data, Image imageMain, Image imageThumb) {
+        this.date = date;
         this.Name = name;
-        this.Address = address;
+        this.Designation = designation;
         this.imageMain = imageMain;
         this.imageThumb = imageThumb;
         this.Data = data;
@@ -46,12 +48,12 @@ public class HotelProfile {
         Data = data;
     }
 
-    public String getAddress() {
-        return Address;
+    public String getDesignation() {
+        return Designation;
     }
 
-    public void setAddress(String address) {
-        Address = address;
+    public void setDesignation(String designation) {
+        Designation = designation;
     }
 
     public String getName() {
@@ -61,4 +63,13 @@ public class HotelProfile {
     public void setName(String name) {
         Name = name;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 }
+

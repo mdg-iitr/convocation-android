@@ -1,4 +1,4 @@
-package ac.in.iitr.mdg.convocation.models;
+package ac.in.iitr.mdg.convocation.responsemodels;
 
 public class Contact {
     public static final int TYPE_CATEGORY = 0;

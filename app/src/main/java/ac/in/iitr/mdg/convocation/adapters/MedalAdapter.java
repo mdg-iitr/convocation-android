@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ac.in.iitr.mdg.convocation.R;
-import ac.in.iitr.mdg.convocation.models.MedalModel;
+import ac.in.iitr.mdg.convocation.responsemodels.MedalModel;
 
 public class MedalAdapter extends RecyclerView.Adapter {
 

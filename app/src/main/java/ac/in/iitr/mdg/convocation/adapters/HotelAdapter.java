@@ -9,7 +9,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import ac.in.iitr.mdg.convocation.R;
-import ac.in.iitr.mdg.convocation.models.HotelProfile;
+import ac.in.iitr.mdg.convocation.responsemodels.HotelProfile;
 
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.MyViewHolder> {
 

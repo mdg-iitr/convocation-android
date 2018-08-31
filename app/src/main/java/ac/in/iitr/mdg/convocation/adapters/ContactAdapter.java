@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import ac.in.iitr.mdg.convocation.R;
-import ac.in.iitr.mdg.convocation.models.Contact;
+import ac.in.iitr.mdg.convocation.responsemodels.Contact;
 
 public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Context context;
