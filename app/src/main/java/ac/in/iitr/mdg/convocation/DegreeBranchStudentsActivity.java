@@ -17,11 +17,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ac.in.iitr.mdg.convocation.adapters.BranchStudentAdapter;
-import ac.in.iitr.mdg.convocation.responsemodels.BranchStudentCard;
+import ac.in.iitr.mdg.convocation.responsemodels.UserResponseModel;
 
-public class BranchStudentsActivity extends AppCompatActivity {
-    public BranchStudentAdapter textAdapter;
-    public RecyclerView recyclerView;
+public class DegreeBranchStudentsActivity extends AppCompatActivity {
+
+    private BranchStudentAdapter textAdapter;
+    private RecyclerView recyclerView;
+
+    private ArrayList<UserResponseModel> students;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,7 @@ public class BranchStudentsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_branch_students);
 
         Drawable drawable = getResources().getDrawable(R.drawable.ic_navigate_before_black_24dp);
-        ImageButton imageButton = (ImageButton) findViewById(R.id.back_button);
+        ImageButton imageButton = findViewById(R.id.back_button);
         imageButton.setImageDrawable(drawable);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,47 +41,22 @@ public class BranchStudentsActivity extends AppCompatActivity {
             }
         });
 
-        TextView textView = (TextView) findViewById(R.id.title_branch);
+        TextView textView = findViewById(R.id.title_branch);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_branchStudent);
+        Toolbar toolbar = findViewById(R.id.toolbar_branchStudent);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             String branch = bundle.getString("branch");
             toolbar.setTitle("");
             textView.setText(branch);
+
+            students = bundle.getParcelableArrayList("students");
         }
         setSupportActionBar(toolbar);
 
-
-        recyclerView = (RecyclerView) findViewById(R.id.branchStudents_recyclerView);
-        ArrayList<BranchStudentCard> list = new ArrayList<>();
-        textAdapter = new BranchStudentAdapter(this, list);
-
-        BranchStudentCard branchStudentCard1 = new BranchStudentCard("Kaustubh Trivedi", "17114044");
-        BranchStudentCard branchStudentCard2 = new BranchStudentCard("Suyash Jain", "17115100");
-        BranchStudentCard branchStudentCard3 = new BranchStudentCard("Karthik Iyer", "17112036");
-        BranchStudentCard branchStudentCard4 = new BranchStudentCard("Shashank Kashyap", "17114070");
-        BranchStudentCard branchStudentCard5 = new BranchStudentCard("Utkarsh Mishra", "17117093");
-        BranchStudentCard branchStudentCard6 = new BranchStudentCard("Nikhil Agrawal", "17117050");
-        BranchStudentCard branchStudentCard7 = new BranchStudentCard("Rohit Ashiwal", "17114064");
-        BranchStudentCard branchStudentCard8 = new BranchStudentCard("Saurabh Singh", "17114068");
-        BranchStudentCard branchStudentCard9 = new BranchStudentCard("Piyush Makwana", "17114056");
-        BranchStudentCard branchStudentCard10 = new BranchStudentCard("Bhavye Jain", "17114020");
-
-        list.add(branchStudentCard1);
-        list.add(branchStudentCard2);
-        list.add(branchStudentCard3);
-        list.add(branchStudentCard4);
-        list.add(branchStudentCard5);
-        list.add(branchStudentCard6);
-        list.add(branchStudentCard7);
-        list.add(branchStudentCard8);
-        list.add(branchStudentCard9);
-        list.add(branchStudentCard10);
-        textAdapter.notifyDataSetChanged();
-
-        RecyclerView.LayoutManager recycler = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(recycler);
+        recyclerView = findViewById(R.id.branchStudents_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        textAdapter = new BranchStudentAdapter(this, students);
         recyclerView.setAdapter(textAdapter);
     }
 

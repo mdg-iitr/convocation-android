@@ -49,7 +49,8 @@ import ac.in.iitr.mdg.convocation.network.ConvoApi;
 import ac.in.iitr.mdg.convocation.responsemodels.ChiefGuestResponse;
 import ac.in.iitr.mdg.convocation.responsemodels.Contact;
 import ac.in.iitr.mdg.convocation.responsemodels.ContactCard;
-import ac.in.iitr.mdg.convocation.responsemodels.DegreeCard;
+import ac.in.iitr.mdg.convocation.responsemodels.DegreeBranchModel;
+import ac.in.iitr.mdg.convocation.responsemodels.DegreeResponseModel;
 import ac.in.iitr.mdg.convocation.responsemodels.HotelProfile;
 import ac.in.iitr.mdg.convocation.responsemodels.MedalTypeModel;
 import ac.in.iitr.mdg.convocation.responsemodels.MedalsResponseModel;
@@ -174,6 +175,12 @@ public class MainActivity extends AppCompatActivity {
         private RecyclerView medalRecycler;
         private MedalAdapter medalAdapter;
         private ArrayList<MedalViewModel> medalsAdapterArray = new ArrayList<>();
+
+        private int degreeNumberSelected = 0;
+        private ArrayList<DegreeResponseModel> storedDegreeResponse = new ArrayList<>();
+        private RecyclerView degreeRecycler;
+        private DegreeAdapter degreeAdapter;
+        private ArrayList<DegreeBranchModel> degreeAdapterArray = new ArrayList<>();
 
         public PlaceholderFragment() {
         }
@@ -330,15 +337,69 @@ public class MainActivity extends AppCompatActivity {
 
                 case 5:
                     final View rootView5 = inflater.inflate(R.layout.fragment_degrees, container, false);
-                    final Button bTech = (Button) rootView5.findViewById(R.id.Degrees_button_bTech);
-                    final Button mTech = (Button) rootView5.findViewById(R.id.Degrees_button_mTech);
-                    final Button phD = (Button) rootView5.findViewById(R.id.Degrees_button_phD);
-                    final Button management = (Button) rootView5.findViewById(R.id.Degrees_button_Management);
+                    final Button bTech = rootView5.findViewById(R.id.Degrees_button_bTech);
+                    final Button mTech = rootView5.findViewById(R.id.Degrees_button_mTech);
+                    final Button phD = rootView5.findViewById(R.id.Degrees_button_phD);
+                    final Button management = rootView5.findViewById(R.id.Degrees_button_Management);
+
+                    final ProgressBar progressBarDegree = rootView5.findViewById(R.id.degree_progress_bar);
+                    progressBarDegree.setVisibility(View.VISIBLE);
+
+                    final LinearLayout degreeLabelWrapper = rootView5.findViewById(R.id.degree_label_wrapper);
+                    degreeLabelWrapper.setVisibility(View.GONE);
+
+                    final FrameLayout degreeRecyclerWrapper = rootView5.findViewById(R.id.degree_recycler_wrapper);
+                    degreeRecyclerWrapper.setVisibility(View.GONE);
+
+                    degreeRecycler = rootView5.findViewById(R.id.degree_recyclerView);
+                    degreeRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                    degreeAdapterArray = new ArrayList<>();
+                    degreeAdapter = new DegreeAdapter(activityContext, degreeAdapterArray);
+
+                    degreeRecycler.setAdapter(degreeAdapter);
+
+                    ApiClient.getClientWithoutAuth(activityContext).create(ConvoApi.class)
+                            .getDegrees()
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new Observer<ArrayList<DegreeResponseModel>>() {
+                                @Override
+                                public void onSubscribe(Disposable d) {
+
+                                }
+
+                                @Override
+                                public void onNext(ArrayList<DegreeResponseModel> degreeResponseModels) {
+
+                                    progressBarDegree.setVisibility(View.GONE);
+                                    degreeLabelWrapper.setVisibility(View.VISIBLE);
+                                    degreeRecyclerWrapper.setVisibility(View.VISIBLE);
+
+                                    storedDegreeResponse.clear();
+                                    storedDegreeResponse.addAll(degreeResponseModels);
+
+                                    setupDegreeRecycler(storedDegreeResponse);
+
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+                                    progressBarDegree.setVisibility(View.GONE);
+                                    e.printStackTrace();
+                                }
+
+                                @Override
+                                public void onComplete() {
+
+                                }
+                            });
 
                     bTech.setOnClickListener(new View.OnClickListener() {
                         @SuppressLint("NewApi")
                         @Override
                         public void onClick(View v) {
+                            degreeNumberSelected = 1;
                             bTech.setBackground(getResources().getDrawable(R.drawable.gradient));
                             bTech.setTextColor(getResources().getColor(R.color.white));
                             mTech.setBackgroundColor(getResources().getColor(R.color.white));
@@ -347,17 +408,8 @@ public class MainActivity extends AppCompatActivity {
                             phD.setTextColor(getResources().getColor(R.color.textColor));
                             management.setBackgroundColor(getResources().getColor(R.color.white));
                             management.setTextColor(getResources().getColor(R.color.textColor));
-                            RecyclerView recyclerView = (RecyclerView) rootView5.findViewById(R.id.degree_recyclerView);
-                            List<DegreeCard> list = new ArrayList<>();
-                            DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
-                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                            recyclerView.setAdapter(textAdapter);
 
-                            for (int i = 0; i < 10; i++) {
-                                list.add(new DegreeCard("Chemical Engineering", "Total Students : 120"));
-                            }
-
-                            textAdapter.notifyDataSetChanged();
+                            setupDegreeRecycler(storedDegreeResponse);
                         }
                     });
 
@@ -365,6 +417,7 @@ public class MainActivity extends AppCompatActivity {
                         @SuppressLint("NewApi")
                         @Override
                         public void onClick(View v) {
+                            degreeNumberSelected = 2;
                             mTech.setBackground(getResources().getDrawable(R.drawable.gradient));
                             mTech.setTextColor(getResources().getColor(R.color.white));
                             bTech.setBackgroundColor(getResources().getColor(R.color.white));
@@ -373,17 +426,8 @@ public class MainActivity extends AppCompatActivity {
                             phD.setTextColor(getResources().getColor(R.color.textColor));
                             management.setBackgroundColor(getResources().getColor(R.color.white));
                             management.setTextColor(getResources().getColor(R.color.textColor));
-                            RecyclerView recyclerView = (RecyclerView) rootView5.findViewById(R.id.degree_recyclerView);
-                            List<DegreeCard> list = new ArrayList<>();
-                            DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
-                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                            recyclerView.setAdapter(textAdapter);
 
-                            for (int i = 0; i < 10; i++) {
-                                list.add(new DegreeCard("Electrical Engineering", "Total Students : 120"));
-                            }
-
-                            textAdapter.notifyDataSetChanged();
+                            setupDegreeRecycler(storedDegreeResponse);
                         }
                     });
 
@@ -391,6 +435,7 @@ public class MainActivity extends AppCompatActivity {
                         @SuppressLint("NewApi")
                         @Override
                         public void onClick(View v) {
+                            degreeNumberSelected = 3;
                             phD.setBackground(getResources().getDrawable(R.drawable.gradient));
                             phD.setTextColor(getResources().getColor(R.color.white));
                             mTech.setBackgroundColor(getResources().getColor(R.color.white));
@@ -399,17 +444,8 @@ public class MainActivity extends AppCompatActivity {
                             bTech.setTextColor(getResources().getColor(R.color.textColor));
                             management.setBackgroundColor(getResources().getColor(R.color.white));
                             management.setTextColor(getResources().getColor(R.color.textColor));
-                            RecyclerView recyclerView = (RecyclerView) rootView5.findViewById(R.id.degree_recyclerView);
-                            List<DegreeCard> list = new ArrayList<>();
-                            DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
-                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                            recyclerView.setAdapter(textAdapter);
 
-                            for (int i = 0; i < 10; i++) {
-                                list.add(new DegreeCard("Civil Engineering", "Total Students : 120"));
-                            }
-
-                            textAdapter.notifyDataSetChanged();
+                            setupDegreeRecycler(storedDegreeResponse);
                         }
                     });
 
@@ -417,6 +453,7 @@ public class MainActivity extends AppCompatActivity {
                         @SuppressLint("NewApi")
                         @Override
                         public void onClick(View v) {
+                            degreeNumberSelected = 4;
                             management.setBackground(getResources().getDrawable(R.drawable.gradient));
                             management.setTextColor(getResources().getColor(R.color.white));
                             mTech.setBackgroundColor(getResources().getColor(R.color.white));
@@ -425,17 +462,8 @@ public class MainActivity extends AppCompatActivity {
                             phD.setTextColor(getResources().getColor(R.color.textColor));
                             bTech.setBackgroundColor(getResources().getColor(R.color.white));
                             bTech.setTextColor(getResources().getColor(R.color.textColor));
-                            RecyclerView recyclerView = rootView5.findViewById(R.id.degree_recyclerView);
-                            List<DegreeCard> list = new ArrayList<>();
-                            DegreeAdapter textAdapter = new DegreeAdapter(getContext(), list);
-                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                            recyclerView.setAdapter(textAdapter);
 
-                            for (int i = 0; i < 10; i++) {
-                                list.add(new DegreeCard("CSE Engineering", "Total Students : 120"));
-                            }
-
-                            textAdapter.notifyDataSetChanged();
+                            setupDegreeRecycler(storedDegreeResponse);
                         }
                     });
 
@@ -667,6 +695,63 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
                 default: {
+                    break;
+                }
+            }
+
+        }
+
+        private void setupDegreeRecycler(ArrayList<DegreeResponseModel> degreeResponseModels) {
+
+            degreeAdapterArray.clear();
+
+            switch (degreeNumberSelected) {
+                case 1: {
+
+                    for (DegreeResponseModel responseModel : degreeResponseModels) {
+                        if (responseModel.getDegree().equals("undergraduate")) {
+                            degreeAdapterArray.addAll(responseModel.getBranches());
+                        }
+                    }
+
+                    degreeAdapter.notifyDataSetChanged();
+
+                    break;
+                }
+                case 2: {
+
+                    for (DegreeResponseModel responseModel : degreeResponseModels) {
+                        if (responseModel.getDegree().equals("graduate")) {
+                            degreeAdapterArray.addAll(responseModel.getBranches());
+                        }
+                    }
+
+                    degreeAdapter.notifyDataSetChanged();
+
+                    break;
+                }
+                case 3: {
+
+                    for (DegreeResponseModel responseModel : degreeResponseModels) {
+                        if (responseModel.getDegree().equals("phd")) {
+                            degreeAdapterArray.addAll(responseModel.getBranches());
+                        }
+                    }
+
+                    degreeAdapter.notifyDataSetChanged();
+
+                    break;
+                }
+                case 4: {
+
+                    for (DegreeResponseModel responseModel : degreeResponseModels) {
+                        if (responseModel.getDegree().equals("management")) {
+                            degreeAdapterArray.addAll(responseModel.getBranches());
+                        }
+                    }
+
+                    degreeAdapter.notifyDataSetChanged();
+
                     break;
                 }
             }

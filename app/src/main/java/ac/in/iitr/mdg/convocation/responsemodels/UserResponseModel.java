@@ -1,10 +1,13 @@
 package ac.in.iitr.mdg.convocation.responsemodels;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class UserResponseModel {
+public class UserResponseModel implements Parcelable{
 
-    @SerializedName("isRegistered")
+    @SerializedName("registered")
     private boolean isRegistered;
     @SerializedName("name")
     private String name;
@@ -40,6 +43,32 @@ public class UserResponseModel {
         this.isFourWheeler = isFourWheeler;
         this.branchId = branchId;
     }
+
+    protected UserResponseModel(Parcel in) {
+        isRegistered = in.readByte() != 0;
+        name = in.readString();
+        phoneNumber = in.readString();
+        token = in.readString();
+        enrollmentNumber = in.readString();
+        branch = in.readString();
+        email = in.readString();
+        profileImage = in.readString();
+        numAdults = in.readString();
+        isFourWheeler = in.readByte() != 0;
+        branchId = in.readInt();
+    }
+
+    public static final Creator<UserResponseModel> CREATOR = new Creator<UserResponseModel>() {
+        @Override
+        public UserResponseModel createFromParcel(Parcel in) {
+            return new UserResponseModel(in);
+        }
+
+        @Override
+        public UserResponseModel[] newArray(int size) {
+            return new UserResponseModel[size];
+        }
+    };
 
     public boolean isRegistered() {
         return isRegistered;
@@ -127,5 +156,26 @@ public class UserResponseModel {
 
     public void setBranchId(int branchId) {
         this.branchId = branchId;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+        parcel.writeByte((byte) (isRegistered ? 1 : 0));
+        parcel.writeString(name);
+        parcel.writeString(phoneNumber);
+        parcel.writeString(token);
+        parcel.writeString(enrollmentNumber);
+        parcel.writeString(branch);
+        parcel.writeString(email);
+        parcel.writeString(profileImage);
+        parcel.writeString(numAdults);
+        parcel.writeByte((byte) (isFourWheeler ? 1 : 0));
+        parcel.writeInt(branchId);
     }
 }

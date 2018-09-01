@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import ac.in.iitr.mdg.convocation.responsemodels.ChiefGuestResponse;
 import ac.in.iitr.mdg.convocation.responsemodels.CommonResponse;
+import ac.in.iitr.mdg.convocation.responsemodels.DegreeResponseModel;
 import ac.in.iitr.mdg.convocation.responsemodels.MedalsResponseModel;
 import ac.in.iitr.mdg.convocation.responsemodels.ScheduleModel;
 import ac.in.iitr.mdg.convocation.responsemodels.UserResponseModel;
@@ -37,5 +38,8 @@ public interface ConvoApi {
 
     @GET("user/medals/")
     Observable<ArrayList<MedalsResponseModel>> getMedals();
+
+    @GET("user/degrees/")
+    Observable<ArrayList<DegreeResponseModel>> getDegrees();
 
 }

@@ -12,34 +12,32 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import ac.in.iitr.mdg.convocation.R;
-import ac.in.iitr.mdg.convocation.responsemodels.BranchStudentCard;
+import ac.in.iitr.mdg.convocation.responsemodels.UserResponseModel;
 
 public class BranchStudentAdapter extends RecyclerView.Adapter<BranchStudentAdapter.BranchStudentHolder> {
-    Context context;
-    ArrayList<BranchStudentCard> list;
-    ArrayList<BranchStudentCard> searchList;
-    int FLAG = 0;
+    private Context context;
+    private ArrayList<UserResponseModel> list;
+    private ArrayList<UserResponseModel> searchList;
+    private int FLAG = 0;
 
-    public BranchStudentAdapter(Context context, ArrayList<BranchStudentCard> list) {
+    public BranchStudentAdapter(Context context, ArrayList<UserResponseModel> list) {
         this.context = context;
         this.list = list;
-
     }
 
     @NonNull
     @Override
     public BranchStudentHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_branchstudents, parent, false);
-        BranchStudentHolder textHolder = new BranchStudentHolder(view);
-        return textHolder;
+        return new BranchStudentHolder(view);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull BranchStudentHolder holder, int position) {
-        BranchStudentCard mylist = list.get(position);
-        holder.student_name.setText(mylist.getStudent_name());
-        holder.student_enrollment.setText(mylist.getStudent_enrollment());
+        UserResponseModel mylist = list.get(position);
+        holder.student_name.setText(mylist.getName());
+        holder.student_enrollment.setText(mylist.getEnrollmentNumber());
     }
 
     @Override
@@ -52,12 +50,11 @@ public class BranchStudentAdapter extends RecyclerView.Adapter<BranchStudentAdap
                 arr = list.size();
             }
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         return arr;
 
     }
-
 
     // Filter method
     public void filter(String charText) {
@@ -70,11 +67,11 @@ public class BranchStudentAdapter extends RecyclerView.Adapter<BranchStudentAdap
         if (charText.length() == 0) {
             list.addAll(searchList);
         } else {
-            for (BranchStudentCard branchStudentCard : searchList) {
-                if (branchStudentCard.getStudent_name().toLowerCase(Locale.getDefault()).contains(charText)) {
-                    list.add(branchStudentCard);
-                } else if (branchStudentCard.getStudent_enrollment().toLowerCase(Locale.getDefault()).contains(charText)) {
-                    list.add(branchStudentCard);
+            for (UserResponseModel userResponseModel : searchList) {
+                if (userResponseModel.getName().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    list.add(userResponseModel);
+                } else if (userResponseModel.getEnrollmentNumber().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    list.add(userResponseModel);
                 }
             }
         }

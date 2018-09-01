@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.concurrent.TimeUnit;
 
 import ac.in.iitr.mdg.convocation.R;
 import okhttp3.Interceptor;
@@ -32,7 +33,10 @@ public class ApiClient {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .client(new OkHttpClient.Builder().build())
+                    .client(new OkHttpClient.Builder()
+                            .readTimeout(100, TimeUnit.SECONDS)
+                            .connectTimeout(100, TimeUnit.SECONDS)
+                            .build())
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
@@ -56,6 +60,8 @@ public class ApiClient {
         if (mClient == null) {
             sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_key), MODE_PRIVATE);
             OkHttpClient.Builder ok_builder = new OkHttpClient.Builder();
+            ok_builder.readTimeout(100, TimeUnit.SECONDS);
+            ok_builder.connectTimeout(100, TimeUnit.SECONDS);
             ok_builder.addInterceptor(new Interceptor() {
                 @Override
                 public okhttp3.Response intercept(Chain chain) throws IOException {

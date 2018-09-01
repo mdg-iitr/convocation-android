@@ -130,7 +130,6 @@
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_gravity="bottom"
-        android:layout_marginTop="60dp"
         android:background="@drawable/gradient_no_radius"
         android:fontFamily="@font/metropolis_semibold"
         android:gravity="center_vertical"

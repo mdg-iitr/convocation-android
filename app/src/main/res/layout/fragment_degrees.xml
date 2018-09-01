@@ -1,72 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    android:orientation="vertical"
+    android:background="#FFFFFF"
     tools:context="ac.in.iitr.mdg.convocation.MainActivity$PlaceholderFragment">
 
     <LinearLayout
+        android:id="@+id/degree_label_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_height="80dp"
+        android:clipChildren="false"
         android:orientation="horizontal"
-        android:scrollbars="horizontal">
+        android:scrollbars="horizontal"
+        android:visibility="gone">
 
         <Button
             android:id="@+id/Degrees_button_bTech"
-            android:layout_width="wrap_content"
-            android:layout_height="46dp"
-            android:layout_marginStart="5dp"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
             android:background="@drawable/button"
             android:fontFamily="@font/metropolis_regular"
             android:text="@string/B.Tech"
             android:textAlignment="center"
             android:textAppearance="@style/AllCapsFalse"
-            android:textSize="@dimen/text_size"
-            tools:ignore="RtlCompat,UnusedAttribute" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/Degrees_button_mTech"
-            android:layout_width="wrap_content"
-            android:layout_height="46dp"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
             android:background="@drawable/button"
             android:fontFamily="@font/metropolis_regular"
             android:text="@string/mTech"
             android:textAlignment="center"
             android:textAppearance="@style/AllCapsFalse"
-            android:textSize="@dimen/text_size" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/Degrees_button_phD"
-            android:layout_width="wrap_content"
-            android:layout_height="46dp"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
             android:background="@drawable/button"
             android:fontFamily="@font/metropolis_regular"
             android:text="@string/phd"
             android:textAlignment="center"
             android:textAppearance="@style/AllCapsFalse"
-            android:textSize="@dimen/text_size" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/Degrees_button_Management"
-            android:layout_width="wrap_content"
-            android:layout_height="46dp"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
             android:background="@drawable/button"
             android:fontFamily="@font/metropolis_regular"
             android:text="@string/management"
             android:textAlignment="center"
             android:textAppearance="@style/AllCapsFalse"
-            android:textSize="11dp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/degree_recyclerView"
+    <FrameLayout
+        android:id="@+id/degree_recycler_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:layout_below="@id/degree_label_wrapper"
+        android:clipChildren="false"
+        android:visibility="gone">
 
-</LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/degree_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+            android:clipChildren="false" />
+
+    </FrameLayout>
+
+    <ProgressBar
+        android:id="@+id/degree_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/progress" />
+
+</RelativeLayout>
