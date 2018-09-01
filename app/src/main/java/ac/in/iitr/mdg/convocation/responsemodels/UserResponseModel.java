@@ -2,9 +2,9 @@ package ac.in.iitr.mdg.convocation.responsemodels;
 
 import com.google.gson.annotations.SerializedName;
 
-public class OauthResponse {
+public class UserResponseModel {
 
-    @SerializedName("is_registered")
+    @SerializedName("isRegistered")
     private boolean isRegistered;
     @SerializedName("name")
     private String name;
@@ -20,8 +20,14 @@ public class OauthResponse {
     private String email;
     @SerializedName("profile_image")
     private String profileImage;
+    @SerializedName("adults")
+    private String numAdults;
+    @SerializedName("four_wheeler")
+    private boolean isFourWheeler;
+    @SerializedName("branch_id")
+    private int branchId;
 
-    public OauthResponse(boolean isRegistered, String name, String phoneNumber, String token, String enrollmentNumber, String branch, String email, String profileImage) {
+    public UserResponseModel(boolean isRegistered, String name, String phoneNumber, String token, String enrollmentNumber, String branch, String email, String profileImage, String numAdults, boolean isFourWheeler, int branchId) {
         this.isRegistered = isRegistered;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -30,6 +36,9 @@ public class OauthResponse {
         this.branch = branch;
         this.email = email;
         this.profileImage = profileImage;
+        this.numAdults = numAdults;
+        this.isFourWheeler = isFourWheeler;
+        this.branchId = branchId;
     }
 
     public boolean isRegistered() {
@@ -94,5 +103,29 @@ public class OauthResponse {
 
     public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
+    }
+
+    public String getNumAdults() {
+        return numAdults;
+    }
+
+    public void setNumAdults(String numAdults) {
+        this.numAdults = numAdults;
+    }
+
+    public boolean isFourWheeler() {
+        return isFourWheeler;
+    }
+
+    public void setFourWheeler(boolean fourWheeler) {
+        isFourWheeler = fourWheeler;
+    }
+
+    public int getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(int branchId) {
+        this.branchId = branchId;
     }
 }

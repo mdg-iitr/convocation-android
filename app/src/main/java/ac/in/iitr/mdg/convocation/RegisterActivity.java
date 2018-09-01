@@ -25,7 +25,7 @@ import android.widget.Toast;
 import ac.in.iitr.mdg.convocation.network.ApiClient;
 import ac.in.iitr.mdg.convocation.network.ConvoApi;
 import ac.in.iitr.mdg.convocation.responsemodels.CommonResponse;
-import ac.in.iitr.mdg.convocation.responsemodels.OauthResponse;
+import ac.in.iitr.mdg.convocation.responsemodels.UserResponseModel;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -259,32 +259,35 @@ public class RegisterActivity extends AppCompatActivity {
                         .getOauth(code)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Observer<OauthResponse>() {
+                        .subscribe(new Observer<UserResponseModel>() {
                             @Override
                             public void onSubscribe(Disposable d) {
 
                             }
 
                             @Override
-                            public void onNext(OauthResponse oauthResponse) {
+                            public void onNext(UserResponseModel userResponseModel) {
 
                                 progressDialog.dismiss();
 
-                                if (oauthResponse.getToken() != null && !oauthResponse.getToken().isEmpty()) {
-                                    updateTokenInSharedPrefs(oauthResponse.getToken());
+                                if (userResponseModel.getToken() != null && !userResponseModel.getToken().isEmpty()) {
+                                    updateTokenInSharedPrefs(userResponseModel.getToken());
+                                } else {
+                                    Toast.makeText(RegisterActivity.this, "Invalid user", Toast.LENGTH_SHORT).show();
+                                    finish();
                                 }
 
-                                if (oauthResponse.isRegistered()) {
+                                if (userResponseModel.isRegistered()) {
                                     updateIsRegisteredInSharedPrefs(true);
                                     Toast.makeText(RegisterActivity.this, "You have already registered successfully", Toast.LENGTH_SHORT).show();
                                     finish();
                                     return;
                                 }
 
-                                basicName.setText(oauthResponse.getName());
-                                basicEnrNo.setText(oauthResponse.getEnrollmentNumber());
-                                basicEmail.setText(oauthResponse.getEmail());
-                                basicPhNo.setText(oauthResponse.getPhoneNumber());
+                                basicName.setText(userResponseModel.getName());
+                                basicEnrNo.setText(userResponseModel.getEnrollmentNumber());
+                                basicEmail.setText(userResponseModel.getEmail());
+                                basicPhNo.setText(userResponseModel.getPhoneNumber());
                             }
 
                             @Override

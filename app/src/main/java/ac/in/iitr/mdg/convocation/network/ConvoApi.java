@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 import ac.in.iitr.mdg.convocation.responsemodels.ChiefGuestResponse;
 import ac.in.iitr.mdg.convocation.responsemodels.CommonResponse;
-import ac.in.iitr.mdg.convocation.responsemodels.OauthResponse;
+import ac.in.iitr.mdg.convocation.responsemodels.MedalsResponseModel;
 import ac.in.iitr.mdg.convocation.responsemodels.ScheduleModel;
+import ac.in.iitr.mdg.convocation.responsemodels.UserResponseModel;
 import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -19,7 +20,7 @@ public interface ConvoApi {
     Observable<ArrayList<ScheduleModel>> getSchedule();
 
     @GET("oauth/")
-    Observable<OauthResponse> getOauth(@Query("code") String code);
+    Observable<UserResponseModel> getOauth(@Query("code") String code);
 
     @FormUrlEncoded
     @POST("user/register/")
@@ -33,5 +34,8 @@ public interface ConvoApi {
 
     @GET("user/chief_guests/")
     Observable<ArrayList<ChiefGuestResponse>> getChiefGuests();
+
+    @GET("user/medals/")
+    Observable<ArrayList<MedalsResponseModel>> getMedals();
 
 }

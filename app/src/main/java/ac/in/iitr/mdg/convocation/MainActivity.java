@@ -1,7 +1,6 @@
 package ac.in.iitr.mdg.convocation;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,10 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -30,6 +27,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -53,11 +51,13 @@ import ac.in.iitr.mdg.convocation.responsemodels.Contact;
 import ac.in.iitr.mdg.convocation.responsemodels.ContactCard;
 import ac.in.iitr.mdg.convocation.responsemodels.DegreeCard;
 import ac.in.iitr.mdg.convocation.responsemodels.HotelProfile;
-import ac.in.iitr.mdg.convocation.responsemodels.MedalHolderModel;
-import ac.in.iitr.mdg.convocation.responsemodels.MedalModel;
+import ac.in.iitr.mdg.convocation.responsemodels.MedalTypeModel;
+import ac.in.iitr.mdg.convocation.responsemodels.MedalsResponseModel;
 import ac.in.iitr.mdg.convocation.responsemodels.ScheduleEventModel;
 import ac.in.iitr.mdg.convocation.responsemodels.ScheduleModel;
 import ac.in.iitr.mdg.convocation.responsemodels.SpacesItemDecoration;
+import ac.in.iitr.mdg.convocation.responsemodels.UserResponseModel;
+import ac.in.iitr.mdg.convocation.viewmodels.MedalViewModel;
 import ac.in.iitr.mdg.convocation.viewmodels.ScheduleViewModel;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -168,6 +168,13 @@ public class MainActivity extends AppCompatActivity {
         Context activityContext;
         int k2 = 1;
 
+        // Medals Fragment Attributes
+        private int medalLevelSelected = 0;
+        private ArrayList<MedalsResponseModel> storedMedalsResponse = new ArrayList<>();
+        private RecyclerView medalRecycler;
+        private MedalAdapter medalAdapter;
+        private ArrayList<MedalViewModel> medalsAdapterArray = new ArrayList<>();
+
         public PlaceholderFragment() {
         }
 
@@ -197,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-                    final ProgressBar progressBarHome = view.findViewById(R.id.home_progress_bar);
+                    final FrameLayout progressBarHome = view.findViewById(R.id.home_progress_wrapper);
                     progressBarHome.setVisibility(View.VISIBLE);
 
                     final LinearLayout homeWrapper = view.findViewById(R.id.home_wrapper);
@@ -439,56 +446,70 @@ public class MainActivity extends AppCompatActivity {
                 case 6:
                     View rootView6 = inflater.inflate(R.layout.fragment_medals, container, false);
 
-                    RecyclerView medalView = rootView6.findViewById(R.id.medals_recycler_view);
-                    medalView.setLayoutManager(new LinearLayoutManager(getContext()));
-                    ArrayList<MedalModel> medalArray = new ArrayList<>();
-                    MedalAdapter medalAdapter = new MedalAdapter(medalArray);
-                    medalView.setAdapter(medalAdapter);
+                    medalRecycler = rootView6.findViewById(R.id.medals_recycler_view);
+                    medalRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+                    medalRecycler.setItemAnimator(new DefaultItemAnimator());
 
-                    Bitmap bitmap2 = Bitmap.createBitmap(120, 120, Bitmap.Config.ARGB_8888);
-                    Canvas c = new Canvas(bitmap2);
-                    c.drawColor(Color.LTGRAY);
+                    medalsAdapterArray = new ArrayList<>();
+                    medalAdapter = new MedalAdapter(medalsAdapterArray);
+                    medalRecycler.setAdapter(medalAdapter);
 
-                    medalArray.add(new MedalModel(MedalModel.TYPE_CATEGORY, "President's Gold Medal"));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER, new MedalHolderModel(bitmap2, "Karthik Iyer", "Chemical Engineering", "17112036")));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER, new MedalHolderModel(bitmap2, "Karthik Iyer", "Chemical Engineering", "17112036")));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_CATEGORY, "Director's Gold Medal"));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER, new MedalHolderModel(bitmap2, "Karthik Iyer", "Chemical Engineering", "17112036")));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER, new MedalHolderModel(bitmap2, "Karthik Iyer", "Chemical Engineering", "17112036")));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_CATEGORY, "Institute Gold Medal"));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER, new MedalHolderModel(bitmap2, "Karthik Iyer", "Chemical Engineering", "17112036")));
-                    medalArray.add(new MedalModel(MedalModel.TYPE_HOLDER, new MedalHolderModel(bitmap2, "Karthik Iyer", "Chemical Engineering", "17112036")));
+                    ApiClient.getClientWithoutAuth(activityContext).create(ConvoApi.class)
+                            .getMedals()
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new Observer<ArrayList<MedalsResponseModel>>() {
+                                @Override
+                                public void onSubscribe(Disposable d) {
 
-                    medalAdapter.notifyDataSetChanged();
+                                }
+
+                                @Override
+                                public void onNext(ArrayList<MedalsResponseModel> medalsResponseModels) {
+
+                                    storedMedalsResponse.clear();
+                                    storedMedalsResponse.addAll(medalsResponseModels);
+
+                                    setupMedalRecycler(storedMedalsResponse);
+
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+                                    e.printStackTrace();
+                                }
+
+                                @Override
+                                public void onComplete() {
+
+                                }
+                            });
 
                     final Button instiLevelButton = rootView6.findViewById(R.id.instiLevel);
                     final Button deptLevelButton = rootView6.findViewById(R.id.deptLevel);
                     instiLevelButton.setOnClickListener(new View.OnClickListener() {
-                        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-                        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                         @Override
                         public void onClick(View view) {
-
+                            medalLevelSelected = 1;
                             instiLevelButton.setBackground(getResources().getDrawable(R.drawable.gradient));
                             deptLevelButton.setBackground(getResources().getDrawable(R.drawable.white_card));
                             instiLevelButton.setTextColor(Color.parseColor("#ffffff"));
                             deptLevelButton.setTextColor(Color.parseColor("#444444"));
-
+                            setupMedalRecycler(storedMedalsResponse);
                         }
                     });
                     deptLevelButton.setOnClickListener(new View.OnClickListener() {
-                        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-                        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                         @Override
                         public void onClick(View view) {
-
+                            medalLevelSelected = 2;
                             instiLevelButton.setBackground(getResources().getDrawable(R.drawable.white_card));
                             deptLevelButton.setBackground(getResources().getDrawable(R.drawable.gradient));
                             deptLevelButton.setTextColor(Color.parseColor("#ffffff"));
                             instiLevelButton.setTextColor(Color.parseColor("#444444"));
-
+                            setupMedalRecycler(storedMedalsResponse);
                         }
                     });
+
                     instiLevelButton.performClick();
 
                     return rootView6;
@@ -557,24 +578,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-//        private View setUpHome(View view) {
-//
-//
-//
-//        }
-
-//        private void prepareGuestData() {
-//            if (k1 == 1) {
-//                ChiefGuestProfile guest = new ChiefGuestProfile("Shri Ram Nath Kovind", "Hon'ble President of India", "(7 Oct. 2018 , PG)", null, null, null);
-//                guestList.add(guest);
-//
-//                guest = new ChiefGuestProfile("Shri Ram Naik", "Hon'ble Governer of U.P.", "(6 Oct. 2018 , UG)", null, null, null);
-//                guestList.add(guest);
-//                k1--;
-//            }
-//            mAdapterGuest.notifyDataSetChanged();
-//        }
-
         private View setUpAcco(View view) {
 
             recyclerViewHotel = view.findViewById(R.id.hotelListView);
@@ -614,6 +617,60 @@ public class MainActivity extends AppCompatActivity {
             }
 
             mAdapterHotel.notifyDataSetChanged();
+        }
+
+        private void setupMedalRecycler(ArrayList<MedalsResponseModel> medalsResponseModels) {
+
+            medalsAdapterArray.clear();
+
+            switch (medalLevelSelected) {
+                case 1: {
+
+                    for (MedalsResponseModel responseModel : medalsResponseModels) {
+
+                        if (responseModel.getLevel().equals("Institute Level")) {
+
+                            for (MedalTypeModel typeModel : responseModel.getMedals()) {
+                                medalsAdapterArray.add(new MedalViewModel(MedalViewModel.TYPE_CATEGORY, typeModel.getType(), null));
+                                for (UserResponseModel userModel : typeModel.getStudents()) {
+                                    medalsAdapterArray.add(new MedalViewModel(MedalViewModel.TYPE_HOLDER, null, userModel));
+                                }
+                            }
+
+                        }
+
+                    }
+
+                    medalAdapter.notifyDataSetChanged();
+
+                    break;
+                }
+                case 2: {
+
+                    for (MedalsResponseModel responseModel : medalsResponseModels) {
+
+                        if (responseModel.getLevel().equals("Department Level")) {
+
+                            for (MedalTypeModel typeModel : responseModel.getMedals()) {
+                                medalsAdapterArray.add(new MedalViewModel(MedalViewModel.TYPE_CATEGORY, typeModel.getType(), null));
+                                for (UserResponseModel userModel : typeModel.getStudents()) {
+                                    medalsAdapterArray.add(new MedalViewModel(MedalViewModel.TYPE_HOLDER, null, userModel));
+                                }
+                            }
+
+                        }
+
+                    }
+
+                    medalAdapter.notifyDataSetChanged();
+
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
+
         }
 
     }

@@ -1,6 +1,5 @@
 package ac.in.iitr.mdg.convocation.adapters;
 
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,16 +7,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import ac.in.iitr.mdg.convocation.R;
-import ac.in.iitr.mdg.convocation.responsemodels.MedalModel;
+import ac.in.iitr.mdg.convocation.viewmodels.MedalViewModel;
 
 public class MedalAdapter extends RecyclerView.Adapter {
 
-    private ArrayList<MedalModel> dataSet;
+    private ArrayList<MedalViewModel> dataSet;
 
-    public MedalAdapter(ArrayList<MedalModel> list) {
+    public MedalAdapter(ArrayList<MedalViewModel> list) {
         dataSet = list;
     }
 
@@ -27,10 +28,10 @@ public class MedalAdapter extends RecyclerView.Adapter {
         View v;
 
         switch (viewType) {
-            case MedalModel.TYPE_CATEGORY:
+            case MedalViewModel.TYPE_CATEGORY:
                 v = LayoutInflater.from(parent.getContext()).inflate(R.layout.medal_category_layout, parent, false);
                 return new CategoryViewHolder(v);
-            case MedalModel.TYPE_HOLDER:
+            case MedalViewModel.TYPE_HOLDER:
                 v = LayoutInflater.from(parent.getContext()).inflate(R.layout.medal_holder_layout, parent, false);
                 return new MedalHolderViewHolder(v);
             default:
@@ -40,48 +41,43 @@ public class MedalAdapter extends RecyclerView.Adapter {
 
     }
 
-//    public static
-
     @Override
     public int getItemViewType(int position) {
         switch (dataSet.get(position).getType()) {
             case 0:
-                return MedalModel.TYPE_CATEGORY;
+                return MedalViewModel.TYPE_CATEGORY;
             case 1:
-                return MedalModel.TYPE_HOLDER;
+                return MedalViewModel.TYPE_HOLDER;
             default:
                 return -1;
         }
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
-        MedalModel medalModel = dataSet.get(position);
+        MedalViewModel medalModel = dataSet.get(position);
         if (medalModel != null) {
             switch (medalModel.getType()) {
 
-                case MedalModel.TYPE_CATEGORY:
+                case MedalViewModel.TYPE_CATEGORY:
                     ((CategoryViewHolder) holder).textView.setText(medalModel.getMedalCategory());
                     break;
-                case MedalModel.TYPE_HOLDER:
-                    View view = (((MedalHolderViewHolder) holder).cardView).findViewById(R.id.inCard);
+                case MedalViewModel.TYPE_HOLDER:
 
-                    ImageView imageView = view.findViewById(R.id.holder_image);
-                    imageView.setImageBitmap(medalModel.getMedalHolder().getMedalHolderImage());
+                    MedalHolderViewHolder medalHolder = (MedalHolderViewHolder) holder;
 
-                    TextView nameText = view.findViewById(R.id.holder_name);
-                    nameText.setText(medalModel.getMedalHolder().getMedalHolderName());
+                    if (medalModel.getUserModel().getProfileImage().isEmpty()) {
+                        Picasso.get().load("null").placeholder(R.drawable.grey_card).into(medalHolder.image);
+                    } else {
+                        Picasso.get().load(medalModel.getUserModel().getProfileImage()).placeholder(R.drawable.grey_card).into(medalHolder.image);
+                    }
 
-                    TextView branchEno = view.findViewById(R.id.holder_branch_en);
-                    branchEno.setText(medalModel.getMedalHolder().getMedalHolderBranch() + "(" + medalModel.getMedalHolder().getMedalHolderEnNo() + ")");
+                    medalHolder.holderName.setText(medalModel.getUserModel().getName());
+                    medalHolder.holderBranchEnr.setText(medalModel.getUserModel().getBranch() + "(" + medalModel.getUserModel().getEnrollmentNumber() + ")");
             }
         }
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return dataSet.size();
@@ -101,11 +97,14 @@ public class MedalAdapter extends RecyclerView.Adapter {
 
     public static class MedalHolderViewHolder extends RecyclerView.ViewHolder {
 
-        CardView cardView;
+        ImageView image;
+        TextView holderName, holderBranchEnr;
 
         public MedalHolderViewHolder(View c) {
             super(c);
-            this.cardView = (CardView) c;
+            this.image = c.findViewById(R.id.holder_image);
+            this.holderName = c.findViewById(R.id.holder_name);
+            this.holderBranchEnr = c.findViewById(R.id.holder_branch_en);
         }
 
     }
