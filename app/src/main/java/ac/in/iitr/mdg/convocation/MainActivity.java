@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-                    final FrameLayout progressBarHome = view.findViewById(R.id.home_progress_wrapper);
+                    final ProgressBar progressBarHome = view.findViewById(R.id.home_progress_bar);
                     progressBarHome.setVisibility(View.VISIBLE);
 
                     final LinearLayout homeWrapper = view.findViewById(R.id.home_wrapper);
