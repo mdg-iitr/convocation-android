@@ -64,7 +64,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if (model != null) {
             if (model.getType() == ScheduleViewModel.TYPE_SCHEDULE) {
                 String imageUrl = model.getScheduleEventModel().getImage();
-                if (imageUrl.isEmpty()) {
+                if (imageUrl == null || imageUrl.isEmpty()) {
                     Picasso.get().load("null").placeholder(R.drawable.grey_card).into(((ScheduleHolder) holder).scheduleEventImage);
                 } else {
                     Picasso.get().load(imageUrl).placeholder(R.drawable.grey_card).into(((ScheduleHolder) holder).scheduleEventImage);

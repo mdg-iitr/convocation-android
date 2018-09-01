@@ -66,7 +66,7 @@ public class MedalAdapter extends RecyclerView.Adapter {
 
                     MedalHolderViewHolder medalHolder = (MedalHolderViewHolder) holder;
 
-                    if (medalModel.getUserModel().getProfileImage().isEmpty()) {
+                    if (medalModel.getUserModel().getProfileImage() == null || medalModel.getUserModel().getProfileImage().isEmpty()) {
                         Picasso.get().load("null").placeholder(R.drawable.grey_card).into(medalHolder.image);
                     } else {
                         Picasso.get().load(medalModel.getUserModel().getProfileImage()).placeholder(R.drawable.grey_card).into(medalHolder.image);

@@ -38,14 +38,14 @@ public class ChiefGuestAdapter extends RecyclerView.Adapter<ChiefGuestAdapter.My
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ChiefGuestResponse guest = guestList.get(position);
         String imageUrl = guest.getImage();
-        if (imageUrl.isEmpty()) {
+        if (imageUrl == null || imageUrl.isEmpty()) {
             Picasso.get().load("null").placeholder(R.drawable.grey_card).into(holder.guestImage);
         } else {
             Picasso.get().load(imageUrl).placeholder(R.drawable.grey_card).into(holder.guestImage);
         }
         holder.name.setText(guest.getName());
         holder.designation.setText(guest.getDesignation());
-//        holder.subtitle.setText(guest.getSubtitle());
+        holder.subtitle.setText(guest.getSubtitle());
         holder.bind(guestList.get(position), listener);
     }
 

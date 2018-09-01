@@ -15,9 +15,9 @@ public class ChiefGuestResponse {
     @SerializedName("id")
     private int id;
     @SerializedName("subtitle")
-    private int subtitle;
+    private String subtitle;
 
-    public ChiefGuestResponse(String designation, String name, String bio, String image, int id, int subtitle) {
+    public ChiefGuestResponse(String designation, String name, String bio, String image, int id, String subtitle) {
         this.designation = designation;
         this.name = name;
         this.bio = bio;
@@ -66,11 +66,11 @@ public class ChiefGuestResponse {
         this.id = id;
     }
 
-    public int getSubtitle() {
+    public String getSubtitle() {
         return subtitle;
     }
 
-    public void setSubtitle(int subtitle) {
+    public void setSubtitle(String subtitle) {
         this.subtitle = subtitle;
     }
 }
