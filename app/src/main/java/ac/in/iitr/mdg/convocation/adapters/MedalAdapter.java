@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import ac.in.iitr.mdg.convocation.R;
 import ac.in.iitr.mdg.convocation.viewmodels.MedalViewModel;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MedalAdapter extends RecyclerView.Adapter {
 
@@ -67,9 +68,9 @@ public class MedalAdapter extends RecyclerView.Adapter {
                     MedalHolderViewHolder medalHolder = (MedalHolderViewHolder) holder;
 
                     if (medalModel.getUserModel().getProfileImage() == null || medalModel.getUserModel().getProfileImage().isEmpty()) {
-                        Picasso.get().load("null").placeholder(R.drawable.grey_card).into(medalHolder.image);
+                        Picasso.get().load("null").placeholder(R.drawable.image_placeholder).into(medalHolder.image);
                     } else {
-                        Picasso.get().load(medalModel.getUserModel().getProfileImage()).placeholder(R.drawable.grey_card).into(medalHolder.image);
+                        Picasso.get().load(medalModel.getUserModel().getProfileImage()).placeholder(R.drawable.image_placeholder).into(medalHolder.image);
                     }
 
                     medalHolder.holderName.setText(medalModel.getUserModel().getName());
@@ -97,7 +98,7 @@ public class MedalAdapter extends RecyclerView.Adapter {
 
     public static class MedalHolderViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView image;
+        CircleImageView image;
         TextView holderName, holderBranchEnr;
 
         public MedalHolderViewHolder(View c) {

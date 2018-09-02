@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import ac.in.iitr.mdg.convocation.network.ApiClient;
 import ac.in.iitr.mdg.convocation.network.ConvoApi;
 import ac.in.iitr.mdg.convocation.responsemodels.UserResponseModel;
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.Observer;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -27,7 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private ScrollView profileWrapper;
 
-    private ImageView profileImage;
+    private CircleImageView profileImage;
     private TextView nameText, emailText, phoneText, enrText, depText, transactionIdText;
 
     @Override
@@ -90,9 +91,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void updateDetails(UserResponseModel user) {
         if (user.getProfileImage() == null || user.getProfileImage().isEmpty()) {
-            Picasso.get().load("null").placeholder(R.drawable.grey_card).into(profileImage);
+            Picasso.get().load("null").placeholder(R.drawable.image_placeholder).into(profileImage);
         } else {
-            Picasso.get().load(user.getProfileImage()).placeholder(R.drawable.grey_card).into(profileImage);
+            Picasso.get().load(user.getProfileImage()).placeholder(R.drawable.image_placeholder).into(profileImage);
         }
 
         nameText.setText(user.getName());

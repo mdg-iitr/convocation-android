@@ -149,9 +149,9 @@ public class MainActivity extends AppCompatActivity {
         profileImageUrl = sharedPreferences.getString(getString(R.string.user_profile_image_identifier), "");
 
         if (profileImageUrl.isEmpty()) {
-            Picasso.get().load("null").placeholder(R.drawable.grey_card).into(profileButton);
+            Picasso.get().load("null").placeholder(R.drawable.image_placeholder).into(profileButton);
         } else {
-            Picasso.get().load(profileImageUrl).into(profileButton);
+            Picasso.get().load(profileImageUrl).placeholder(R.drawable.image_placeholder).into(profileButton);
         }
 
         updateRegisterAndProfileButtonVisibility();

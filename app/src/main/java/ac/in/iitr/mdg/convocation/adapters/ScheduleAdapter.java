@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -15,6 +14,7 @@ import java.util.List;
 
 import ac.in.iitr.mdg.convocation.R;
 import ac.in.iitr.mdg.convocation.viewmodels.ScheduleViewModel;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -65,9 +65,9 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             if (model.getType() == ScheduleViewModel.TYPE_SCHEDULE) {
                 String imageUrl = model.getScheduleEventModel().getImage();
                 if (imageUrl == null || imageUrl.isEmpty()) {
-                    Picasso.get().load("null").placeholder(R.drawable.grey_card).into(((ScheduleHolder) holder).scheduleEventImage);
+                    Picasso.get().load("null").placeholder(R.drawable.image_placeholder).into(((ScheduleHolder) holder).scheduleEventImage);
                 } else {
-                    Picasso.get().load(imageUrl).placeholder(R.drawable.grey_card).into(((ScheduleHolder) holder).scheduleEventImage);
+                    Picasso.get().load(imageUrl).placeholder(R.drawable.image_placeholder).into(((ScheduleHolder) holder).scheduleEventImage);
                 }
                 ((ScheduleHolder) holder).scheduleEventTitleText.setText(model.getScheduleEventModel().getTitle());
                 ((ScheduleHolder) holder).scheduleEventVenueText.setText(model.getScheduleEventModel().getVenue());
@@ -95,7 +95,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
     class ScheduleHolder extends RecyclerView.ViewHolder {
-        ImageView scheduleEventImage;
+        CircleImageView scheduleEventImage;
         TextView scheduleEventTitleText, scheduleEventVenueText, scheduleEventTimeText;
 
         ScheduleHolder(View itemView) {

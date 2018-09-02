@@ -42,7 +42,6 @@
                 android:layout_gravity="end"
                 android:layout_marginEnd="20dp"
                 android:background="@null"
-                android:src="@drawable/grey_card"
                 android:visibility="gone" />
 
             <ImageView
