@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:orientation="vertical"
-    tools:context="ac.in.iitr.mdg.convocation.MainActivity$PlaceholderFragment">
+    tools:context="ac.in.iitr.mdg.convocation.MainActivity$PlaceholderFragment"
+    android:background="#FFFFFF">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/contact_recyclerView"
