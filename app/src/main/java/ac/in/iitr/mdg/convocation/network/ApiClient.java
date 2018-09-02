@@ -23,7 +23,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class ApiClient {
 
-    public static final String BASE_URL = "http://51.15.135.192/";
+    public static final String BASE_URL = "https://convo.iitr.ac.in/";
 
     private static Retrofit retrofit, retrofitAuth;
     private static SharedPreferences sharedPref;
