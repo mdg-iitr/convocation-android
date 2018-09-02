@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -19,7 +18,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import ac.in.iitr.mdg.convocation.network.ApiClient;
@@ -48,16 +46,20 @@ public class RegisterActivity extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
 
+    private String profileImage = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        Toolbar toolbar = findViewById(R.id.toolbar_register);
-        toolbar.setTitle("");
-        TextView textView = findViewById(R.id.registration);
-        textView.setText("Registration");
-        setSupportActionBar(toolbar);
+        ImageView imageView = findViewById(R.id.back_button_register);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         basicName = findViewById(R.id.register_name);
         basicName.setEnabled(false);
@@ -74,16 +76,8 @@ public class RegisterActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(true);
         progressDialog.setIndeterminateDrawable(ContextCompat.getDrawable(this, R.drawable.progress));
 
-        ImageView imageView = findViewById(R.id.back_button_register);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
         sizeOfDress = findViewById(R.id.register_sizeOfDress);
-        String[] items = new String[]{"Select size of dress"};
+        final String[] items = new String[]{"Select size of dress", "30", "32", "34", "36", "38", "40", "42", "44", "46", "48"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         sizeOfDress.setAdapter(adapter);
 
@@ -113,7 +107,10 @@ public class RegisterActivity extends AppCompatActivity {
                                     basicEmail.getText().toString(),
                                     numPeopleSelected,
                                     (isFourWheeler) ? 1 : 0,
-                                    basicTransactionID.getText().toString())
+                                    basicTransactionID.getText().toString(),
+                                    Integer.parseInt(sizeOfDress.getSelectedItem().toString()),
+                                    additionalAddress.getText().toString(),
+                                    profileImage)
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(new Observer<CommonResponse>() {
@@ -130,6 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         Toast.makeText(RegisterActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
                                         finish();
                                     } else {
+                                        Log.d(getClass().getSimpleName(), commonResponse + "");
                                         if (commonResponse.getMessage().toLowerCase().contains("already")) {
                                             updateIsRegisteredInSharedPrefs(true);
                                             Toast.makeText(RegisterActivity.this, "Already registered", Toast.LENGTH_SHORT).show();
@@ -284,6 +282,11 @@ public class RegisterActivity extends AppCompatActivity {
                                     return;
                                 }
 
+                                if (userResponseModel.getProfileImage() != null) {
+                                    profileImage = userResponseModel.getProfileImage();
+                                    updateProfileImageInSharedPref(profileImage);
+                                }
+
                                 basicName.setText(userResponseModel.getName());
                                 basicEnrNo.setText(userResponseModel.getEnrollmentNumber());
                                 basicEmail.setText(userResponseModel.getEmail());
@@ -308,6 +311,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void updateTokenInSharedPrefs(String token) {
+        Log.d(getClass().getSimpleName(), "Token " + token);
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
         SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
         sharedPrefEditor.putString(getString(R.string.token_identifier), token);
@@ -318,6 +322,13 @@ public class RegisterActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
         SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
         sharedPrefEditor.putBoolean(getString(R.string.is_registered_identifier), isRegistered);
+        sharedPrefEditor.commit();
+    }
+
+    private void updateProfileImageInSharedPref(String imageUrl) {
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
+        SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
+        sharedPrefEditor.putString(getString(R.string.user_profile_image_identifier), imageUrl);
         sharedPrefEditor.commit();
     }
 
@@ -337,6 +348,18 @@ public class RegisterActivity extends AppCompatActivity {
         if (basicTransactionID.getText().toString().isEmpty()) {
             isValid = false;
             basicTransactionID.setError("Transaction Id can't be empty");
+        }
+
+        if (additionalAddress.getText().toString().isEmpty()) {
+            isValid = false;
+            additionalAddress.setError("Please add an address");
+        }
+
+        if (sizeOfDress.getSelectedItemPosition() == 0) {
+            if (isValid) {
+                Toast.makeText(this, "Please select a dress size", Toast.LENGTH_SHORT).show();
+            }
+            isValid = false;
         }
 
         return isValid;

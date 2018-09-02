@@ -5,8 +5,19 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class UserResponseModel implements Parcelable{
+public class UserResponseModel implements Parcelable {
 
+    public static final Creator<UserResponseModel> CREATOR = new Creator<UserResponseModel>() {
+        @Override
+        public UserResponseModel createFromParcel(Parcel in) {
+            return new UserResponseModel(in);
+        }
+
+        @Override
+        public UserResponseModel[] newArray(int size) {
+            return new UserResponseModel[size];
+        }
+    };
     @SerializedName("registered")
     private boolean isRegistered;
     @SerializedName("name")
@@ -29,8 +40,14 @@ public class UserResponseModel implements Parcelable{
     private boolean isFourWheeler;
     @SerializedName("branch_id")
     private int branchId;
+    @SerializedName("tshirt_size")
+    private int tShirtSize;
+    @SerializedName("address")
+    private String address;
+    @SerializedName("transaction_id")
+    private String transactionId;
 
-    public UserResponseModel(boolean isRegistered, String name, String phoneNumber, String token, String enrollmentNumber, String branch, String email, String profileImage, String numAdults, boolean isFourWheeler, int branchId) {
+    public UserResponseModel(boolean isRegistered, String name, String phoneNumber, String token, String enrollmentNumber, String branch, String email, String profileImage, String numAdults, boolean isFourWheeler, int branchId, int tShirtSize, String address, String transactionId) {
         this.isRegistered = isRegistered;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -42,6 +59,9 @@ public class UserResponseModel implements Parcelable{
         this.numAdults = numAdults;
         this.isFourWheeler = isFourWheeler;
         this.branchId = branchId;
+        this.tShirtSize = tShirtSize;
+        this.address = address;
+        this.transactionId = transactionId;
     }
 
     protected UserResponseModel(Parcel in) {
@@ -56,19 +76,10 @@ public class UserResponseModel implements Parcelable{
         numAdults = in.readString();
         isFourWheeler = in.readByte() != 0;
         branchId = in.readInt();
+        tShirtSize = in.readInt();
+        address = in.readString();
+        transactionId = in.readString();
     }
-
-    public static final Creator<UserResponseModel> CREATOR = new Creator<UserResponseModel>() {
-        @Override
-        public UserResponseModel createFromParcel(Parcel in) {
-            return new UserResponseModel(in);
-        }
-
-        @Override
-        public UserResponseModel[] newArray(int size) {
-            return new UserResponseModel[size];
-        }
-    };
 
     public boolean isRegistered() {
         return isRegistered;
@@ -158,6 +169,30 @@ public class UserResponseModel implements Parcelable{
         this.branchId = branchId;
     }
 
+    public int gettShirtSize() {
+        return tShirtSize;
+    }
+
+    public void settShirtSize(int tShirtSize) {
+        this.tShirtSize = tShirtSize;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -165,7 +200,6 @@ public class UserResponseModel implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-
         parcel.writeByte((byte) (isRegistered ? 1 : 0));
         parcel.writeString(name);
         parcel.writeString(phoneNumber);
@@ -177,5 +211,8 @@ public class UserResponseModel implements Parcelable{
         parcel.writeString(numAdults);
         parcel.writeByte((byte) (isFourWheeler ? 1 : 0));
         parcel.writeInt(branchId);
+        parcel.writeInt(tShirtSize);
+        parcel.writeString(address);
+        parcel.writeString(transactionId);
     }
 }

@@ -28,11 +28,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +61,7 @@ import ac.in.iitr.mdg.convocation.responsemodels.SpacesItemDecoration;
 import ac.in.iitr.mdg.convocation.responsemodels.UserResponseModel;
 import ac.in.iitr.mdg.convocation.viewmodels.MedalViewModel;
 import ac.in.iitr.mdg.convocation.viewmodels.ScheduleViewModel;
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -77,6 +79,12 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isRegisteredFromSharedPrefs = false;
 
+    private ImageView notificationButton;
+
+    private CircleImageView profileButton;
+
+    private String profileImageUrl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,14 +93,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ImageButton profileButton = findViewById(R.id.profile_open_icon);
+        profileButton = findViewById(R.id.profile_open_icon);
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent profileIntent = new Intent(getApplicationContext(), ProfileActivity.class);
-                startActivity(profileIntent);
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
             }
         });
+
+        notificationButton = findViewById(R.id.notification_icon);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
@@ -107,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                updateRegisterButtonVisibility();
+                updateRegisterAndProfileButtonVisibility();
             }
 
             @Override
@@ -137,11 +146,18 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
         isRegisteredFromSharedPrefs = sharedPreferences.getBoolean(getString(R.string.is_registered_identifier), false);
+        profileImageUrl = sharedPreferences.getString(getString(R.string.user_profile_image_identifier), "");
 
-        updateRegisterButtonVisibility();
+        if (profileImageUrl.isEmpty()) {
+            Picasso.get().load("null").placeholder(R.drawable.grey_card).into(profileButton);
+        } else {
+            Picasso.get().load(profileImageUrl).into(profileButton);
+        }
+
+        updateRegisterAndProfileButtonVisibility();
     }
 
-    public void updateRegisterButtonVisibility() {
+    public void updateRegisterAndProfileButtonVisibility() {
         if (mViewPager.getCurrentItem() != 0) {
             registerButton.setVisibility(View.GONE);
         } else {
@@ -151,6 +167,13 @@ public class MainActivity extends AppCompatActivity {
                 registerButton.setVisibility(View.VISIBLE);
             }
         }
+
+        if (isRegisteredFromSharedPrefs) {
+            profileButton.setVisibility(View.VISIBLE);
+        } else {
+            profileButton.setVisibility(View.GONE);
+        }
+
     }
 
     public void setupChromeCustomTab() {

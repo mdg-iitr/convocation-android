@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -31,10 +32,8 @@ public class DegreeBranchStudentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_branch_students);
 
-        Drawable drawable = getResources().getDrawable(R.drawable.ic_navigate_before_black_24dp);
-        ImageButton imageButton = findViewById(R.id.back_button);
-        imageButton.setImageDrawable(drawable);
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        ImageView backButton = findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();

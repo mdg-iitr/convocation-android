@@ -31,7 +31,10 @@ public interface ConvoApi {
                                             @Field("email") String email,
                                             @Field("adults") int adults,
                                             @Field("four_wheeler") int isFourWheeler,
-                                            @Field("transaction_id") String transactionId);
+                                            @Field("transaction_id") String transactionId,
+                                            @Field("tshirt_size") int tShirtSize,
+                                            @Field("address") String address,
+                                            @Field("profile_image") String profileImage);
 
     @GET("user/chief_guests/")
     Observable<ArrayList<ChiefGuestResponse>> getChiefGuests();
@@ -41,5 +44,8 @@ public interface ConvoApi {
 
     @GET("user/degrees/")
     Observable<ArrayList<DegreeResponseModel>> getDegrees();
+
+    @GET("user/profile/")
+    Observable<UserResponseModel> getProfile();
 
 }

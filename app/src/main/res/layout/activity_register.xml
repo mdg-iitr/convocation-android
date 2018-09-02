@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient_no_radius"
-        android:padding="@dimen/appbar_padding_top"
+        android:paddingTop="@dimen/appbar_padding_top"
         android:theme="@style/ToolbarStyle">
 
         <android.support.v7.widget.Toolbar
@@ -20,24 +20,32 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_weight="1"
+            android:contentInsetEnd="0dp"
+            android:contentInsetLeft="0dp"
+            android:contentInsetRight="0dp"
+            android:contentInsetStart="0dp"
             app:collapseIcon="@drawable/ic_navigate_before_black_24dp"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ToolbarStyle"
-            app:titleTextAppearance="@style/BoldText">
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:layout_scrollFlags="scroll|enterAlways">
 
             <ImageView
                 android:id="@+id/back_button_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
+                android:paddingStart="8dp"
                 app:srcCompat="@drawable/ic_navigate_before_black_24dp" />
 
             <TextView
                 android:id="@+id/registration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:fontFamily="@font/metropolis_semibold"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/metropolis_bold"
+                android:text="@string/registration"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
 
@@ -163,26 +171,26 @@
                     android:theme="@style/BottomLine" />
 
                 <!--<EditText-->
-                    <!--android:id="@+id/register_mobile"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="28dp"-->
-                    <!--android:hint="@string/mobile"-->
-                    <!--android:inputType="number"-->
-                    <!--android:textColor="#737373"-->
-                    <!--android:textColorHint="#afafaf"-->
-                    <!--android:theme="@style/BottomLine" />-->
+                <!--android:id="@+id/register_mobile"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="28dp"-->
+                <!--android:hint="@string/mobile"-->
+                <!--android:inputType="number"-->
+                <!--android:textColor="#737373"-->
+                <!--android:textColorHint="#afafaf"-->
+                <!--android:theme="@style/BottomLine" />-->
                 <!---->
                 <!--<EditText-->
-                    <!--android:id="@+id/register_email2"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="28dp"-->
-                    <!--android:hint="@string/email"-->
-                    <!--android:inputType="textEmailAddress"-->
-                    <!--android:textColor="#737373"-->
-                    <!--android:textColorHint="#afafaf"-->
-                    <!--android:theme="@style/BottomLine" />-->
+                <!--android:id="@+id/register_email2"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="28dp"-->
+                <!--android:hint="@string/email"-->
+                <!--android:inputType="textEmailAddress"-->
+                <!--android:textColor="#737373"-->
+                <!--android:textColorHint="#afafaf"-->
+                <!--android:theme="@style/BottomLine" />-->
 
                 <TextView
                     android:layout_width="match_parent"

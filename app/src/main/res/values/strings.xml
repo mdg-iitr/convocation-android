@@ -66,6 +66,7 @@
 
     <string name="preference_file_key">convo_shared_pref</string>
     <string name="token_identifier">registration_token</string>
+    <string name="user_profile_image_identifier">profile_image</string>
     <string name="is_registered_identifier">is_registered_flag</string>
 
 </resources>
