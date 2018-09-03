@@ -15,6 +15,7 @@ import ac.in.iitr.mdg.convocation.R;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -36,6 +37,7 @@ public class ApiClient {
                     .client(new OkHttpClient.Builder()
                             .readTimeout(100, TimeUnit.SECONDS)
                             .connectTimeout(100, TimeUnit.SECONDS)
+                            .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                             .build())
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -62,6 +64,7 @@ public class ApiClient {
             OkHttpClient.Builder ok_builder = new OkHttpClient.Builder();
             ok_builder.readTimeout(100, TimeUnit.SECONDS);
             ok_builder.connectTimeout(100, TimeUnit.SECONDS);
+            ok_builder.addInterceptor(new HttpLoggingInterceptor());
             ok_builder.addInterceptor(new Interceptor() {
                 @Override
                 public okhttp3.Response intercept(Chain chain) throws IOException {

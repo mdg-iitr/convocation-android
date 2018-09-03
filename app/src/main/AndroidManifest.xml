@@ -26,10 +26,6 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ChiefGuestDescriptionActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".RegisterActivity"
             android:label="@string/registration"
             android:theme="@style/AppTheme.NoActionBar">

@@ -254,11 +254,7 @@ public class MainActivity extends AppCompatActivity {
                     final ChiefGuestAdapter mAdapterGuest = new ChiefGuestAdapter(guestList, new ChiefGuestAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(ChiefGuestResponse guest) {
-                            Intent intent = new Intent(getActivity(), ChiefGuestDescriptionActivity.class);
-                            intent.putExtra(ChiefGuestDescriptionActivity.INTENT_EXTRA_GUEST_NAME, guest.getName());
-                            intent.putExtra(ChiefGuestDescriptionActivity.INTENT_EXTRA_GUEST_DESIGNATION, guest.getDesignation());
-                            intent.putExtra(ChiefGuestDescriptionActivity.INTENT_EXTRA_GUEST_BIO, guest.getBio());
-                            startActivity(intent);
+                            // TODO : Open Bio Link
                         }
                     });
                     recyclerViewGuest.setAdapter(mAdapterGuest);
@@ -566,41 +562,12 @@ public class MainActivity extends AppCompatActivity {
                     return rootView6;
 
                 case 7:
-                    View rootView7 = inflater.inflate(R.layout.fragment_gallery, container, false);
-                    RecyclerView galleryView = rootView7.findViewById(R.id.gallery_recycler_view);
-                    galleryView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-                    Bitmap[] bitmap = new Bitmap[5];
-                    bitmap[0] = Bitmap.createBitmap(158 * 2, 182 * 2, Bitmap.Config.ARGB_8888);
-                    bitmap[1] = Bitmap.createBitmap(158 * 2, 129 * 2, Bitmap.Config.ARGB_8888);
-                    bitmap[2] = Bitmap.createBitmap(158 * 2, 129 * 2, Bitmap.Config.ARGB_8888);
-                    bitmap[3] = Bitmap.createBitmap(158 * 2, 182 * 2, Bitmap.Config.ARGB_8888);
-                    bitmap[4] = Bitmap.createBitmap(158 * 2, 129 * 2, Bitmap.Config.ARGB_8888);
-                    String[] s = new String[5];
-                    s[0] = "Old Convocation";
-                    s[1] = "Medal Distribution";
-                    s[2] = "Chief Guests";
-                    s[3] = "Degree Distribution";
-                    s[4] = "Old Convocation";
-
-
-                    for (int i = 0; i < 5; i++) {
-                        Canvas c2 = new Canvas(bitmap[i]);
-                        c2.drawColor(Color.LTGRAY);
-                    }
-                    GalleryAdapter galleryAdapter = new GalleryAdapter(bitmap, s);
-                    galleryView.setAdapter(galleryAdapter);
-                    SpacesItemDecoration decoration = new SpacesItemDecoration(16);
-                    galleryView.addItemDecoration(decoration);
-
-                    return rootView7;
-
-                case 8:
                     return inflater.inflate(R.layout.fragment_livecast, container, false);
 
-                case 9:
+                case 8:
                     return inflater.inflate(R.layout.fragment_instructions, container, false);
 
-                case 10:
+                case 9:
                     View rootView10 = inflater.inflate(R.layout.fragment_contact, container, false);
 
                     RecyclerView contactView = rootView10.findViewById(R.id.contact_recyclerView);
