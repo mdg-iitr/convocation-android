@@ -20,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.regex.Pattern;
+
 import ac.in.iitr.mdg.convocation.network.ApiClient;
 import ac.in.iitr.mdg.convocation.network.ConvoApi;
 import ac.in.iitr.mdg.convocation.responsemodels.CommonResponse;
@@ -345,9 +347,9 @@ public class RegisterActivity extends AppCompatActivity {
             basicEmail.setError("Please enter valid email address");
         }
 
-        if (basicTransactionID.getText().toString().isEmpty()) {
+        if (!Pattern.matches("DU[0-9]{8}", basicTransactionID.getText().toString())) {
             isValid = false;
-            basicTransactionID.setError("Transaction Id can't be empty");
+            basicTransactionID.setError("Transaction ID must be of type DUXXXXXXXX");
         }
 
         if (additionalAddress.getText().toString().isEmpty()) {
@@ -355,11 +357,13 @@ public class RegisterActivity extends AppCompatActivity {
             additionalAddress.setError("Please add an address");
         }
 
-        if (sizeOfDress.getSelectedItemPosition() == 0) {
-            if (isValid) {
+        if (!isValid) {
+            Toast.makeText(this, "Please input valid details", Toast.LENGTH_SHORT).show();
+        } else {
+            if (sizeOfDress.getSelectedItemPosition() == 0) {
                 Toast.makeText(this, "Please select a dress size", Toast.LENGTH_SHORT).show();
+                isValid = false;
             }
-            isValid = false;
         }
 
         return isValid;

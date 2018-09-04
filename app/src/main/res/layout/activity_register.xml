@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:clipChildren="false"
     tools:context="ac.in.iitr.mdg.convocation.RegisterActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -55,11 +56,13 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:clipChildren="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipChildren="false"
             android:orientation="vertical">
 
             <LinearLayout
@@ -68,11 +71,13 @@
                 android:layout_marginEnd="25dp"
                 android:layout_marginStart="20dp"
                 android:orientation="vertical"
+                android:clipChildren="false"
                 tools:ignore="RtlCompat">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/metropolis_semibold"
                     android:text="@string/basic_details"
@@ -86,7 +91,7 @@
                     android:layout_marginTop="20dp"
                     android:hint="@string/name"
                     android:inputType="textPersonName"
-                    android:textColor="#737373"
+                    android:textColor="#afafaf"
                     android:textColorHint="#afafaf"
                     android:theme="@style/BottomLine" />
 
@@ -97,7 +102,7 @@
                     android:layout_marginTop="28dp"
                     android:hint="@string/enrollment"
                     android:inputType="number"
-                    android:textColor="#737373"
+                    android:textColor="#afafaf"
                     android:textColorHint="#afafaf"
                     android:theme="@style/BottomLine" />
 
@@ -108,7 +113,7 @@
                     android:layout_marginTop="28dp"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
-                    android:textColor="#737373"
+                    android:textColor="#262626"
                     android:textColorHint="#afafaf"
                     android:theme="@style/BottomLine" />
 
@@ -119,7 +124,7 @@
                     android:layout_marginTop="28dp"
                     android:hint="@string/phone"
                     android:inputType="phone"
-                    android:textColor="#737373"
+                    android:textColor="#262626"
                     android:textColorHint="#afafaf"
                     android:theme="@style/BottomLine" />
 
@@ -128,9 +133,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
-                    android:hint="@string/bank_transaction"
+                    android:hint="@string/transaction_id_pattern"
                     android:inputType="textPhonetic"
-                    android:textColor="#737373"
+                    android:textColor="#262626"
                     android:textColorHint="#afafaf"
                     android:theme="@style/BottomLine" />
 
@@ -138,12 +143,14 @@
                     android:id="@+id/register_sizeOfDress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="-4dp"
                     android:layout_marginTop="28dp"
                     android:spinnerMode="dropdown" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
                     android:fontFamily="@font/metropolis_regular"
                     android:lineSpacingExtra="8sp"
                     android:text="@string/girl_dress"
@@ -153,6 +160,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
                     android:layout_marginTop="50dp"
                     android:fontFamily="@font/metropolis_semibold"
                     android:text="@string/additional_details"
@@ -166,35 +174,14 @@
                     android:layout_marginTop="28dp"
                     android:hint="@string/address"
                     android:inputType="textPostalAddress"
-                    android:textColor="#737373"
+                    android:textColor="#262626"
                     android:textColorHint="#afafaf"
                     android:theme="@style/BottomLine" />
-
-                <!--<EditText-->
-                <!--android:id="@+id/register_mobile"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="28dp"-->
-                <!--android:hint="@string/mobile"-->
-                <!--android:inputType="number"-->
-                <!--android:textColor="#737373"-->
-                <!--android:textColorHint="#afafaf"-->
-                <!--android:theme="@style/BottomLine" />-->
-                <!---->
-                <!--<EditText-->
-                <!--android:id="@+id/register_email2"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="28dp"-->
-                <!--android:hint="@string/email"-->
-                <!--android:inputType="textEmailAddress"-->
-                <!--android:textColor="#737373"-->
-                <!--android:textColorHint="#afafaf"-->
-                <!--android:theme="@style/BottomLine" />-->
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
                     android:layout_marginTop="50dp"
                     android:fontFamily="@font/metropolis_semibold"
                     android:text="@string/people_details"
@@ -204,6 +191,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
                     android:layout_marginTop="7dp"
                     android:fontFamily="@font/metropolis_regular"
                     android:text="@string/number_of_people"
@@ -213,7 +201,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
                     android:layout_marginTop="25dp"
+                    android:clipChildren="false"
                     android:orientation="horizontal">
 
                     <Button
@@ -254,6 +244,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
                     android:layout_marginTop="50dp"
                     android:fontFamily="@font/metropolis_semibold"
                     android:text="@string/vehicle_details"
@@ -263,6 +254,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
                     android:layout_marginTop="7dp"
                     android:fontFamily="@font/metropolis_regular"
                     android:text="@string/number_of_vehicle"
@@ -272,7 +264,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
                     android:layout_marginTop="25dp"
+                    android:clipChildren="false"
                     android:orientation="horizontal">
 
                     <Button
@@ -305,6 +299,7 @@
                     android:layout_marginTop="70dp"
                     android:fontFamily="@font/metropolis_semibold"
                     android:text="@string/terms"
+                    android:layout_marginStart="4dp"
                     android:textColor="#262626"
                     android:textSize="16sp" />
 
@@ -315,13 +310,14 @@
                     android:layout_marginTop="20dp"
                     android:text="@string/termsAndCondition"
                     android:theme="@style/BottomLine" />
+
             </LinearLayout>
 
             <Button
                 android:id="@+id/register_submit"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="25dp"
                 android:background="@drawable/gradient_no_radius"
                 android:fontFamily="@font/metropolis_semibold"
                 android:text="@string/submit"

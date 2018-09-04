@@ -103,7 +103,7 @@ public class ProfileActivity extends AppCompatActivity {
         enrText.setText(user.getEnrollmentNumber());
         depText.setText(user.getBranch());
 
-//        transactionIdText.setText(user.getTransactionId());
+        transactionIdText.setText(user.getTransactionId());
 
     }
 
