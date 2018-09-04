@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.MyViewHolder
     public void onBindViewHolder(HotelAdapter.MyViewHolder holder, int position) {
         HotelProfile hotel = hotelList.get(position);
         holder.name.setText(hotel.getName());
+        holder.image.setImageResource(hotel.getResId());
         holder.bind(hotelList.get(position), listener);
     }
 
@@ -46,11 +48,13 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.MyViewHolder
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView serialNo, name, address;
+        public TextView name, address;
+        public ImageView image;
 
         public MyViewHolder(View view) {
             super(view);
             name = (TextView) view.findViewById(R.id.hotel_card_name);
+            image = view.findViewById(R.id.hotel_card_image);
         }
 
         public void bind(final HotelProfile hotel, final HotelAdapter.OnItemClickListener listener) {

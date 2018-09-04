@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,7 +19,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +38,6 @@ import java.util.List;
 import ac.in.iitr.mdg.convocation.adapters.ChiefGuestAdapter;
 import ac.in.iitr.mdg.convocation.adapters.ContactAdapter;
 import ac.in.iitr.mdg.convocation.adapters.DegreeAdapter;
-import ac.in.iitr.mdg.convocation.adapters.GalleryAdapter;
 import ac.in.iitr.mdg.convocation.adapters.HotelAdapter;
 import ac.in.iitr.mdg.convocation.adapters.MedalAdapter;
 import ac.in.iitr.mdg.convocation.adapters.ScheduleAdapter;
@@ -57,7 +53,6 @@ import ac.in.iitr.mdg.convocation.responsemodels.MedalTypeModel;
 import ac.in.iitr.mdg.convocation.responsemodels.MedalsResponseModel;
 import ac.in.iitr.mdg.convocation.responsemodels.ScheduleEventModel;
 import ac.in.iitr.mdg.convocation.responsemodels.ScheduleModel;
-import ac.in.iitr.mdg.convocation.responsemodels.SpacesItemDecoration;
 import ac.in.iitr.mdg.convocation.responsemodels.UserResponseModel;
 import ac.in.iitr.mdg.convocation.viewmodels.MedalViewModel;
 import ac.in.iitr.mdg.convocation.viewmodels.ScheduleViewModel;
@@ -190,7 +185,6 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerViewHotel;
         HotelAdapter mAdapterHotel;
         Context activityContext;
-        int k2 = 1;
 
         // Medals Fragment Attributes
         private int medalLevelSelected = 0;
@@ -297,6 +291,16 @@ public class MainActivity extends AppCompatActivity {
 
                 case 3:
                     View rootView3 = inflater.inflate(R.layout.fragment_accomodation, container, false);
+
+                    Button downloadButton = rootView3.findViewById(R.id.download_button);
+                    downloadButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.iitr.ac.in/institute/uploads/File/convo2018/Hotels.pdf"));
+                            startActivity(browserIntent);
+                        }
+                    });
+
                     return setUpAcco(rootView3);
 
                 case 4:
@@ -603,7 +607,9 @@ public class MainActivity extends AppCompatActivity {
             mAdapterHotel = new HotelAdapter(hotelList, new HotelAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(HotelProfile hotel) {
-
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse(hotel.getMapsUrl()));
+                    startActivity(intent);
                 }
             });
             RecyclerView.LayoutManager mLayoutManagerHotel = new LinearLayoutManager(activityContext);
@@ -612,29 +618,20 @@ public class MainActivity extends AppCompatActivity {
             recyclerViewHotel.setItemAnimator(new DefaultItemAnimator());
             recyclerViewHotel.setAdapter(mAdapterHotel);
 
-            prepareHotelData();
-
-            return view;
-        }
-
-        private void prepareHotelData() {
-            if (k2 == 1) {
-                HotelProfile hotel = new HotelProfile("Hotel Prakash", "21,Civil Lines,Roorkee", null, null, null);
-                hotelList.add(hotel);
-
-                hotel = new HotelProfile("Hotel Sungrace", "142,Civil Lines,Roorkee", null, null, null);
-                hotelList.add(hotel);
-
-                hotel = new HotelProfile("Hotel Prakash", "21,Civil Lines,Roorkee", null, null, null);
-                hotelList.add(hotel);
-
-                hotel = new HotelProfile("Hotel Sungrace", "142,Civil Lines,Roorkee", null, null, null);
-                hotelList.add(hotel);
-
-                k2--;
-            }
+            hotelList.add(new HotelProfile("Hometel (A sarovar Hotel)", R.drawable.hometel, "https://maps.google.com/?cid=3613636995944658866"));
+            hotelList.add(new HotelProfile("Ambrosia sarovar Portico", R.drawable.sarovar, "https://maps.google.com/?cid=10044551935308580425"));
+            hotelList.add(new HotelProfile("Motel Polaris", R.drawable.polaris, "https://maps.google.com/?cid=3821078255041093716"));
+            hotelList.add(new HotelProfile("Hotel Centrum", R.drawable.centrum, "https://maps.google.com/?cid=17119990003797877505"));
+            hotelList.add(new HotelProfile("Hotel Godawari", R.drawable.godawari, "https://maps.google.com/?cid=5376462500066981236"));
+            hotelList.add(new HotelProfile("Hotel Center Point", R.drawable.centerpoint, "https://maps.google.com/?cid=7390331712734152861"));
+            hotelList.add(new HotelProfile("Hotel Dynasty", R.drawable.dynasty, "https://maps.google.com/?cid=7348437769293138179"));
+            hotelList.add(new HotelProfile("Hotel Divine", R.drawable.divine, "https://maps.google.com/?cid=3810706295594368849"));
+            hotelList.add(new HotelProfile("Hotel Prakash", R.drawable.prakash, "https://maps.google.com/?cid=11895064998211498514"));
+            hotelList.add(new HotelProfile("Royal Palace", R.drawable.rp, "https://maps.google.com/?cid=4582136391688479029"));
 
             mAdapterHotel.notifyDataSetChanged();
+
+            return view;
         }
 
         private void setupMedalRecycler(ArrayList<MedalsResponseModel> medalsResponseModels) {

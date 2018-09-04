@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="13dp"
-        android:layout_marginStart="13dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="27dp"
         android:fontFamily="@font/metropolis_regular"
         android:lineSpacingExtra="5sp"
@@ -18,13 +18,17 @@
         android:textSize="12sp" />
 
     <Button
-        android:layout_width="154dp"
+        android:id="@+id/download_button"
+        android:layout_width="wrap_content"
         android:layout_height="36dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginStart="13dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/gradient"
         android:fontFamily="@font/metropolis_semibold"
+        android:paddingBottom="5dp"
+        android:paddingEnd="30dp"
+        android:paddingStart="30dp"
+        android:paddingTop="5dp"
         android:text="Download List"
         android:textColor="#ffffff"
         android:textSize="12sp" />
@@ -32,9 +36,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginStart="13dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/metropolis_semibold"
         android:text="Guest House and Hotels links"
@@ -45,12 +47,12 @@
         android:id="@+id/hotelListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="13dp"
-        android:layout_marginStart="13dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:background="@android:color/transparent"
         android:cacheColorHint="@android:color/transparent">
 
     </android.support.v7.widget.RecyclerView>
-
 
 </LinearLayout>
