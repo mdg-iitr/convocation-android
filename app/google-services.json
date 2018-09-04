@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "521558358300",
+    "firebase_url": "https://convocation-e7e64.firebaseio.com",
+    "project_id": "convocation-e7e64",
+    "storage_bucket": "convocation-e7e64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521558358300:android:fbdb10c4f6781766",
+        "android_client_info": {
+          "package_name": "ac.in.iitr.mdg.convocation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "521558358300-226hsbaqaj5b0nu44dg7hsfsss7g8fvl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVOTEsIuIv0xx7lXbrqxGrAduCuWNMlZc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
