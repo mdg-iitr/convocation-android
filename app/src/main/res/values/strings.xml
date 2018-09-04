@@ -69,4 +69,6 @@
     <string name="user_profile_image_identifier">profile_image</string>
     <string name="is_registered_identifier">is_registered_flag</string>
 
+
+    <string name="default_notification_channel_id">default_channel</string>
 </resources>
