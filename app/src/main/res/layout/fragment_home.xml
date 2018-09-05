@@ -18,7 +18,7 @@
             android:clipToPadding="false"
             android:orientation="vertical"
             android:paddingTop="10dp"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <include layout="@layout/homecard" />
 

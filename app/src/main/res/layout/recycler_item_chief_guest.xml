@@ -3,62 +3,93 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/chief_guest_card"
-    android:layout_width="wrap_content"
+    android:layout_width="180dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="10dp"
     android:background="@color/colorAccent"
     app:cardElevation="3dp">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/guest_card_thumbimage"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_gravity="center"
-            android:layout_margin="7dp"
-            android:background="#dedede" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:orientation="vertical"
+            app:layout_constraintDimensionRatio="H,165:242"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/guest_card_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="14dp"
-            android:fontFamily="@font/metropolis_medium"
-            android:gravity="center_horizontal"
-            android:textColor="#444444"
-            android:textSize="12sp"
-            tools:text="Shri Ram Naik" />
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/image_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/guest_card_desg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/metropolis_regular"
-            android:gravity="center_horizontal"
-            android:textColor="#838383"
-            android:textSize="10sp"
-            tools:text="Hon’ble Governor of U.P." />
+                <ImageView
+                    android:id="@+id/guest_card_thumbimage"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="7dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#dedede"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintDimensionRatio="H,1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/guest_card_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/metropolis_regular"
-            android:gravity="center_horizontal"
-            android:textColor="#838383"
-            android:textSize="10sp"
-            tools:text="(6 Oct. 2018 , UG)" />
+                </ImageView>
 
-    </LinearLayout>
+            </android.support.constraint.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/guest_card_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/metropolis_medium"
+                android:gravity="center_horizontal"
+                android:paddingTop="2dp"
+                android:textColor="#444444"
+                android:textSize="12sp"
+                tools:text="Shri Ram Naik" />
+
+            <TextView
+                android:id="@+id/guest_card_desg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/metropolis_regular"
+                android:gravity="center_horizontal"
+                android:paddingTop="2dp"
+                android:textColor="#838383"
+                android:textSize="10sp"
+                tools:text="Hon’ble Governor of U.P." />
+
+            <TextView
+                android:id="@+id/guest_card_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/metropolis_regular"
+                android:gravity="center_horizontal"
+                android:paddingTop="2dp"
+                android:textColor="#838383"
+                android:textSize="10sp"
+                tools:text="(6 Oct. 2018 , UG)" />
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>
