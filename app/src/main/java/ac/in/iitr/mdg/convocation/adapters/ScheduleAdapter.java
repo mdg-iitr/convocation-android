@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import ac.in.iitr.mdg.convocation.R;
+import ac.in.iitr.mdg.convocation.utils.Utils;
 import ac.in.iitr.mdg.convocation.viewmodels.ScheduleViewModel;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -71,7 +72,12 @@ public class ScheduleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 }
                 ((ScheduleHolder) holder).scheduleEventTitleText.setText(model.getScheduleEventModel().getTitle());
                 ((ScheduleHolder) holder).scheduleEventVenueText.setText(model.getScheduleEventModel().getVenue());
-                ((ScheduleHolder) holder).scheduleEventTimeText.setText(model.getScheduleEventModel().getTimeStart());
+
+                ((ScheduleHolder) holder).scheduleEventTimeText.setText(
+                        Utils.convertTimeFormat(model.getScheduleEventModel().getTimeStart())
+                                + " - "
+                                + Utils.convertTimeFormat(model.getScheduleEventModel().getTimeEnd()));
+
             } else if (model.getType() == ScheduleViewModel.TYPE_DATE) {
                 ((ScheduleDateHolder) holder).scheduleDateText.setText(model.getDate());
             }
