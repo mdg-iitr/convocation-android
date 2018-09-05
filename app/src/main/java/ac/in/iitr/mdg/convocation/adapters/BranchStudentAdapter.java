@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -35,9 +36,14 @@ public class BranchStudentAdapter extends RecyclerView.Adapter<BranchStudentAdap
 
     @Override
     public void onBindViewHolder(@NonNull BranchStudentHolder holder, int position) {
-        UserResponseModel mylist = list.get(position);
-        holder.student_name.setText(mylist.getName());
-        holder.student_enrollment.setText(mylist.getEnrollmentNumber());
+        UserResponseModel student = list.get(position);
+        holder.student_name.setText(student.getName().trim());
+        holder.student_enrollment.setText(student.getEnrollmentNumber().trim());
+        if (student.isRegistered()) {
+            holder.isRegisteredImage.setVisibility(View.VISIBLE);
+        } else {
+            holder.isRegisteredImage.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -80,11 +86,13 @@ public class BranchStudentAdapter extends RecyclerView.Adapter<BranchStudentAdap
 
     class BranchStudentHolder extends RecyclerView.ViewHolder {
         public TextView student_name, student_enrollment;
+        ImageView isRegisteredImage;
 
         public BranchStudentHolder(View itemView) {
             super(itemView);
             student_name = (TextView) itemView.findViewById(R.id.branchStudent_name);
             student_enrollment = (TextView) itemView.findViewById(R.id.branchStudent_enrollment);
+            isRegisteredImage = itemView.findViewById(R.id.is_registered_image);
         }
     }
 }

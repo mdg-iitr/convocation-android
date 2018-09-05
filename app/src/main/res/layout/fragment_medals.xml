@@ -2,49 +2,69 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipChildren="false"
-    android:clipToPadding="false"
     android:background="#FFFFFF">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <FrameLayout
+        android:id="@+id/button_wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clipChildren="false"
-        android:clipToPadding="false">
+        android:clipChildren="false">
 
-        <Button
-            android:id="@+id/instiLevel"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="13dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="14dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/metropolis_regular"
-            android:text="@string/inst_medals"
-            android:textAppearance="@style/AllCapsFalse"
-            android:textSize="12sp" />
+            android:layout_height="match_parent"
+            android:clipChildren="false">
 
-        <Button
-            android:id="@+id/deptLevel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="13dp"
-            android:layout_marginTop="14dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/metropolis_regular"
-            android:text="@string/dept_medals"
-            android:textAppearance="@style/AllCapsFalse"
-            android:textSize="12sp" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/instiLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="14dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="14dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/metropolis_regular"
+                android:text="@string/inst_medals"
+                android:textAppearance="@style/AllCapsFalse"
+                android:textSize="12sp" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/medals_recycler_view"
+            <Button
+                android:id="@+id/deptLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="14dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="14dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/metropolis_regular"
+                android:text="@string/dept_medals"
+                android:textAppearance="@style/AllCapsFalse"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/recycler_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/linearLayout"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_wrapper">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/medals_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:clipToPadding="false"
+            android:paddingBottom="16dp" />
+
+    </FrameLayout>
 
 </RelativeLayout>
