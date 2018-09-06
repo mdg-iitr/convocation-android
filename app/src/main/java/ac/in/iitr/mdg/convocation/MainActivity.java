@@ -36,7 +36,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ac.in.iitr.mdg.convocation.adapters.ChiefGuestAdapter;
-import ac.in.iitr.mdg.convocation.adapters.ContactAdapter;
 import ac.in.iitr.mdg.convocation.adapters.DegreeAdapter;
 import ac.in.iitr.mdg.convocation.adapters.HotelAdapter;
 import ac.in.iitr.mdg.convocation.adapters.MedalAdapter;
@@ -44,8 +43,6 @@ import ac.in.iitr.mdg.convocation.adapters.ScheduleAdapter;
 import ac.in.iitr.mdg.convocation.network.ApiClient;
 import ac.in.iitr.mdg.convocation.network.ConvoApi;
 import ac.in.iitr.mdg.convocation.responsemodels.ChiefGuestResponse;
-import ac.in.iitr.mdg.convocation.responsemodels.Contact;
-import ac.in.iitr.mdg.convocation.responsemodels.ContactCard;
 import ac.in.iitr.mdg.convocation.responsemodels.DegreeBranchModel;
 import ac.in.iitr.mdg.convocation.responsemodels.DegreeResponseModel;
 import ac.in.iitr.mdg.convocation.responsemodels.HotelProfile;
@@ -597,19 +594,48 @@ public class MainActivity extends AppCompatActivity {
                 case 9:
                     View rootView10 = inflater.inflate(R.layout.fragment_contact, container, false);
 
-                    RecyclerView contactView = rootView10.findViewById(R.id.contact_recyclerView);
-                    contactView.setLayoutManager(new LinearLayoutManager(getContext()));
-                    List<Contact> contactList = new ArrayList<>();
-                    ContactAdapter contactAdapter = new ContactAdapter(getContext(), contactList);
+//                    RecyclerView contactView = rootView10.findViewById(R.id.contact_recyclerView);
+//                    contactView.setLayoutManager(new LinearLayoutManager(getContext()));
+//                    List<Contact> contactList = new ArrayList<>();
+//                    ContactAdapter contactAdapter = new ContactAdapter(getContext(), contactList);
+//
+//                    contactList.add(new Contact(Contact.TYPE_CATEGORY, "Medical Section"));
+//                    contactList.add(new Contact(Contact.TYPE_CONTACT, new ContactCard("Jayant Mishra", "Mental Patient", "9876543210")));
+//                    contactList.add(new Contact(Contact.TYPE_CONTACT, new ContactCard("Anchit Shukla", "Liver Patient", "8976543210")));
+//                    contactList.add(new Contact(Contact.TYPE_CATEGORY, "Technical Section"));
+//                    contactList.add(new Contact(Contact.TYPE_CONTACT, new ContactCard("Lakshya Kumawat", "Pro Officials", "7896543210")));
+//                    contactList.add(new Contact(Contact.TYPE_CONTACT, new ContactCard("Prasannadeep Das", "Pro Officials", "8796543210")));
+//
+//                    contactView.setAdapter(contactAdapter);
 
-                    contactList.add(new Contact(Contact.TYPE_CATEGORY, "Medical Section"));
-                    contactList.add(new Contact(Contact.TYPE_CONTACT, new ContactCard("Jayant Mishra", "Mental Patient", "9876543210")));
-                    contactList.add(new Contact(Contact.TYPE_CONTACT, new ContactCard("Anchit Shukla", "Liver Patient", "8976543210")));
-                    contactList.add(new Contact(Contact.TYPE_CATEGORY, "Technical Section"));
-                    contactList.add(new Contact(Contact.TYPE_CONTACT, new ContactCard("Lakshya Kumawat", "Pro Officials", "7896543210")));
-                    contactList.add(new Contact(Contact.TYPE_CONTACT, new ContactCard("Prasannadeep Das", "Pro Officials", "8796543210")));
-
-                    contactView.setAdapter(contactAdapter);
+                    final TextView email1 = rootView10.findViewById(R.id.email_actiir);
+                    email1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            Uri data = Uri.parse("mailto:?to=" + email1.getText().toString());
+                            intent.setData(data);
+                            startActivity(intent);
+                        }
+                    });
+                    final TextView email2 = rootView10.findViewById(R.id.email_dracademic);
+                    email2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            Uri data = Uri.parse("mailto:?to=" + email2.getText().toString());
+                            intent.setData(data);
+                            startActivity(intent);
+                        }
+                    });
+                    final TextView phone = rootView10.findViewById(R.id.contact_dracademic);
+                    phone.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:+911332285098"));
+                            startActivity(intent);
+                        }
+                    });
 
                     return rootView10;
 

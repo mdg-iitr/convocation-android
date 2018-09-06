@@ -5,13 +5,83 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
+    android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context="ac.in.iitr.mdg.convocation.MainActivity$PlaceholderFragment"
-    android:background="#FFFFFF">
+    android:padding="10dp"
+    tools:context="ac.in.iitr.mdg.convocation.MainActivity$PlaceholderFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/contact_recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:id="@+id/contact_recyclerView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content" />-->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/metropolis_bold"
+            android:text="Email : "
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/email_actiir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="aciitr@iitr.ac.in"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/metropolis_bold"
+            android:text="Email : "
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/email_dracademic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dracademic@iitr.ac.in"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/metropolis_bold"
+            android:text="Phone : "
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/contact_dracademic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+91-1332-285098"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
 </LinearLayout>
