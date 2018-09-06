@@ -235,9 +235,32 @@ public class MainActivity extends AppCompatActivity {
                     homeWrapper.setVisibility(View.GONE);
 
                     ImageView fblink = view.findViewById(R.id.fblink);
+                    fblink.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                    Uri.parse("https://www.facebook.com/IITRoorkee.ICC/?ref=bookmarks"));
+                            startActivity(intent);
+                        }
+                    });
                     ImageView twlink = view.findViewById(R.id.twlink);
-                    ImageView ytlink = view.findViewById(R.id.ytlink);
+                    twlink.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                    Uri.parse("https://twitter.com/iitr247667"));
+                            startActivity(intent);
+                        }
+                    });
                     ImageView inlink = view.findViewById(R.id.inlink);
+                    inlink.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                    Uri.parse("https://www.linkedin.com/school/indian-institute-of-technology-roorkee/"));
+                            startActivity(intent);
+                        }
+                    });
 
                     RecyclerView recyclerViewGuest = view.findViewById(R.id.chief_guest_recycler);
                     RecyclerView.LayoutManager mLayoutManagerGuest = new LinearLayoutManager(getActivity().getApplicationContext());
