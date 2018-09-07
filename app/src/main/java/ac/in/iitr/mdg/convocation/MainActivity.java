@@ -109,6 +109,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 updateRegisterAndProfileButtonVisibility();
+                if (position == 1 && PlaceholderFragment.isImageExpanded) {
+                    PlaceholderFragment.collapseImageView();
+                }
             }
 
             @Override
@@ -176,6 +179,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static class PlaceholderFragment extends Fragment {
+
+        public static boolean isImageExpanded = false;
+
+        private static FrameLayout expandedWrapper;
 
         private static final String ARG_SECTION_NUMBER = "section_number";
         List<HotelProfile> hotelList = new ArrayList<>();
@@ -307,7 +314,39 @@ public class MainActivity extends AppCompatActivity {
                     return view;
 
                 case 2:
-                    return inflater.inflate(R.layout.fragment_dresscode, container, false);
+                    View dressCodeView = inflater.inflate(R.layout.fragment_dresscode, container, false);
+
+                    final ImageView expandedImageView = dressCodeView.findViewById(R.id.expanded_image);
+
+                    expandedWrapper = dressCodeView.findViewById(R.id.expanded_image_wrapper);
+                    expandedWrapper.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            expandedWrapper.setVisibility(View.GONE);
+                            isImageExpanded = false;
+                        }
+                    });
+
+                    ImageView femaleDressImage = dressCodeView.findViewById(R.id.female_dress_image);
+                    femaleDressImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            expandedImageView.setImageResource(R.drawable.female_dress);
+                            expandedWrapper.setVisibility(View.VISIBLE);
+                            isImageExpanded = true;
+                        }
+                    });
+                    ImageView maleDressImage = dressCodeView.findViewById(R.id.male_dress_image);
+                    maleDressImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            expandedImageView.setImageResource(R.drawable.male_dress);
+                            expandedWrapper.setVisibility(View.VISIBLE);
+                            isImageExpanded = true;
+                        }
+                    });
+
+                    return dressCodeView;
 
                 case 3:
                     View rootView3 = inflater.inflate(R.layout.fragment_accomodation, container, false);
@@ -794,6 +833,11 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        public static void collapseImageView() {
+            expandedWrapper.setVisibility(View.GONE);
+            isImageExpanded = false;
+        }
+
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -813,5 +857,14 @@ public class MainActivity extends AppCompatActivity {
         public int getCount() {
             return 9;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (PlaceholderFragment.isImageExpanded) {
+            PlaceholderFragment.collapseImageView();
+            return;
+        }
+        super.onBackPressed();
     }
 }
