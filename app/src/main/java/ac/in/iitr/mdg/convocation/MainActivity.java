@@ -796,7 +796,7 @@ public class MainActivity extends AppCompatActivity {
                 case 2: {
 
                     for (DegreeResponseModel responseModel : degreeResponseModels) {
-                        if (responseModel.getDegree().equals("graduate")) {
+                        if (responseModel.getDegree().equals("postgraduate")) {
                             degreeAdapterArray.addAll(responseModel.getBranches());
                         }
                     }
