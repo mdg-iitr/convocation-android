@@ -76,6 +76,32 @@
     <string name="user_profile_image_identifier">profile_image</string>
     <string name="is_registered_identifier">is_registered_flag</string>
 
-
     <string name="default_notification_channel_id">default_channel</string>
+
+    <string name="instructions_eligibility_title">Eligibility for Convocation</string>
+    <string name="instructions_eligibility_body">All those students of UG (B.Tech./B.Arch./IDD/IMT/IMS), PG (MSc/M.Tech./MURP/MArch) and PhD programme who have completed their respective degree requirements by September 23, 2018 will be awarded degree in Convocation 2018.</string>
+
+    <string name="instructions_attending_title">Instructions for attending convocation</string>
+    <string name="instructions_attending_body">Convocation will be held on two successive days i.e.October 06, 2018 and October 07, 2018 , separately for UG(B.Tech/BArch/IDD/IMT/IMS)and PG(MSc/M.Tech./March/MURP)/PhD students respectively. All those students of UG, PG and PhD programme who have completed the degree requirements by September 23, 2018 will be awarded degree in Convocation 2018.\nKindly read these instructions before filling the registration form. You are expected to abide by the given instructions before and during the Convocation 2018 . Kindly visit Convocation website on or after September 01, 2018 to register for Convocation 2018 .</string>
+
+    <string name="instructions_registration_title">Registration</string>
+    <string name="instructions_registration_body">Each student has to register online to attend Convocation 2018 . The online registration portal will become live on September 01, 2018 and will close on September 23, 2018 midnight . You can access registration portal by clicking at ‘Register Here’ under Registration head. You will not be able to submit the form until convocation fee has been paid and its transaction ID is inserted in the registration form. Those who have successfully registered will be included in the list of degree recipients. Online registration is mandatory and any student who does not complete the online registration will not be allowed to attend the Convocation even if he/she physically reports for the same.</string>
+
+    <string name="instructions_fees_title">Convocation Fee</string>
+    <string name="instructions_fees_body">The students, who are desirous to attend Convocation 2018 , will have to pay online Rs 1500/-(Rupees Fifteen Hundred only). Use SBI Collect (State Bank Collect) for the payment as done for online fee deposit. The head for payment will be \'Convocation 2018'.</string>
+
+    <string name="instructions_mandatory_title">Mandatory</string>
+    <string name="instructions_mandatory_body">
+        1. All UG students are expected to reach institute latest by October 05, 2018m morning. All PG/PhD students are expected to reach institute latest by October 06, 2018 morning.
+        \n2. The student has to contact Convocation Reporting desk to ensure that her/his name is there in the list.
+        \n3. If student has not contacted at Convocation Reporting desk during 09.00 am and 12.00 noon on the designated day then the respective name will be removed from the list of degree recipients irrespective of that the student has already registered and paid the convocation fee.
+        \n4. Convocation dress and Anagvastra shall be collected at this time from the reporting desk.
+        \n5. Kindly note that there will not be any On-The-Spot Registration for convocation on October 05-06, 2018 for UG students and on October 06-07, 2018 for PG/PhD students.
+        \n6. Once confirmed, these students have to take part in Full dress rehearsal on the same day in afternoon. If you are not present during the dress rehearsal than your name will be removed from the list of degree recipients.
+        \n7. All the students have to report at convocation hall on the day of convocation (October 05 and 06 or 06 and 07 ) with the defined dress code at the designated time.
+        \n8. It is expected from the students that they will maintain decorum of the convocation ceremony. They will follow the instructions that will be given from time to time. They will occupy their designated seats well before time and will remain seated in the convocation hall throughout the proceedings of the ceremony.
+    </string>
+
+    <string name="instructions_mandatory_note">NOTE: The institute will try its best to accommodate the parents of the degree recipients in the convocation hall subject to the number of student registrations and expected guests who may attend the convocation. The institute looks forward to your cooperation in this regard.</string>
+
 </resources>
