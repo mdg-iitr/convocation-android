@@ -5,8 +5,8 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
     android:background="#FFFFFF"
+    android:fitsSystemWindows="false"
     tools:context="ac.in.iitr.mdg.convocation.MainActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -42,8 +42,8 @@
                 android:layout_height="26dp"
                 android:layout_gravity="end"
                 android:layout_marginEnd="20dp"
-                android:padding="2dp"
                 android:background="@drawable/white_circle"
+                android:padding="2dp"
                 android:visibility="gone" />
 
             <ImageView
@@ -53,6 +53,7 @@
                 android:layout_gravity="end"
                 android:layout_marginEnd="20dp"
                 android:background="@null"
+                android:visibility="gone"
                 app:srcCompat="@drawable/bell" />
 
         </android.support.v7.widget.Toolbar>

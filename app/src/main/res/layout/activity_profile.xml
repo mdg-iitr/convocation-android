@@ -150,7 +150,6 @@
                     android:textColor="#444444"
                     android:textSize="16sp" />
 
-
                 <TextView
                     android:id="@+id/enrolment_no_display"
                     android:layout_width="wrap_content"
@@ -237,7 +236,8 @@
                     android:layout_marginRight="22dp"
                     android:layout_marginStart="22dp"
                     android:layout_marginTop="25.8dp"
-                    android:background="#ededed" />
+                    android:background="#ededed"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/mapsButton"
@@ -252,7 +252,8 @@
                     android:textAlignment="viewStart"
                     android:textAppearance="@style/AllCapsFalse"
                     android:textColor="#444444"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:visibility="gone" />
 
                 <View
                     android:id="@+id/divider3"
@@ -264,7 +265,8 @@
                     android:layout_marginRight="22dp"
                     android:layout_marginStart="22dp"
                     android:layout_marginTop="18.3dp"
-                    android:background="#ededed" />
+                    android:background="#ededed"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/feedbackButton"
@@ -279,7 +281,8 @@
                     android:textAlignment="viewStart"
                     android:textAppearance="@style/AllCapsFalse"
                     android:textColor="#444444"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:visibility="gone" />
 
                 <View
                     android:id="@+id/divider4"
@@ -291,7 +294,8 @@
                     android:layout_marginRight="22dp"
                     android:layout_marginStart="22dp"
                     android:layout_marginTop="17.7dp"
-                    android:background="#ededed" />
+                    android:background="#ededed"
+                    android:visibility="gone" />
 
             </RelativeLayout>
 
@@ -305,7 +309,6 @@
             android:indeterminate="true"
             android:indeterminateDrawable="@drawable/progress"
             android:visibility="visible" />
-
 
     </FrameLayout>
 

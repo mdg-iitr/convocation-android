@@ -124,7 +124,8 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="40dp"
-                android:background="#ededed" />
+                android:background="#ededed"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/maps"
@@ -135,7 +136,8 @@
                 android:fontFamily="@font/metropolis_medium"
                 android:text="@string/maps"
                 android:textColor="#444444"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="gone" />
 
             <View
                 android:layout_width="match_parent"
@@ -143,7 +145,8 @@
                 android:layout_marginEnd="11dp"
                 android:layout_marginStart="11dp"
                 android:layout_marginTop="18dp"
-                android:background="#ededed" />
+                android:background="#ededed"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/feedback"
@@ -154,7 +157,8 @@
                 android:fontFamily="@font/metropolis_medium"
                 android:text="@string/feedback"
                 android:textColor="#444444"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="gone" />
 
             <View
                 android:layout_width="match_parent"
@@ -162,7 +166,8 @@
                 android:layout_marginEnd="11dp"
                 android:layout_marginStart="11dp"
                 android:layout_marginTop="18dp"
-                android:background="#ededed" />
+                android:background="#ededed"
+                android:visibility="gone" />
 
             <View
                 android:layout_width="match_parent"
