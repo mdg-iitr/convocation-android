@@ -28,7 +28,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="31dp"
                 android:fontFamily="@font/metropolis_semibold"
                 android:text="@string/chief_guests"
                 android:textColor="#262626"
@@ -38,7 +38,6 @@
                 android:id="@+id/chief_guest_recycler"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:background="@android:color/transparent"
                 android:cacheColorHint="@android:color/transparent" />
 

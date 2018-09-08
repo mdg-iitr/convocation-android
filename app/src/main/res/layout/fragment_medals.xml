@@ -48,6 +48,12 @@
 
         </LinearLayout>
 
+        <View
+            android:background="#ededed"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom" />
+
     </FrameLayout>
 
     <FrameLayout

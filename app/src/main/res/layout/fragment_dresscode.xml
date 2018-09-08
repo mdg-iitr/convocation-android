@@ -22,10 +22,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
-                android:fontFamily="@font/metropolis_bold"
+                android:fontFamily="@font/metropolis_semibold"
                 android:text="@string/female"
                 android:textColor="#262626"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:id="@+id/female_image_wrapper"
@@ -146,10 +146,10 @@
                 android:layout_below="@+id/female_dress_text"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
-                android:fontFamily="@font/metropolis_bold"
+                android:fontFamily="@font/metropolis_semibold"
                 android:text="@string/male"
                 android:textColor="#262626"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <android.support.v7.widget.CardView
                 android:id="@+id/male_dress_image_wrapper"
