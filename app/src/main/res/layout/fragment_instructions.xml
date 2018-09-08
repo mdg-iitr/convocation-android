@@ -93,14 +93,15 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/fees_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="45dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
             android:fontFamily="@font/metropolis_regular"
-            android:lineSpacingExtra="6sp"
             android:text="@string/instructions_fees_body"
+            android:lineSpacingExtra="6sp"
             android:textColor="#444444"
             android:textSize="14sp" />
 

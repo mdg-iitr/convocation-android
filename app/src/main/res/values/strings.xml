@@ -88,7 +88,7 @@
     <string name="instructions_registration_body">Each student has to register online to attend Convocation 2018 . The online registration portal will become live on September 01, 2018 and will close on September 23, 2018 midnight . You can access registration portal by clicking at ‘Register Here’ under Registration head. You will not be able to submit the form until convocation fee has been paid and its transaction ID is inserted in the registration form. Those who have successfully registered will be included in the list of degree recipients. Online registration is mandatory and any student who does not complete the online registration will not be allowed to attend the Convocation even if he/she physically reports for the same.</string>
 
     <string name="instructions_fees_title">Convocation Fee</string>
-    <string name="instructions_fees_body">The students, who are desirous to attend Convocation 2018 , will have to pay online Rs 1500/-(Rupees Fifteen Hundred only). Use SBI Collect (State Bank Collect) for the payment as done for online fee deposit. The head for payment will be \'Convocation 2018'.</string>
+    <string name="instructions_fees_body">The students, who are desirous to attend Convocation 2018 , will have to pay online <b>Rs 1500/-(Rupees Fifteen Hundred only)</b>. Use <b>SBI Collect (State Bank Collect)</b> for the payment as done for online fee deposit. The head for payment will be \'Convocation 2018'.</string>
 
     <string name="instructions_mandatory_title">Mandatory</string>
     <string name="instructions_mandatory_body">

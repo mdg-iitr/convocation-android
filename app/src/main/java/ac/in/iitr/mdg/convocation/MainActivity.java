@@ -20,6 +20,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -628,7 +629,12 @@ public class MainActivity extends AppCompatActivity {
                     return inflater.inflate(R.layout.fragment_livecast, container, false);
 
                 case 8:
-                    return inflater.inflate(R.layout.fragment_instructions, container, false);
+                    View viewInsts = inflater.inflate(R.layout.fragment_instructions, container, false);
+
+//                    TextView feesBody = viewInsts.findViewById(R.id.fees_body);
+//                    feesBody.setText(Html.fromHtml(getString(R.string.instructions_fees_body)));
+
+                    return viewInsts;
 
                 case 9:
                     View rootView10 = inflater.inflate(R.layout.fragment_contact, container, false);
