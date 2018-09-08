@@ -9,6 +9,8 @@
         android:id="@+id/schedule_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="10dp"
         android:visibility="gone" />
 
     <ProgressBar

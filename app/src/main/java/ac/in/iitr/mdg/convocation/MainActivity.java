@@ -248,8 +248,29 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
+
+                    ImageView fblink2 = view.findViewById(R.id.fblink_2);
+                    fblink2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                    Uri.parse("https://www.facebook.com/directoriitr/?ref=bookmarks"));
+                            startActivity(intent);
+                        }
+                    });
+
                     ImageView twlink = view.findViewById(R.id.twlink);
                     twlink.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                    Uri.parse("https://twitter.com/Director_IITR"));
+                            startActivity(intent);
+                        }
+                    });
+
+                    ImageView twlink2 = view.findViewById(R.id.twlink_2);
+                    twlink2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
@@ -257,6 +278,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
+
                     ImageView inlink = view.findViewById(R.id.inlink);
                     inlink.setOnClickListener(new View.OnClickListener() {
                         @Override
