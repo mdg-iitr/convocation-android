@@ -1,196 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
-
-    <TextView
-        android:id="@+id/female_tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/metropolis_semibold"
-        android:text="@string/female"
-        android:textColor="#262626"
-        android:textSize="16sp" />
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/female_dress_image_wrapper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/female_tag"
-        android:layout_marginStart="24.5dp"
-        android:layout_marginTop="29.6dp"
-        app:cardElevation="3dp">
-
-        <ImageView
-            android:id="@+id/female_dress_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="5dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/female_dress" />
-
-    </android.support.v7.widget.CardView>
-
-    <TextView
-        android:id="@+id/female_dress_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/female_dress_image_wrapper"
-        android:layout_marginStart="25dp"
-        android:layout_toEndOf="@+id/female_dress_image_wrapper"
-        android:fontFamily="@font/metropolis_medium"
-        android:text="@string/female_dress_name"
-        android:textColor="#444444"
-        android:textSize="16sp" />
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/female_dress_name"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="20dp"
-        android:layout_toEndOf="@+id/female_dress_image_wrapper">
-
-        <TextView
-            android:id="@+id/bullet_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="\u2022"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/female_dress_description_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/bullet_1"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="1dp"
-            android:layout_toEndOf="@+id/bullet_1"
-            android:fontFamily="@font/metropolis_medium"
-            android:text="@string/female_dress_description_1"
-            android:textColor="#737373"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/bullet_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/female_dress_description_1"
-            android:text="\u2022"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/female_dress_description_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/bullet_2"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="1dp"
-            android:layout_toEndOf="@+id/bullet_2"
-            android:fontFamily="@font/metropolis_medium"
-            android:text="@string/female_dress_description_2"
-            android:textColor="#737373"
-            android:textSize="12sp" />
-
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/male_tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/female_dress_image_wrapper"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="45.2dp"
-        android:fontFamily="@font/metropolis_semibold"
-        android:text="@string/male"
-        android:textColor="#262626"
-        android:textSize="16sp" />
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/male_dress_image_wrapper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/male_tag"
-        android:layout_marginStart="24.5dp"
-        android:layout_marginTop="29.6dp"
-        app:cardElevation="3dp">
-
-        <ImageView
-            android:id="@+id/male_dress_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="5dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/male_dress" />
-
-    </android.support.v7.widget.CardView>
-
-    <TextView
-        android:id="@+id/male_dress_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/male_dress_image_wrapper"
-        android:layout_marginStart="25dp"
-        android:layout_toEndOf="@+id/male_dress_image_wrapper"
-        android:fontFamily="@font/metropolis_medium"
-        android:text="@string/male_dress_name"
-        android:textColor="#444444"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/male_dress_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/male_dress_name"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="19dp"
-        android:layout_toEndOf="@+id/male_dress_image_wrapper"
-        android:fontFamily="@font/metropolis_medium"
-        android:text="@string/male_dress_description"
-        android:textColor="#737373"
-        android:textSize="12sp" />
+    android:background="#FFFFFF"
+    android:clipChildren="false">
 
     <FrameLayout
-        android:id="@+id/expanded_image_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#88000000"
-        android:elevation="20dp"
-        android:translationZ="20dp"
-        android:visibility="gone">
+        android:layout_height="match_parent">
 
-        <android.support.constraint.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:clickable="false">
+            android:layout_height="match_parent"
+            android:background="#FFFFFF">
 
-            <ImageView
-                android:id="@+id/expanded_image"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:clickable="false"
-                android:scaleType="centerInside"
-                app:layout_constraintDimensionRatio="H,1:1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/launcher_icon">
+            <TextView
+                android:id="@+id/female_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/metropolis_bold"
+                android:text="@string/female"
+                android:textColor="#262626"
+                android:textSize="20sp" />
 
-            </ImageView>
+            <LinearLayout
+                android:id="@+id/female_image_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/female_tag"
+                android:clipChildren="false"
+                android:orientation="horizontal">
 
-        </android.support.constraint.ConstraintLayout>
+                <android.support.v7.widget.CardView
+                    android:id="@+id/female_dress_image_wrapper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    app:cardElevation="3dp">
+
+                    <ImageView
+                        android:id="@+id/female_dress_image"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="5dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/female_dress" />
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/female_dress_image_wrapper_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    app:cardElevation="3dp">
+
+                    <ImageView
+                        android:id="@+id/female_dress_image_2"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="5dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/female_dress_1" />
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/female_dress_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/female_image_wrapper"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/metropolis_medium"
+                android:text="@string/female_dress_name"
+                android:textColor="#444444"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:id="@+id/female_dress_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/female_dress_name"
+                android:layout_marginEnd="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/bullet_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="\u2022"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/female_dress_description_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/bullet_1"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_toEndOf="@+id/bullet_1"
+                    android:fontFamily="@font/metropolis_medium"
+                    android:text="@string/female_dress_description_1"
+                    android:textColor="#737373"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/bullet_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/female_dress_description_1"
+                    android:text="\u2022"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/female_dress_description_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/bullet_2"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_toEndOf="@+id/bullet_2"
+                    android:fontFamily="@font/metropolis_medium"
+                    android:text="@string/female_dress_description_2"
+                    android:textColor="#737373"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/male_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/female_dress_text"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/metropolis_bold"
+                android:text="@string/male"
+                android:textColor="#262626"
+                android:textSize="20sp" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/male_dress_image_wrapper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/male_tag"
+                android:layout_marginStart="24.5dp"
+                android:layout_marginTop="15dp"
+                app:cardElevation="3dp">
+
+                <ImageView
+                    android:id="@+id/male_dress_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="5dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/male_dress" />
+
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/male_dress_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/male_dress_image_wrapper"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/metropolis_medium"
+                android:text="@string/male_dress_name"
+                android:textColor="#444444"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:id="@+id/male_dress_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/male_dress_name"
+                android:layout_marginEnd="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/bullet_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="\u2022"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/male_dress_description_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/bullet_3"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_toEndOf="@+id/bullet_3"
+                    android:fontFamily="@font/metropolis_medium"
+                    android:text="@string/male_dress_description_1"
+                    android:textColor="#737373"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/bullet_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/male_dress_description_1"
+                    android:text="\u2022"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/male_dress_description_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/bullet_4"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_toEndOf="@+id/bullet_4"
+                    android:fontFamily="@font/metropolis_medium"
+                    android:text="@string/male_dress_description_2"
+                    android:textColor="#737373"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/expanded_image_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#88000000"
+            android:elevation="20dp"
+            android:translationZ="20dp"
+            android:visibility="gone">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="false">
+
+                <ImageView
+                    android:id="@+id/expanded_image"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:clickable="false"
+                    android:scaleType="centerInside"
+                    app:layout_constraintDimensionRatio="H,1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/launcher_icon">
+
+                </ImageView>
+
+            </android.support.constraint.ConstraintLayout>
+
+        </FrameLayout>
 
     </FrameLayout>
 
-</RelativeLayout>
+</android.support.v4.widget.NestedScrollView>
+

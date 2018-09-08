@@ -337,6 +337,17 @@ public class MainActivity extends AppCompatActivity {
                             isImageExpanded = true;
                         }
                     });
+
+                    ImageView femaleDressImage2 = dressCodeView.findViewById(R.id.female_dress_image_2);
+                    femaleDressImage2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            expandedImageView.setImageResource(R.drawable.female_dress_1);
+                            expandedWrapper.setVisibility(View.VISIBLE);
+                            isImageExpanded = true;
+                        }
+                    });
+
                     ImageView maleDressImage = dressCodeView.findViewById(R.id.male_dress_image);
                     maleDressImage.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -714,7 +725,7 @@ public class MainActivity extends AppCompatActivity {
 
             hotelList.add(new HotelProfile("Hometel (A sarovar Hotel)", R.drawable.hometel, "https://maps.google.com/?cid=3613636995944658866"));
             hotelList.add(new HotelProfile("Ambrosia sarovar Portico", R.drawable.sarovar, "https://maps.google.com/?cid=10044551935308580425"));
-            hotelList.add(new HotelProfile("Motel Polaris", R.drawable.polaris, "https://maps.google.com/?cid=3821078255041093716"));
+//            hotelList.add(new HotelProfile("Motel Polaris", R.drawable.polaris, "https://maps.google.com/?cid=3821078255041093716"));
             hotelList.add(new HotelProfile("Hotel Centrum", R.drawable.centrum, "https://maps.google.com/?cid=17119990003797877505"));
             hotelList.add(new HotelProfile("Hotel Godawari", R.drawable.godawari, "https://maps.google.com/?cid=5376462500066981236"));
             hotelList.add(new HotelProfile("Hotel Center Point", R.drawable.centerpoint, "https://maps.google.com/?cid=7390331712734152861"));
