@@ -32,6 +32,7 @@
     <string name="male">Male</string>
     <string name="male_dress_name">Kurta</string>
     <string name="female_dress_name">Saree</string>
+    <string name="female_dress_name_2">Blouse</string>
     <string name="female_dress_description_1">Girls will wear SAREE in Off white Colour.Girls may use heel sandals.</string>
     <string name="female_dress_description_2">Off white colour blouse</string>
     <string name="male_dress_description_1">Boys will wear knee length KURTA in off-white colour with white colour chudidar pyjama.</string>
@@ -80,10 +81,10 @@
     <string name="default_notification_channel_id">default_channel</string>
 
     <string name="instructions_eligibility_title">Eligibility for Convocation</string>
-    <string name="instructions_eligibility_body">All those students of UG (B.Tech./B.Arch./IDD/IMT/IMS), PG (M.Sc./M.Tech./MURP/MArch) and Ph.D. programme who have completed their respective degree requirements by <b>September 23, 2018</b> will be awarded degree in Convocation 2018.</string>
+    <string name="instructions_eligibility_body">All those students of UG (B.Tech./B.Arch./IDD/IMT/IMS), PG (M.Sc./M.Tech./MURP/M.Arch.) and Ph.D. programme who have completed their respective degree requirements by <b>September 23, 2018</b> will be awarded degree in Convocation 2018.</string>
 
     <string name="instructions_attending_title">Instructions for attending convocation</string>
-    <string name="instructions_attending_body">Convocation will be held on two successive days i.e.<b>October 06, 2018</b> and <b>October 07, 2018</b> , separately for UG(B.Tech/B.Arch/IDD/IMT/IMS)and PG(M.Sc./M.Tech./March/MURP)/Ph.D. students respectively. All those students of UG, PG and Ph.D. programme who have completed the degree requirements by <b>September 23, 2018</b> will be awarded degree in Convocation 2018.\nKindly read these instructions before filling the registration form. You are expected to abide by the given instructions before and during the Convocation 2018.</string>
+    <string name="instructions_attending_body">Convocation will be held on two successive days i.e.<b>October 06, 2018</b> and <b>October 07, 2018</b> , separately for UG(B.Tech/B.Arch/IDD/IMT/IMS)and PG(M.Sc./M.Tech./M.Arch./MURP)/Ph.D. students respectively. All those students of UG, PG and Ph.D. programme who have completed the degree requirements by <b>September 23, 2018</b> will be awarded degree in Convocation 2018.\nKindly read these instructions before filling the registration form. You are expected to abide by the given instructions before and during the Convocation 2018.</string>
 
     <string name="instructions_registration_title">Registration</string>
     <string name="instructions_registration_body">Each student has to register online to attend Convocation 2018 . The online registration portal will become live on <b>September 01, 2018</b> and will close on <b>September 23, 2018 midnight</b> . You can access registration portal by clicking at ‘Register Here’ under Registration head. You will not be able to submit the form until convocation fee has been paid and its transaction ID is inserted in the registration form. Those who have successfully registered will be included in the list of degree recipients. Online registration is mandatory and any student who does not complete the online registration will not be allowed to attend the Convocation even if he/she physically reports for the same.</string>
