@@ -17,7 +17,7 @@
     <string name="action_feedback">Feedback</string>
     <string name="B.Tech">B.Tech &amp; IDD</string>
     <string name="mTech">M.Tech</string>
-    <string name="phd">PhD</string>
+    <string name="phd">Ph.D.</string>
     <string name="management">Management</string>
     <string name="name">Name</string>
     <string name="enrollment">Enrollment No.</string>
@@ -80,10 +80,10 @@
     <string name="default_notification_channel_id">default_channel</string>
 
     <string name="instructions_eligibility_title">Eligibility for Convocation</string>
-    <string name="instructions_eligibility_body">All those students of UG (B.Tech./B.Arch./IDD/IMT/IMS), PG (MSc/M.Tech./MURP/MArch) and PhD programme who have completed their respective degree requirements by <b>September 23, 2018</b> will be awarded degree in Convocation 2018.</string>
+    <string name="instructions_eligibility_body">All those students of UG (B.Tech./B.Arch./IDD/IMT/IMS), PG (M.Sc./M.Tech./MURP/MArch) and Ph.D. programme who have completed their respective degree requirements by <b>September 23, 2018</b> will be awarded degree in Convocation 2018.</string>
 
     <string name="instructions_attending_title">Instructions for attending convocation</string>
-    <string name="instructions_attending_body">Convocation will be held on two successive days i.e.<b>October 06, 2018</b> and <b>October 07, 2018</b> , separately for UG(B.Tech/BArch/IDD/IMT/IMS)and PG(MSc/M.Tech./March/MURP)/PhD students respectively. All those students of UG, PG and PhD programme who have completed the degree requirements by <b>September 23, 2018</b> will be awarded degree in Convocation 2018.\nKindly read these instructions before filling the registration form. You are expected to abide by the given instructions before and during the Convocation 2018.</string>
+    <string name="instructions_attending_body">Convocation will be held on two successive days i.e.<b>October 06, 2018</b> and <b>October 07, 2018</b> , separately for UG(B.Tech/B.Arch/IDD/IMT/IMS)and PG(M.Sc./M.Tech./March/MURP)/Ph.D. students respectively. All those students of UG, PG and Ph.D. programme who have completed the degree requirements by <b>September 23, 2018</b> will be awarded degree in Convocation 2018.\nKindly read these instructions before filling the registration form. You are expected to abide by the given instructions before and during the Convocation 2018.</string>
 
     <string name="instructions_registration_title">Registration</string>
     <string name="instructions_registration_body">Each student has to register online to attend Convocation 2018 . The online registration portal will become live on <b>September 01, 2018</b> and will close on <b>September 23, 2018 midnight</b> . You can access registration portal by clicking at ‘Register Here’ under Registration head. You will not be able to submit the form until convocation fee has been paid and its transaction ID is inserted in the registration form. Those who have successfully registered will be included in the list of degree recipients. Online registration is mandatory and any student who does not complete the online registration will not be allowed to attend the Convocation even if he/she physically reports for the same.</string>
@@ -93,11 +93,11 @@
 
     <string name="instructions_mandatory_title">Mandatory</string>
     <string name="instructions_mandatory_body">
-        1. All UG students are expected to reach institute latest by <b>October 05, 2018</b> morning. All PG/PhD students are expected to reach institute latest by <b>October 06, 2018</b> morning.
+        1. All UG students are expected to reach institute latest by <b>October 05, 2018</b> morning. All PG/Ph.D. students are expected to reach institute latest by <b>October 06, 2018</b> morning.
         \n2. The student has to contact Convocation Reporting desk to ensure that her/his name is there in the list.
         \n3. If student has not contacted at Convocation Reporting desk during <b>09.00 am</b> and <b>12.00 noon</b> on the designated day then the respective name will be removed from the list of degree recipients irrespective of that the student has already registered and paid the convocation fee.
         \n4. Convocation dress and Anagvastra shall be collected at this time from the reporting desk.
-        \n5. Kindly note that there will not be any On-The-Spot Registration for convocation on <b>October 05-06, 2018 for UG students</b> and on <b>October 06-07, 2018 for PG/PhD students</b>.
+        \n5. Kindly note that there will not be any On-The-Spot Registration for convocation on <b>October 05-06, 2018 for UG students</b> and on <b>October 06-07, 2018 for PG/Ph.D. students</b>.
         \n6. Once confirmed, these students have to take part in Full dress rehearsal on the same day in afternoon. If you are not present during the dress rehearsal than your name will be removed from the list of degree recipients.
         \n7. All the students have to report at convocation hall on the day of convocation <b>(October 05 and 06 or 06 and 07)</b> with the defined dress code at the designated time.
         \n8. It is expected from the students that they will maintain decorum of the convocation ceremony. They will follow the instructions that will be given from time to time. They will occupy their designated seats well before time and will remain seated in the convocation hall throughout the proceedings of the ceremony.
