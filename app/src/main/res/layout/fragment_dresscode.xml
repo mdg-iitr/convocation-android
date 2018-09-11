@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:fillViewport="true"
-    android:clipChildren="false">
+    android:clipChildren="false"
+    android:fillViewport="true">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -180,89 +180,394 @@
                 android:textColor="#262626"
                 android:textSize="16sp" />
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/male_dress_image_wrapper"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/male_tag"
-                android:layout_marginStart="24.5dp"
-                android:layout_marginTop="15dp"
-                app:cardElevation="3dp">
-
-                <ImageView
-                    android:id="@+id/male_dress_image"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="5dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/male_dress" />
-
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:id="@+id/male_dress_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/male_dress_image_wrapper"
-                android:layout_marginStart="25dp"
-                android:layout_toEndOf="@+id/male_dress_image_wrapper"
-                android:fontFamily="@font/metropolis_medium"
-                android:text="@string/male_dress_name"
-                android:textColor="#444444"
-                android:textSize="16sp" />
-
             <RelativeLayout
-                android:id="@+id/male_dress_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/male_dress_name"
-                android:layout_marginEnd="25dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@+id/male_dress_image_wrapper">
+                android:id="@+id/wrapper_wrapper_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/male_tag">
 
-                <TextView
-                    android:id="@+id/bullet_3"
+                <android.support.v7.widget.CardView
+                    android:id="@+id/male_dress_image_wrapper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="\u2022"
-                    android:textSize="12sp" />
+                    android:layout_marginStart="24.5dp"
+                    android:layout_marginTop="15dp"
+                    app:cardElevation="3dp">
+
+                    <ImageView
+                        android:id="@+id/male_dress_image"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="5dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/male_dress" />
+
+                </android.support.v7.widget.CardView>
 
                 <TextView
-                    android:id="@+id/male_dress_description_1"
+                    android:id="@+id/male_dress_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/bullet_3"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_toEndOf="@+id/bullet_3"
+                    android:layout_alignTop="@+id/male_dress_image_wrapper"
+                    android:layout_marginStart="25dp"
+                    android:layout_toEndOf="@+id/male_dress_image_wrapper"
                     android:fontFamily="@font/metropolis_medium"
-                    android:text="@string/male_dress_description_1"
-                    android:textColor="#737373"
-                    android:textSize="12sp" />
+                    android:text="@string/male_dress_name"
+                    android:textColor="#444444"
+                    android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/bullet_4"
+                <RelativeLayout
+                    android:id="@+id/male_dress_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/male_dress_description_1"
-                    android:text="\u2022"
-                    android:textSize="12sp" />
+                    android:layout_below="@+id/male_dress_name"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/male_dress_image_wrapper">
 
-                <TextView
-                    android:id="@+id/male_dress_description_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/bullet_4"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_toEndOf="@+id/bullet_4"
-                    android:fontFamily="@font/metropolis_medium"
-                    android:text="@string/male_dress_description_2"
-                    android:textColor="#737373"
-                    android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/bullet_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="\u2022"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/male_dress_description_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/bullet_3"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_toEndOf="@+id/bullet_3"
+                        android:fontFamily="@font/metropolis_medium"
+                        android:text="@string/male_dress_description_1"
+                        android:textColor="#737373"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/bullet_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/male_dress_description_1"
+                        android:text="\u2022"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/male_dress_description_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/bullet_4"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_toEndOf="@+id/bullet_4"
+                        android:fontFamily="@font/metropolis_medium"
+                        android:text="@string/male_dress_description_2"
+                        android:textColor="#737373"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
 
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/wrapper_wrapper_wrapper"
+                android:layout_marginEnd="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/metropolis_semibold"
+                android:text="All degree recipients will have to place ANGVASTRA around the neck."
+                android:textColor="#000000"
+                android:textSize="13sp" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_1"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/metropolis_medium"
+                        android:gravity="center"
+                        android:text="S.No."
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/metropolis_medium"
+                        android:gravity="center"
+                        android:text="Programme"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/metropolis_medium"
+                        android:gravity="center"
+                        android:text="Color"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="Ph.D. degree"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="Scarlet Red"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="M.Tech/MURP/March/PG Diploma"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="Navy Blue"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="3"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="M.Sc."
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="Greenish Green"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="4"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="MBA"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="Red Brown"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="5"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="B.Tech./ Int. / IDD / IMS"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="Light Blue"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="6"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="B.Arch."
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:gravity="center"
+                        android:text="Yellow"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+            </TableLayout>
 
         </RelativeLayout>
 
