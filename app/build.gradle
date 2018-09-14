@@ -6,8 +6,8 @@ android {
         applicationId "ac.in.iitr.mdg.convocation"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 7
-        versionName "1.05r"
+        versionCode 8
+        versionName "1.07r"
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
