@@ -291,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
 
                     RecyclerView recyclerViewGuest = view.findViewById(R.id.chief_guest_recycler);
                     RecyclerView.LayoutManager mLayoutManagerGuest = new LinearLayoutManager(getActivity().getApplicationContext());
-                    recyclerViewGuest.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));
+                    recyclerViewGuest.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                     recyclerViewGuest.setItemAnimator(new DefaultItemAnimator());
 
                     final ArrayList<ChiefGuestResponse> guestList = new ArrayList<>();
