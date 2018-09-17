@@ -164,6 +164,28 @@
                         android:textColor="#737373"
                         android:textSize="12sp" />
 
+                    <TextView
+                        android:id="@+id/bullet_9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/bullet_2"
+                        android:text="\u2022"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/female_dress_description_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/bullet_9"
+                        android:layout_below="@id/female_dress_description_2"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_toEndOf="@+id/bullet_2"
+                        android:fontFamily="@font/metropolis_medium"
+                        android:text="@string/female_dress_description_3"
+                        android:textColor="#737373"
+                        android:textSize="12sp" />
+
                 </RelativeLayout>
 
             </RelativeLayout>
@@ -264,6 +286,27 @@
                         android:layout_toEndOf="@+id/bullet_4"
                         android:fontFamily="@font/metropolis_medium"
                         android:text="@string/male_dress_description_2"
+                        android:textColor="#737373"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/bullet_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/male_dress_description_2"
+                        android:text="\u2022"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/male_dress_description_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/bullet_5"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_toEndOf="@+id/bullet_4"
+                        android:fontFamily="@font/metropolis_medium"
+                        android:text="@string/male_dress_description_3"
                         android:textColor="#737373"
                         android:textSize="12sp" />
 

@@ -34,9 +34,11 @@
     <string name="female_dress_name">Saree</string>
     <string name="female_dress_name_2">Blouse</string>
     <string name="female_dress_description_1">Girls will wear SAREE in Off white Colour.Girls may use heel sandals.</string>
-    <string name="female_dress_description_2">Off white colour blouse</string>
+    <string name="female_dress_description_2">Off white colour blouse.</string>
+    <string name="female_dress_description_3">Girls will get it stitched using design of neck and sleeves.</string>
     <string name="male_dress_description_1">Boys will wear knee length KURTA in off-white colour with white colour chudidar pyjama.</string>
     <string name="male_dress_description_2">Boys can use leather chappels.</string>
+    <string name="male_dress_description_3">Boys will get chudidar pyzama stitched in white colour.</string>
     <string name="dummy_text">Lorem Ipsum is simply dummy text\nof the printing and typesetting industry.</string>
 
     <string name="profile">Profile</string>
