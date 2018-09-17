@@ -13,6 +13,18 @@
         tools:ignore="RtlCompat">
 
         <TextView
+            android:id="@+id/details_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/metropolis_bold"
+            android:text="@string/instructions_details_note_text"
+            android:textColor="#000000"
+            android:textColorLink="@color/colorPrimaryDark" />
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="45dp"
@@ -100,8 +112,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
             android:fontFamily="@font/metropolis_regular"
-            android:text="@string/instructions_fees_body"
             android:lineSpacingExtra="6sp"
+            android:text="@string/instructions_fees_body"
             android:textColor="#444444"
             android:textSize="14sp" />
 

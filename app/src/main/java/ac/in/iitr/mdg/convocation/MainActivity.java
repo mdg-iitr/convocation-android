@@ -13,6 +13,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -21,6 +22,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -667,6 +673,31 @@ public class MainActivity extends AppCompatActivity {
 //                    TextView feesBody = viewInsts.findViewById(R.id.fees_body);
 //                    feesBody.setText(Html.fromHtml(getString(R.string.instructions_fees_body)));
 
+//                    String text = getString(R.string.instructions_details_note_text);
+//                    SpannableString ss = new SpannableString(text);
+//                    ClickableSpan clickableSpan = new ClickableSpan() {
+//                        @Override
+//                        public void onClick(View textView) {
+//                            Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+//                            browserIntent.setData(Uri.parse("https://www.iitr.ac.in/convocation2018/"));
+//                            startActivity(browserIntent);
+//                        }
+//
+//                        @Override
+//                        public void updateDrawState(TextPaint ds) {
+//                            super.updateDrawState(ds);
+//                            ds.setUnderlineText(false);
+//                        }
+//                    };
+//                    ss.setSpan(clickableSpan,
+//                            text.indexOf("Convocation"),
+//                            text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+//                    TextView detailsNote = viewInsts.findViewById(R.id.details_note);
+//                    detailsNote.setText(ss);
+//                    detailsNote.setMovementMethod(LinkMovementMethod.getInstance());
+//                    detailsNote.setHighlightColor(Color.TRANSPARENT);
+
                     return viewInsts;
 
                 case 9:
@@ -725,6 +756,22 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+        }
+
+        private void makeLinks(TextView textView, String[] links, ClickableSpan[] clickableSpans) {
+            SpannableString spannableString = new SpannableString(textView.getText());
+            for (int i = 0; i < links.length; i++) {
+                ClickableSpan clickableSpan = clickableSpans[i];
+                String link = links[i];
+
+                int startIndexOfLink = textView.getText().toString().indexOf(link);
+                spannableString.setSpan(clickableSpan, startIndexOfLink,
+                        startIndexOfLink + link.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+            textView.setHighlightColor(
+                    Color.TRANSPARENT); // prevent TextView change background when highlight
+            textView.setMovementMethod(LinkMovementMethod.getInstance());
+            textView.setText(spannableString, TextView.BufferType.SPANNABLE);
         }
 
         private View setUpAcco(View view) {
