@@ -315,10 +315,23 @@
             </RelativeLayout>
 
             <TextView
+            android:id="@+id/text_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wrapper_wrapper_wrapper"
+            android:layout_marginEnd="25dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/metropolis_semibold"
+            android:text="Kurta (to boys), saree (to girls) and angavastra (to both) will be provided by the Institute."
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+            <TextView
                 android:id="@+id/text_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/wrapper_wrapper_wrapper"
+                android:layout_below="@id/text_2"
                 android:layout_marginEnd="25dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
