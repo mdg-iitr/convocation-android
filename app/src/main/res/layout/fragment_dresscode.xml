@@ -119,6 +119,27 @@
                         android:textColor="#737373"
                         android:textSize="12sp" />
 
+                    <TextView
+                        android:id="@+id/bullet_1_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/female_dress_description_1"
+                        android:text="\u2022"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/female_dress_description_1_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/bullet_1_1"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_toEndOf="@+id/bullet_1_1"
+                        android:fontFamily="@font/metropolis_medium"
+                        android:text="@string/female_dress_description_1_1"
+                        android:textColor="#737373"
+                        android:textSize="12sp" />
+
                 </RelativeLayout>
 
                 <TextView
@@ -168,7 +189,7 @@
                         android:id="@+id/bullet_9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/bullet_2"
+                        android:layout_below="@id/female_dress_description_2"
                         android:text="\u2022"
                         android:textSize="12sp" />
 
@@ -177,12 +198,33 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignTop="@id/bullet_9"
-                        android:layout_below="@id/female_dress_description_2"
                         android:layout_marginStart="3dp"
                         android:layout_marginTop="1dp"
-                        android:layout_toEndOf="@+id/bullet_2"
+                        android:layout_toEndOf="@+id/bullet_9"
                         android:fontFamily="@font/metropolis_medium"
                         android:text="@string/female_dress_description_3"
+                        android:textColor="#737373"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/bullet_91"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/female_dress_description_3"
+                        android:text="\u2022"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/female_dress_description_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/bullet_91"
+                        android:layout_below="@id/female_dress_description_3"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_toEndOf="@+id/bullet_91"
+                        android:fontFamily="@font/metropolis_medium"
+                        android:text="@string/female_dress_description_4"
                         android:textColor="#737373"
                         android:textSize="12sp" />
 
@@ -315,17 +357,17 @@
             </RelativeLayout>
 
             <TextView
-            android:id="@+id/text_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/wrapper_wrapper_wrapper"
-            android:layout_marginEnd="25dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/metropolis_semibold"
-            android:text="Kurta (to boys), saree (to girls) and angavastra (to both) will be provided by the Institute."
-            android:textColor="#000000"
-            android:textSize="13sp" />
+                android:id="@+id/text_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/wrapper_wrapper_wrapper"
+                android:layout_marginEnd="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/metropolis_semibold"
+                android:text="Kurta (to boys), saree (to girls) and angavastra (to both) will be provided by the Institute."
+                android:textColor="#000000"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/text_1"
