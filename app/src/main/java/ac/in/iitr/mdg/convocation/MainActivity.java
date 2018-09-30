@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,7 +14,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -21,10 +21,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.text.SpannableString;
 import android.text.Spanned;
-import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
@@ -458,6 +456,24 @@ public class MainActivity extends AppCompatActivity {
                     return rootView4;
 
                 case 5:
+
+                    View rootViewMin = inflater.inflate(R.layout.fragment_min, container, false);
+
+                    TextView minLink = rootViewMin.findViewById(R.id.min_link);
+                    minLink.setPaintFlags(minLink.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+                    minLink.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                            browserIntent.setData(Uri.parse("https://drive.google.com/file/d/1hDVUvi00vDK3uHeetiGxBkuIQwQzpNeE/view?usp=sharing"));
+                            startActivity(browserIntent);
+                        }
+                    });
+
+                    return rootViewMin;
+
+                case 6:
                     final View rootView5 = inflater.inflate(R.layout.fragment_degrees, container, false);
                     final Button bTech = rootView5.findViewById(R.id.Degrees_button_bTech);
                     final Button mTech = rootView5.findViewById(R.id.Degrees_button_mTech);
@@ -593,7 +609,7 @@ public class MainActivity extends AppCompatActivity {
 
                     return rootView5;
 
-                case 6:
+                case 7:
                     View rootView6 = inflater.inflate(R.layout.fragment_medals, container, false);
 
                     medalRecycler = rootView6.findViewById(R.id.medals_recycler_view);
@@ -664,10 +680,10 @@ public class MainActivity extends AppCompatActivity {
 
                     return rootView6;
 
-                case 7:
+                case 8:
                     return inflater.inflate(R.layout.fragment_livecast, container, false);
 
-                case 8:
+                case 9:
                     View viewInsts = inflater.inflate(R.layout.fragment_instructions, container, false);
 
 //                    TextView feesBody = viewInsts.findViewById(R.id.fees_body);
@@ -700,7 +716,7 @@ public class MainActivity extends AppCompatActivity {
 
                     return viewInsts;
 
-                case 9:
+                case 10:
                     View rootView10 = inflater.inflate(R.layout.fragment_contact, container, false);
 
 //                    RecyclerView contactView = rootView10.findViewById(R.id.contact_recyclerView);
@@ -941,7 +957,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 9;
+            return 10;
         }
     }
 
