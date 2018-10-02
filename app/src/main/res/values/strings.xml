@@ -43,7 +43,7 @@
     <string name="male_dress_description_2">Boys can use leather chappals.</string>
     <string name="male_dress_description_3">Boys will have to get chudidar pyjama stitched themselves in white colour.</string>
     <string name="dummy_text">Lorem Ipsum is simply dummy text\nof the printing and typesetting industry.</string>
-    <string name="instructions_details_note_text">NOTE : WEBSITE CONTENT SHALL BE LOOKED FOR MORE INFORMATION</string>
+    <string name="instructions_details_note_text">NOTE : WEBSITE CONTENT SHALL BE LOOKED FOR MORE INFORMATION\n\nNOTE : Students need to check website for update on registration data regarding attending convocation 2018 in person.</string>
 
     <string name="profile">Profile</string>
     <string name="enrolment_no">Enrolment No.:</string>
