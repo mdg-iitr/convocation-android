@@ -466,7 +466,8 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-                            browserIntent.setData(Uri.parse("https://drive.google.com/file/d/1hDVUvi00vDK3uHeetiGxBkuIQwQzpNeE/view?usp=sharing"));
+//                            browserIntent.setData(Uri.parse("https://drive.google.com/file/d/1hDVUvi00vDK3uHeetiGxBkuIQwQzpNeE/view?usp=sharing"));
+                            browserIntent.setData(Uri.parse("https://drive.google.com/file/d/1BQU4pY6fUszJWwDHVRCX88p602WsZQrZ/view?usp=sharing"));
                             startActivity(browserIntent);
                         }
                     });
