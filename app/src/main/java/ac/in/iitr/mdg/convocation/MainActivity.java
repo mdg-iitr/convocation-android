@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
             if (isRegisteredFromSharedPrefs) {
                 registerButton.setVisibility(View.GONE);
             } else {
-                registerButton.setVisibility(View.VISIBLE);
+                registerButton.setVisibility(View.INVISIBLE);
             }
         }
 
