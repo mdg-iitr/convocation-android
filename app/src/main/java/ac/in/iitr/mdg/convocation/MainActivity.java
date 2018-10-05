@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -682,8 +683,46 @@ public class MainActivity extends AppCompatActivity {
                     return rootView6;
 
                 case 8:
-                    return inflater.inflate(R.layout.fragment_livecast, container, false);
+                    View livecastView = inflater.inflate(R.layout.fragment_livecast, container, false);
 
+                    CardView youtube1 = livecastView.findViewById(R.id.youtubeCard1);
+                    youtube1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                    Uri.parse("https://www.youtube.com/watch?v=suLb_SH9hHQ"));
+                            startActivity(intent);
+                        }
+                    });
+                    CardView youtube2 = livecastView.findViewById(R.id.youtubeCard2);
+                    youtube2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                    Uri.parse("https://www.youtube.com/watch?v=qhZJ_3oNuHk"));
+                            startActivity(intent);
+                        }
+                    });
+                    CardView fb = livecastView.findViewById(R.id.fbCard);
+                    fb.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                    Uri.parse("https://www.facebook.com/convo2018.iitr"));
+                            startActivity(intent);
+                        }
+                    });
+                    CardView twitter = livecastView.findViewById(R.id.twitterCard);
+                    twitter.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                                    Uri.parse("https://twitter.com/Convo2018I"));
+                            startActivity(intent);
+                        }
+                    });
+
+                    return livecastView;
                 case 9:
                     View viewInsts = inflater.inflate(R.layout.fragment_instructions, container, false);
 
